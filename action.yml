@@ -1,0 +1,63 @@
+name: toolcall-bench comparison
+description: Compare two MCP manifests on identical suite tasks and update a pull request comment
+inputs:
+  suite:
+    description: Directory containing shared tasks.json and the default config.json
+    required: true
+  baseline-manifest:
+    description: Baseline manifest.json path
+    required: true
+  candidate-manifest:
+    description: Candidate manifest.json path
+    required: true
+  baseline-config:
+    description: Baseline config.json provenance (defaults to suite/config.json)
+    default: ''
+  candidate-config:
+    description: Candidate config.json provenance (defaults to suite/config.json; supply when capture changes)
+    default: ''
+  driver:
+    description: Live driver anthropic, openai, or gemini
+    required: true
+  model:
+    description: Provider model identifier
+    required: true
+  trials:
+    description: Trials per task
+    default: '3'
+  fail-on-regression:
+    description: Fail after commenting if a paired metric shows a significant regression
+    default: 'false'
+  github-token:
+    description: Token with pull-requests write permission
+    default: ${{ github.token }}
+outputs:
+  results:
+    description: Directory of JSON reports, traces and diff files on the runner
+    value: ${{ steps.compare.outputs.results }}
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+    - name: Install harness
+      shell: bash
+      working-directory: ${{ github.action_path }}
+      run: npm ci && npm run build
+    - name: Compare and comment
+      id: compare
+      shell: bash
+      env:
+        BENCH_ACTION_PATH: ${{ github.action_path }}
+        BENCH_SUITE: ${{ inputs.suite }}
+        BENCH_BASELINE_MANIFEST: ${{ inputs.baseline-manifest }}
+        BENCH_CANDIDATE_MANIFEST: ${{ inputs.candidate-manifest }}
+        BENCH_BASELINE_CONFIG: ${{ inputs.baseline-config }}
+        BENCH_CANDIDATE_CONFIG: ${{ inputs.candidate-config }}
+        BENCH_DRIVER: ${{ inputs.driver }}
+        BENCH_MODEL: ${{ inputs.model }}
+        BENCH_TRIALS: ${{ inputs.trials }}
+        BENCH_FAIL: ${{ inputs.fail-on-regression }}
+        GH_TOKEN: ${{ inputs.github-token }}
+      run: node "$BENCH_ACTION_PATH/action/compare.mjs"

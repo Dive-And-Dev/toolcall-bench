@@ -10,6 +10,7 @@ import { loadSuite, suitePaths } from './runner/suites.js';
 import { MockModelRunner, NativeModelRunner, type Driver } from './runner/models.js';
 import { evaluateSuite, writeEvaluation } from './runner/evaluator.js';
 import { diffReports, markdownDiff } from './runner/diff.js';
+import { buildSite } from './site/generator.js';
 
 export function parsePairs(values: string[], separator: string): Record<string, string> {
   return Object.fromEntries(values.map(value => {
@@ -20,6 +21,14 @@ export function parsePairs(values: string[], separator: string): Record<string, 
 }
 
 const program = new Command().name('toolcall-bench').description('Evaluate MCP tool-calling developer experience');
+program.command('build-site')
+  .option('--results <directory>', 'Evaluation reports and neighboring traces', 'results')
+  .option('--out <directory>', 'Static site output', 'dist-site')
+  .option('--allow-mock-preview', 'Watermark every page as synthetic preview data')
+  .action(async options => {
+    const built = await buildSite(options);
+    console.log(`Built ${built.servers} server pages from ${built.runs} runs in ${built.out}`);
+  });
 program.command('lint-tasks [suite]')
   .option('--all', 'Validate every captured suite')
   .action(async (suite: string | undefined, options) => {
