@@ -19,6 +19,27 @@ async function setup() {
   await writeEvaluation(output, results);
   return { root, suites, results, out, output };
 }
+it.each([0, 1, 2])('uses the correct noun forms for counts of %i', async count => {
+  const options = await setup();
+  const report = options.output.report;
+  report.tokens.tool_count = count;
+  report.tokens.catalog_tokens = count;
+  report.trials = count || 1;
+  report.lint.total_findings = count;
+  report.lint.findings = Array.from({ length: count }, () => ({ tool: 'wait_ms', rule: 'MISSING_DESCRIPTION', path: '/description', message: 'Missing description' }));
+  for (const metric of Object.values(report.metrics)) if (metric) { metric.n_tasks = count; metric.n_trials = count; }
+  await writeEvaluation(options.output, options.results);
+  await buildSite({ ...options, allowMockPreview: true });
+  const file = (await readdir(options.out)).find(path => path.startsWith('suite-'))!;
+  const html = await readFile(join(options.out, file), 'utf8');
+  const suffix = count === 1 ? '' : 's';
+  expect(html).toContain(`o200k_base token${suffix} · ${count} tool${suffix}`);
+  expect(html).toContain(`${count} finding${suffix};`);
+  if (count) expect(html).toContain(`wait_ms · ${count} finding${suffix}</summary>`);
+  expect(html).toContain(`${count} task${suffix} · ${count} trial${suffix}`);
+  expect(html).toContain(`${report.trials} trial${report.trials === 1 ? '' : 's'}/task`);
+  expect(html).not.toMatch(/\b1 (?:tools|findings|tasks|trials)\b/);
+});
 it('rejects mock reports without explicit preview opt-in before writing', async () => {
   const options = await setup();
   await expect(buildSite(options)).rejects.toThrow('Mock results require');
