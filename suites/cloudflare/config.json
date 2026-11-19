@@ -1,0 +1,13 @@
+{
+  "server_name": "cloudflare",
+  "repo_url": "https://github.com/cloudflare/mcp-server-cloudflare",
+  "architecture_type": "static_catalog",
+  "snapshot_meta": {
+    "package": "@cloudflare/mcp-server-cloudflare",
+    "package_version": "0.2.0",
+    "captured_at": "2026-11-19T20:40:57.914Z",
+    "capture_method": "SDK stdio initialize + tools/list; dummy credential; network disabled with unshare -Urn; npm offline",
+    "capture_cmd": "node dist/cli.js snapshot --cmd 'unshare -Urn npx --offline -y @cloudflare/mcp-server-cloudflare@0.2.0 run dummy' --env CLOUDFLARE_API_TOKEN=dummy --out suites/cloudflare/manifest.json",
+    "requires_auth_for_tools_list": false
+  }
+}

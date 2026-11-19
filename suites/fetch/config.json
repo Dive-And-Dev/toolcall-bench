@@ -1,0 +1,13 @@
+{
+  "server_name": "fetch",
+  "repo_url": "https://github.com/modelcontextprotocol/servers",
+  "architecture_type": "static_catalog",
+  "snapshot_meta": {
+    "package": "mcp-server-fetch",
+    "package_version": "2026.11.11",
+    "captured_at": "2026-11-19T20:40:58.318Z",
+    "capture_method": "SDK stdio initialize + tools/list; no credential",
+    "capture_cmd": "node dist/cli.js snapshot --cmd 'uvx --from mcp-server-fetch==2026.11.11 mcp-server-fetch' --out suites/fetch/manifest.json",
+    "requires_auth_for_tools_list": false
+  }
+}

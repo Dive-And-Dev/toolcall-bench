@@ -1,0 +1,13 @@
+{
+  "server_name": "memory",
+  "repo_url": "https://github.com/modelcontextprotocol/servers",
+  "architecture_type": "static_catalog",
+  "snapshot_meta": {
+    "package": "@modelcontextprotocol/server-memory",
+    "package_version": "2.2.1",
+    "captured_at": "2026-11-19T20:40:58.222Z",
+    "capture_method": "SDK stdio initialize + tools/list; no credential",
+    "capture_cmd": "node dist/cli.js snapshot --cmd 'npx -y @modelcontextprotocol/server-memory@2.2.1' --out suites/memory/manifest.json",
+    "requires_auth_for_tools_list": false
+  }
+}

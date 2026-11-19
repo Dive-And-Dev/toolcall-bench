@@ -1,0 +1,13 @@
+{
+  "server_name": "notion",
+  "repo_url": "https://github.com/makenotion/notion-mcp-server",
+  "architecture_type": "static_catalog",
+  "snapshot_meta": {
+    "package": "@notionhq/notion-mcp-server",
+    "package_version": "2.6.1",
+    "captured_at": "2026-11-19T20:40:58.204Z",
+    "capture_method": "SDK stdio initialize + tools/list; dummy credential; network disabled with unshare -Urn; npm offline",
+    "capture_cmd": "node dist/cli.js snapshot --cmd 'unshare -Urn npx --offline -y @notionhq/notion-mcp-server@2.6.1' --env NOTION_TOKEN=ntn_dummy --out suites/notion/manifest.json",
+    "requires_auth_for_tools_list": false
+  }
+}
