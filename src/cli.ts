@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
+import { realpathSync } from 'node:fs';
 import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { Command } from 'commander';
 import { introspect } from './mcp/introspect.js';
 import { EvalReport, ToolManifest } from './types.js';
@@ -136,7 +138,7 @@ program.command('snapshot')
     console.log(`Captured ${manifest.tools.length} tools from ${manifest.serverInfo.name} -> ${options.out}`);
   });
 
-if (process.argv[1] && import.meta.url === new URL(process.argv[1], 'file:').href) {
+if (process.argv[1] && realpathSync(process.argv[1]) === realpathSync(fileURLToPath(import.meta.url))) {
   program.parseAsync().catch((error: unknown) => {
     console.error(error instanceof Error ? error.message : String(error));
     process.exitCode = 1;

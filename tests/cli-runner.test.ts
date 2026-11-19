@@ -1,10 +1,24 @@
 import { expect, it } from 'vitest';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
-import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import { mkdtemp, readFile, rm, symlink, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { fixture } from './runner-fixture.js';
+
+it('dispatches CLI commands when the entry point is a bin symlink', async () => {
+  const directory = await mkdtemp(join(tmpdir(), 'bench-bin-'));
+  try {
+    const bin = join(directory, 'toolcall-bench');
+    await symlink(resolve('src/cli.ts'), bin);
+    const run = (...args: string[]) => promisify(execFile)(process.execPath,
+      ['--import', resolve('node_modules/tsx/dist/loader.mjs'), bin, ...args]);
+    expect((await run('--help')).stdout).toContain('Usage: toolcall-bench');
+    const lint = (await run('lint', '--all')).stdout;
+    expect(lint).toContain('MISSING_DESCRIPTION');
+    expect(lint).toContain('memory');
+  } finally { await rm(directory, { recursive: true, force: true }); }
+});
 
 it('enforces mock opt-in, writes runs, exits on regression and rejects task leakage', async () => {
   const directory = await mkdtemp(join(tmpdir(), 'bench-cli-'));
