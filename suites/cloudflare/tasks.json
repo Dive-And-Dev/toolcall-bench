@@ -1,0 +1,434 @@
+[
+  {
+    "id": "cloudflare-01",
+    "server_name": "cloudflare",
+    "prompt": "Read the value of session:42 from key-value namespace ns-demo.",
+    "expected_tools": [
+      "kv_get"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/namespaceId",
+        "equals": "ns-demo"
+      },
+      {
+        "path": "/key",
+        "equals": "session:42"
+      }
+    ],
+    "rationale": "Tests kv_get intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "cloudflare-02",
+    "server_name": "cloudflare",
+    "prompt": "Store the string enabled under feature:beta in namespace ns-demo for five minutes.",
+    "expected_tools": [
+      "kv_put"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/namespaceId",
+        "equals": "ns-demo"
+      },
+      {
+        "path": "/key",
+        "equals": "feature:beta"
+      },
+      {
+        "path": "/value",
+        "equals": "enabled"
+      },
+      {
+        "path": "/expirationTtl",
+        "equals": 300
+      }
+    ],
+    "rationale": "Tests kv_put intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "unit_ambiguity"
+    ]
+  },
+  {
+    "id": "cloudflare-03",
+    "server_name": "cloudflare",
+    "prompt": "Remove the key session:42 from namespace ns-demo.",
+    "expected_tools": [
+      "kv_delete"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/namespaceId",
+        "equals": "ns-demo"
+      },
+      {
+        "path": "/key",
+        "equals": "session:42"
+      }
+    ],
+    "rationale": "Tests kv_delete intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "cloudflare-04",
+    "server_name": "cloudflare",
+    "prompt": "Show at most 25 keys beginning with session: in namespace ns-demo.",
+    "expected_tools": [
+      "kv_list"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/namespaceId",
+        "equals": "ns-demo"
+      },
+      {
+        "path": "/prefix",
+        "equals": "session:"
+      },
+      {
+        "path": "/limit",
+        "equals": 25
+      }
+    ],
+    "rationale": "Tests kv_list intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "cloudflare-05",
+    "server_name": "cloudflare",
+    "prompt": "Which key-value namespaces exist in this account?",
+    "expected_tools": [
+      "get_kvs"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "",
+        "exists": true
+      }
+    ],
+    "rationale": "Tests get_kvs intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "cloudflare-06",
+    "server_name": "cloudflare",
+    "prompt": "Show the deployed source code for the edge script named gateway.",
+    "expected_tools": [
+      "worker_get"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/name",
+        "equals": "gateway"
+      }
+    ],
+    "rationale": "Tests worker_get intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "cloudflare-07",
+    "server_name": "cloudflare",
+    "prompt": "Which edge scripts are deployed in this account?",
+    "expected_tools": [
+      "worker_list"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "",
+        "exists": true
+      }
+    ],
+    "rationale": "Tests worker_list intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "cloudflare-08",
+    "server_name": "cloudflare",
+    "prompt": "Remove the deployed edge script named obsolete-api.",
+    "expected_tools": [
+      "worker_delete"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/name",
+        "equals": "obsolete-api"
+      }
+    ],
+    "rationale": "Tests worker_delete intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "cloudflare-09",
+    "server_name": "cloudflare",
+    "prompt": "Provision an object-storage container called build-artifacts.",
+    "expected_tools": [
+      "r2_create_bucket"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/name",
+        "equals": "build-artifacts"
+      }
+    ],
+    "rationale": "Tests r2_create_bucket intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "cloudflare-10",
+    "server_name": "cloudflare",
+    "prompt": "Show object keys under releases/ in the build-artifacts storage container.",
+    "expected_tools": [
+      "r2_list_objects"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/bucket",
+        "equals": "build-artifacts"
+      },
+      {
+        "path": "/prefix",
+        "equals": "releases/"
+      }
+    ],
+    "rationale": "Tests r2_list_objects intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "cloudflare-11",
+    "server_name": "cloudflare",
+    "prompt": "Retrieve releases/v1.txt from the build-artifacts object store.",
+    "expected_tools": [
+      "r2_get_object"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/bucket",
+        "equals": "build-artifacts"
+      },
+      {
+        "path": "/key",
+        "equals": "releases/v1.txt"
+      }
+    ],
+    "rationale": "Tests r2_get_object intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "cloudflare-12",
+    "server_name": "cloudflare",
+    "prompt": "Save the text ready at status.txt in build-artifacts with MIME type text/plain.",
+    "expected_tools": [
+      "r2_put_object"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/bucket",
+        "equals": "build-artifacts"
+      },
+      {
+        "path": "/key",
+        "equals": "status.txt"
+      },
+      {
+        "path": "/content",
+        "equals": "ready"
+      },
+      {
+        "path": "/contentType",
+        "equals": "text/plain"
+      }
+    ],
+    "rationale": "Tests r2_put_object intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "cloudflare-13",
+    "server_name": "cloudflare",
+    "prompt": "Erase old.zip from the build-artifacts object store.",
+    "expected_tools": [
+      "r2_delete_object"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/bucket",
+        "equals": "build-artifacts"
+      },
+      {
+        "path": "/key",
+        "equals": "old.zip"
+      }
+    ],
+    "rationale": "Tests r2_delete_object intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "cloudflare-14",
+    "server_name": "cloudflare",
+    "prompt": "Provision a new SQL store called analytics-dev.",
+    "expected_tools": [
+      "d1_create_database"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/name",
+        "equals": "analytics-dev"
+      }
+    ],
+    "rationale": "Tests d1_create_database intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "cloudflare-15",
+    "server_name": "cloudflare",
+    "prompt": "Show all SQL stores available in this account.",
+    "expected_tools": [
+      "d1_list_databases"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "",
+        "exists": true
+      }
+    ],
+    "rationale": "Tests d1_list_databases intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "cloudflare-16",
+    "server_name": "cloudflare",
+    "prompt": "Show traffic analytics for zone z-demo between midnight and 01:00 UTC on January 2, 2026.",
+    "expected_tools": [
+      "analytics_get"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/zoneId",
+        "equals": "z-demo"
+      },
+      {
+        "path": "/since",
+        "equals": "2026-01-02T00:00:00Z"
+      },
+      {
+        "path": "/until",
+        "equals": "2026-01-02T01:00:00Z"
+      }
+    ],
+    "rationale": "Tests analytics_get intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "unit_ambiguity"
+    ]
+  },
+  {
+    "id": "cloudflare-17",
+    "server_name": "cloudflare",
+    "prompt": "Remove the empty object-storage container scratch-data.",
+    "expected_tools": [
+      "r2_delete_bucket"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/name",
+        "equals": "scratch-data"
+      }
+    ],
+    "rationale": "Tests r2_delete_bucket intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "cloudflare-18",
+    "server_name": "cloudflare",
+    "prompt": "Set the key empty-marker to an empty string in namespace ns-demo.",
+    "expected_tools": [
+      "kv_put"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/namespaceId",
+        "equals": "ns-demo"
+      },
+      {
+        "path": "/key",
+        "equals": "empty-marker"
+      },
+      {
+        "path": "/value",
+        "equals": ""
+      }
+    ],
+    "rationale": "Tests kv_put intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "edge"
+    ]
+  },
+  {
+    "id": "cloudflare-19",
+    "server_name": "cloudflare",
+    "prompt": "Which object-storage containers are available?",
+    "expected_tools": [
+      "r2_list_buckets"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "",
+        "exists": true
+      }
+    ],
+    "rationale": "Tests r2_list_buckets intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "cloudflare-20",
+    "server_name": "cloudflare",
+    "prompt": "Publish the edge script gateway from the local source at /workspace/gateway.js.",
+    "expected_tools": [
+      "worker_deploy"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/name",
+        "equals": "gateway"
+      },
+      {
+        "path": "/filePath",
+        "equals": "/workspace/gateway.js"
+      }
+    ],
+    "rationale": "Tests worker_deploy intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  }
+]

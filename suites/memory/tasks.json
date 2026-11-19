@@ -1,0 +1,444 @@
+[
+  {
+    "id": "memory-01",
+    "server_name": "memory",
+    "prompt": "Remember Ada as a person whose office is in London.",
+    "expected_tools": [
+      "create_entities"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/entities/0/name",
+        "equals": "Ada"
+      },
+      {
+        "path": "/entities/0/entityType",
+        "equals": "person"
+      },
+      {
+        "path": "/entities/0/observations/0",
+        "equals": "Office is in London"
+      }
+    ],
+    "rationale": "Tests create_entities intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "memory-02",
+    "server_name": "memory",
+    "prompt": "Record Atlas as a project that uses PostgreSQL.",
+    "expected_tools": [
+      "create_entities"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/entities/0/name",
+        "equals": "Atlas"
+      },
+      {
+        "path": "/entities/0/entityType",
+        "equals": "project"
+      },
+      {
+        "path": "/entities/0/observations/0",
+        "equals": "Uses PostgreSQL"
+      }
+    ],
+    "rationale": "Tests create_entities intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "memory-03",
+    "server_name": "memory",
+    "prompt": "Remember that Ada maintains Atlas, with Ada as the source and Atlas as the destination.",
+    "expected_tools": [
+      "create_relations"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/relations/0/from",
+        "equals": "Ada"
+      },
+      {
+        "path": "/relations/0/to",
+        "equals": "Atlas"
+      },
+      {
+        "path": "/relations/0/relationType",
+        "equals": "maintains"
+      }
+    ],
+    "rationale": "Tests create_relations intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "memory-04",
+    "server_name": "memory",
+    "prompt": "Attach the fact Prefers email to the existing person Ada.",
+    "expected_tools": [
+      "add_observations"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/observations/0/entityName",
+        "equals": "Ada"
+      },
+      {
+        "path": "/observations/0/contents/0",
+        "equals": "Prefers email"
+      }
+    ],
+    "rationale": "Tests add_observations intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "memory-05",
+    "server_name": "memory",
+    "prompt": "Forget the saved record named Legacy entirely.",
+    "expected_tools": [
+      "delete_entities"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/entityNames/0",
+        "equals": "Legacy"
+      }
+    ],
+    "rationale": "Tests delete_entities intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "memory-06",
+    "server_name": "memory",
+    "prompt": "Remove only the fact Prefers email from Ada, keeping her other information.",
+    "expected_tools": [
+      "delete_observations"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/deletions/0/entityName",
+        "equals": "Ada"
+      },
+      {
+        "path": "/deletions/0/observations/0",
+        "equals": "Prefers email"
+      }
+    ],
+    "rationale": "Tests delete_observations intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "memory-07",
+    "server_name": "memory",
+    "prompt": "Erase the stored connection saying Ada maintains Atlas, without removing either endpoint.",
+    "expected_tools": [
+      "delete_relations"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/relations/0/from",
+        "equals": "Ada"
+      },
+      {
+        "path": "/relations/0/to",
+        "equals": "Atlas"
+      },
+      {
+        "path": "/relations/0/relationType",
+        "equals": "maintains"
+      }
+    ],
+    "rationale": "Tests delete_relations intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "memory-08",
+    "server_name": "memory",
+    "prompt": "Show everything currently remembered, including connections.",
+    "expected_tools": [
+      "read_graph"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "",
+        "exists": true
+      }
+    ],
+    "rationale": "Tests read_graph intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "memory-09",
+    "server_name": "memory",
+    "prompt": "Find remembered records mentioning PostgreSQL.",
+    "expected_tools": [
+      "search_nodes"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/query",
+        "equals": "PostgreSQL"
+      }
+    ],
+    "rationale": "Tests search_nodes intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "memory-10",
+    "server_name": "memory",
+    "prompt": "Show the saved details for exactly Ada and Atlas.",
+    "expected_tools": [
+      "open_nodes"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/names",
+        "equals": [
+          "Ada",
+          "Atlas"
+        ]
+      }
+    ],
+    "rationale": "Tests open_nodes intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "memory-11",
+    "server_name": "memory",
+    "prompt": "Remember Nimbus as a service with the fact Region is eu-west-1.",
+    "expected_tools": [
+      "create_entities"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/entities/0/name",
+        "equals": "Nimbus"
+      },
+      {
+        "path": "/entities/0/entityType",
+        "equals": "service"
+      },
+      {
+        "path": "/entities/0/observations/0",
+        "equals": "Region is eu-west-1"
+      }
+    ],
+    "rationale": "Tests create_entities intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "memory-12",
+    "server_name": "memory",
+    "prompt": "Add the fact On call on Fridays to the existing record Bruno.",
+    "expected_tools": [
+      "add_observations"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/observations/0/entityName",
+        "equals": "Bruno"
+      },
+      {
+        "path": "/observations/0/contents/0",
+        "equals": "On call on Fridays"
+      }
+    ],
+    "rationale": "Tests add_observations intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "memory-13",
+    "server_name": "memory",
+    "prompt": "Look through remembered information for outage and return at most five matches.",
+    "expected_tools": [
+      "search_nodes"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/query",
+        "equals": "outage"
+      },
+      {
+        "path": "/limit",
+        "equals": 5
+      }
+    ],
+    "rationale": "Tests search_nodes intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "memory-14",
+    "server_name": "memory",
+    "prompt": "Retrieve exactly the remembered record named Queue A.",
+    "expected_tools": [
+      "open_nodes"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/names/0",
+        "equals": "Queue A"
+      }
+    ],
+    "rationale": "Tests open_nodes intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "memory-15",
+    "server_name": "memory",
+    "prompt": "Forget both temporary records Scratch and Sandbox.",
+    "expected_tools": [
+      "delete_entities"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/entityNames",
+        "equals": [
+          "Scratch",
+          "Sandbox"
+        ]
+      }
+    ],
+    "rationale": "Tests delete_entities intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "edge"
+    ]
+  },
+  {
+    "id": "memory-16",
+    "server_name": "memory",
+    "prompt": "Show only remembered records of type service.",
+    "expected_tools": [
+      "read_graph"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/entityTypes/0",
+        "equals": "service"
+      }
+    ],
+    "rationale": "Tests read_graph intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "memory-17",
+    "server_name": "memory",
+    "prompt": "Look for latency in memory but include no more than two facts per matching record.",
+    "expected_tools": [
+      "search_nodes"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/query",
+        "equals": "latency"
+      },
+      {
+        "path": "/observationLimit",
+        "equals": 2
+      }
+    ],
+    "rationale": "Tests search_nodes intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "edge"
+    ]
+  },
+  {
+    "id": "memory-18",
+    "server_name": "memory",
+    "prompt": "Store that Atlas depends_on Nimbus in that direction.",
+    "expected_tools": [
+      "create_relations"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/relations/0/from",
+        "equals": "Atlas"
+      },
+      {
+        "path": "/relations/0/to",
+        "equals": "Nimbus"
+      },
+      {
+        "path": "/relations/0/relationType",
+        "equals": "depends_on"
+      }
+    ],
+    "rationale": "Tests create_relations intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "memory-19",
+    "server_name": "memory",
+    "prompt": "For Ada, include no more than one saved fact.",
+    "expected_tools": [
+      "open_nodes"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/names/0",
+        "equals": "Ada"
+      },
+      {
+        "path": "/observationLimit",
+        "equals": 1
+      }
+    ],
+    "rationale": "Tests open_nodes intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "edge"
+    ]
+  },
+  {
+    "id": "memory-20",
+    "server_name": "memory",
+    "prompt": "Bruno’s saved fact On call on Fridays is obsolete; remove just that fact.",
+    "expected_tools": [
+      "delete_observations"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/deletions/0/entityName",
+        "equals": "Bruno"
+      },
+      {
+        "path": "/deletions/0/observations/0",
+        "equals": "On call on Fridays"
+      }
+    ],
+    "rationale": "Tests delete_observations intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "edge"
+    ]
+  }
+]

@@ -1,0 +1,540 @@
+[
+  {
+    "id": "github-official-01",
+    "server_name": "github-official",
+    "prompt": "Find public projects about SQLite written in Rust.",
+    "expected_tools": [
+      "search_repositories"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/query",
+        "equals": "SQLite language:Rust"
+      }
+    ],
+    "rationale": "Tests search_repositories intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "github-official-02",
+    "server_name": "github-official",
+    "prompt": "Start a private GitHub project named launch-notes.",
+    "expected_tools": [
+      "create_repository"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/name",
+        "equals": "launch-notes"
+      },
+      {
+        "path": "/private",
+        "equals": true
+      }
+    ],
+    "rationale": "Tests create_repository intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "github-official-03",
+    "server_name": "github-official",
+    "prompt": "Show README.md from acme/rocket at the main ref.",
+    "expected_tools": [
+      "get_file_contents"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/owner",
+        "equals": "acme"
+      },
+      {
+        "path": "/repo",
+        "equals": "rocket"
+      },
+      {
+        "path": "/path",
+        "equals": "README.md"
+      },
+      {
+        "path": "/ref",
+        "equals": "refs/heads/main"
+      }
+    ],
+    "rationale": "Tests get_file_contents intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "github-official-04",
+    "server_name": "github-official",
+    "prompt": "File a bug titled Login hangs in acme/rocket with details Spinner never stops.",
+    "expected_tools": [
+      "issue_write"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/owner",
+        "equals": "acme"
+      },
+      {
+        "path": "/repo",
+        "equals": "rocket"
+      },
+      {
+        "path": "/method",
+        "equals": "create"
+      },
+      {
+        "path": "/title",
+        "equals": "Login hangs"
+      },
+      {
+        "path": "/body",
+        "equals": "Spinner never stops"
+      }
+    ],
+    "rationale": "Tests issue_write intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "github-official-05",
+    "server_name": "github-official",
+    "prompt": "Propose merging fix-login into main in acme/rocket, titled Fix login, as a draft.",
+    "expected_tools": [
+      "create_pull_request"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/owner",
+        "equals": "acme"
+      },
+      {
+        "path": "/repo",
+        "equals": "rocket"
+      },
+      {
+        "path": "/head",
+        "equals": "fix-login"
+      },
+      {
+        "path": "/base",
+        "equals": "main"
+      },
+      {
+        "path": "/title",
+        "equals": "Fix login"
+      },
+      {
+        "path": "/draft",
+        "equals": true
+      }
+    ],
+    "rationale": "Tests create_pull_request intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "github-official-06",
+    "server_name": "github-official",
+    "prompt": "Make my own GitHub copy of acme/rocket.",
+    "expected_tools": [
+      "fork_repository"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/owner",
+        "equals": "acme"
+      },
+      {
+        "path": "/repo",
+        "equals": "rocket"
+      }
+    ],
+    "rationale": "Tests fork_repository intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "github-official-07",
+    "server_name": "github-official",
+    "prompt": "Start a development line named fix-login from main in acme/rocket.",
+    "expected_tools": [
+      "create_branch"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/owner",
+        "equals": "acme"
+      },
+      {
+        "path": "/repo",
+        "equals": "rocket"
+      },
+      {
+        "path": "/branch",
+        "equals": "fix-login"
+      },
+      {
+        "path": "/from_branch",
+        "equals": "main"
+      }
+    ],
+    "rationale": "Tests create_branch intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "github-official-08",
+    "server_name": "github-official",
+    "prompt": "Show the most recent ten changesets in acme/rocket.",
+    "expected_tools": [
+      "list_commits"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/owner",
+        "equals": "acme"
+      },
+      {
+        "path": "/repo",
+        "equals": "rocket"
+      },
+      {
+        "path": "/perPage",
+        "equals": 10
+      }
+    ],
+    "rationale": "Tests list_commits intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "github-official-09",
+    "server_name": "github-official",
+    "prompt": "Show unresolved bug tickets in acme/rocket.",
+    "expected_tools": [
+      "list_issues"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/owner",
+        "equals": "acme"
+      },
+      {
+        "path": "/repo",
+        "equals": "rocket"
+      },
+      {
+        "path": "/state",
+        "equals": "OPEN"
+      },
+      {
+        "path": "/labels",
+        "equals": [
+          "bug"
+        ]
+      }
+    ],
+    "rationale": "Tests list_issues intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "github-official-10",
+    "server_name": "github-official",
+    "prompt": "Close ticket 42 in acme/rocket.",
+    "expected_tools": [
+      "issue_write"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/owner",
+        "equals": "acme"
+      },
+      {
+        "path": "/repo",
+        "equals": "rocket"
+      },
+      {
+        "path": "/method",
+        "equals": "update"
+      },
+      {
+        "path": "/issue_number",
+        "equals": 42
+      },
+      {
+        "path": "/state",
+        "equals": "closed"
+      }
+    ],
+    "rationale": "Tests issue_write intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "github-official-11",
+    "server_name": "github-official",
+    "prompt": "Post Reproduced locally on ticket 42 in acme/rocket.",
+    "expected_tools": [
+      "add_issue_comment"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/owner",
+        "equals": "acme"
+      },
+      {
+        "path": "/repo",
+        "equals": "rocket"
+      },
+      {
+        "path": "/issue_number",
+        "equals": 42
+      },
+      {
+        "path": "/body",
+        "equals": "Reproduced locally"
+      }
+    ],
+    "rationale": "Tests add_issue_comment intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "github-official-12",
+    "server_name": "github-official",
+    "prompt": "Find occurrences of panic in Rust sources within acme/rocket.",
+    "expected_tools": [
+      "search_code"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/query",
+        "equals": "panic repo:acme/rocket language:Rust"
+      }
+    ],
+    "rationale": "Tests search_code intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "github-official-13",
+    "server_name": "github-official",
+    "prompt": "Find GitHub accounts named Alice in Berlin.",
+    "expected_tools": [
+      "search_users"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/query",
+        "equals": "Alice location:Berlin"
+      }
+    ],
+    "rationale": "Tests search_users intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "github-official-14",
+    "server_name": "github-official",
+    "prompt": "Show all details of ticket 42 in acme/rocket.",
+    "expected_tools": [
+      "issue_read"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/owner",
+        "equals": "acme"
+      },
+      {
+        "path": "/repo",
+        "equals": "rocket"
+      },
+      {
+        "path": "/method",
+        "equals": "get"
+      },
+      {
+        "path": "/issue_number",
+        "equals": 42
+      }
+    ],
+    "rationale": "Tests issue_read intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "github-official-15",
+    "server_name": "github-official",
+    "prompt": "Show the proposed change numbered 17 in acme/rocket.",
+    "expected_tools": [
+      "pull_request_read"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/owner",
+        "equals": "acme"
+      },
+      {
+        "path": "/repo",
+        "equals": "rocket"
+      },
+      {
+        "path": "/method",
+        "equals": "get"
+      },
+      {
+        "path": "/pullNumber",
+        "equals": 17
+      }
+    ],
+    "rationale": "Tests pull_request_read intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "github-official-16",
+    "server_name": "github-official",
+    "prompt": "Show open proposed changes targeting main in acme/rocket.",
+    "expected_tools": [
+      "list_pull_requests"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/owner",
+        "equals": "acme"
+      },
+      {
+        "path": "/repo",
+        "equals": "rocket"
+      },
+      {
+        "path": "/state",
+        "equals": "open"
+      },
+      {
+        "path": "/base",
+        "equals": "main"
+      }
+    ],
+    "rationale": "Tests list_pull_requests intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "github-official-17",
+    "server_name": "github-official",
+    "prompt": "Land proposed change 17 in acme/rocket using squash strategy.",
+    "expected_tools": [
+      "merge_pull_request"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/owner",
+        "equals": "acme"
+      },
+      {
+        "path": "/repo",
+        "equals": "rocket"
+      },
+      {
+        "path": "/pullNumber",
+        "equals": 17
+      },
+      {
+        "path": "/merge_method",
+        "equals": "squash"
+      }
+    ],
+    "rationale": "Tests merge_pull_request intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "github-official-18",
+    "server_name": "github-official",
+    "prompt": "What is the newest published version of acme/rocket?",
+    "expected_tools": [
+      "get_latest_release"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/owner",
+        "equals": "acme"
+      },
+      {
+        "path": "/repo",
+        "equals": "rocket"
+      }
+    ],
+    "rationale": "Tests get_latest_release intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "github-official-19",
+    "server_name": "github-official",
+    "prompt": "Which GitHub account am I currently authenticated as?",
+    "expected_tools": [
+      "get_me"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "",
+        "exists": true
+      }
+    ],
+    "rationale": "Tests get_me intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "github-official-20",
+    "server_name": "github-official",
+    "prompt": "Show changesets in acme/rocket after midnight UTC on January 2, 2026.",
+    "expected_tools": [
+      "list_commits"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/owner",
+        "equals": "acme"
+      },
+      {
+        "path": "/repo",
+        "equals": "rocket"
+      },
+      {
+        "path": "/since",
+        "equals": "2026-01-02T00:00:00Z"
+      }
+    ],
+    "rationale": "Tests list_commits intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "unit_ambiguity"
+    ]
+  }
+]

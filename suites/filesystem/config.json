@@ -1,0 +1,13 @@
+{
+  "server_name": "filesystem",
+  "repo_url": "https://github.com/modelcontextprotocol/servers",
+  "architecture_type": "static_catalog",
+  "snapshot_meta": {
+    "package": "@modelcontextprotocol/server-filesystem",
+    "package_version": "2.4.0",
+    "captured_at": "2026-11-19T20:40:58.369Z",
+    "capture_method": "SDK stdio initialize + tools/list; no credential",
+    "capture_cmd": "node dist/cli.js snapshot --cmd 'npx -y @modelcontextprotocol/server-filesystem@2.4.0 /home/ubuntu/repos/toolcall-bench' --out suites/filesystem/manifest.json",
+    "requires_auth_for_tools_list": false
+  }
+}

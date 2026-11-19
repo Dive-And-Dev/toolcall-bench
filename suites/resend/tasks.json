@@ -1,0 +1,414 @@
+[
+  {
+    "id": "resend-01",
+    "server_name": "resend",
+    "prompt": "Email alice@example.com from updates@example.com with subject Welcome and plain-text body Hello Alice.",
+    "expected_tools": [
+      "send-email"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/from",
+        "equals": "updates@example.com"
+      },
+      {
+        "path": "/to/0",
+        "equals": "alice@example.com"
+      },
+      {
+        "path": "/subject",
+        "equals": "Welcome"
+      },
+      {
+        "path": "/text",
+        "equals": "Hello Alice"
+      }
+    ],
+    "rationale": "Tests send-email intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "resend-02",
+    "server_name": "resend",
+    "prompt": "Show the delivery details for outgoing message msg-demo.",
+    "expected_tools": [
+      "get-email"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/id",
+        "equals": "msg-demo"
+      }
+    ],
+    "rationale": "Tests get-email intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "resend-03",
+    "server_name": "resend",
+    "prompt": "Stop the scheduled outgoing message msg-demo before it goes out.",
+    "expected_tools": [
+      "cancel-email"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/id",
+        "equals": "msg-demo"
+      }
+    ],
+    "rationale": "Tests cancel-email intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "resend-04",
+    "server_name": "resend",
+    "prompt": "Reschedule outgoing message msg-demo for noon UTC on January 3, 2027.",
+    "expected_tools": [
+      "update-email"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/id",
+        "equals": "msg-demo"
+      },
+      {
+        "path": "/scheduledAt",
+        "equals": "2027-01-03T12:00:00Z"
+      }
+    ],
+    "rationale": "Tests update-email intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "unit_ambiguity"
+    ]
+  },
+  {
+    "id": "resend-05",
+    "server_name": "resend",
+    "prompt": "Show the ten most recent outgoing messages.",
+    "expected_tools": [
+      "list-emails"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/limit",
+        "equals": 10
+      }
+    ],
+    "rationale": "Tests list-emails intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "resend-06",
+    "server_name": "resend",
+    "prompt": "Register alice@example.com as a subscriber with given name Alice and surname Chen.",
+    "expected_tools": [
+      "create-contact"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/email",
+        "equals": "alice@example.com"
+      },
+      {
+        "path": "/firstName",
+        "equals": "Alice"
+      },
+      {
+        "path": "/lastName",
+        "equals": "Chen"
+      }
+    ],
+    "rationale": "Tests create-contact intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "resend-07",
+    "server_name": "resend",
+    "prompt": "Show the subscriber profile for alice@example.com.",
+    "expected_tools": [
+      "get-contact"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/email",
+        "equals": "alice@example.com"
+      }
+    ],
+    "rationale": "Tests get-contact intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "resend-08",
+    "server_name": "resend",
+    "prompt": "Mark alice@example.com as unsubscribed.",
+    "expected_tools": [
+      "update-contact"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/email",
+        "equals": "alice@example.com"
+      },
+      {
+        "path": "/unsubscribed",
+        "equals": true
+      }
+    ],
+    "rationale": "Tests update-contact intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "resend-09",
+    "server_name": "resend",
+    "prompt": "Erase the subscriber profile associated with alice@example.com.",
+    "expected_tools": [
+      "remove-contact"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/email",
+        "equals": "alice@example.com"
+      }
+    ],
+    "rationale": "Tests remove-contact intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "resend-10",
+    "server_name": "resend",
+    "prompt": "Show up to 20 subscribers from audience segment seg-demo.",
+    "expected_tools": [
+      "list-contacts"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/segmentId",
+        "equals": "seg-demo"
+      },
+      {
+        "path": "/limit",
+        "equals": 20
+      }
+    ],
+    "rationale": "Tests list-contacts intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "resend-11",
+    "server_name": "resend",
+    "prompt": "Make an audience group named Beta Readers.",
+    "expected_tools": [
+      "create-segment"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/name",
+        "equals": "Beta Readers"
+      }
+    ],
+    "rationale": "Tests create-segment intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "resend-12",
+    "server_name": "resend",
+    "prompt": "Show details of audience group seg-demo.",
+    "expected_tools": [
+      "get-segment"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/id",
+        "equals": "seg-demo"
+      }
+    ],
+    "rationale": "Tests get-segment intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "resend-13",
+    "server_name": "resend",
+    "prompt": "Rename audience group seg-demo to Early Adopters.",
+    "expected_tools": [
+      "update-segment"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/id",
+        "equals": "seg-demo"
+      },
+      {
+        "path": "/name",
+        "equals": "Early Adopters"
+      }
+    ],
+    "rationale": "Tests update-segment intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "resend-14",
+    "server_name": "resend",
+    "prompt": "Erase audience group seg-demo.",
+    "expected_tools": [
+      "remove-segment"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/id",
+        "equals": "seg-demo"
+      }
+    ],
+    "rationale": "Tests remove-segment intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "resend-15",
+    "server_name": "resend",
+    "prompt": "Show all audience groups, limited to the first 15.",
+    "expected_tools": [
+      "list-segments"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/limit",
+        "equals": 15
+      }
+    ],
+    "rationale": "Tests list-segments intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "resend-16",
+    "server_name": "resend",
+    "prompt": "Register mail.example.com as a sending hostname.",
+    "expected_tools": [
+      "create-domain"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/name",
+        "equals": "mail.example.com"
+      }
+    ],
+    "rationale": "Tests create-domain intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "resend-17",
+    "server_name": "resend",
+    "prompt": "Inspect sending-hostname record dom-demo.",
+    "expected_tools": [
+      "get-domain"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/id",
+        "equals": "dom-demo"
+      }
+    ],
+    "rationale": "Tests get-domain intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "resend-18",
+    "server_name": "resend",
+    "prompt": "Check DNS verification for sending-hostname record dom-demo.",
+    "expected_tools": [
+      "verify-domain"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/id",
+        "equals": "dom-demo"
+      }
+    ],
+    "rationale": "Tests verify-domain intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "resend-19",
+    "server_name": "resend",
+    "prompt": "Show the first ten configured sending hostnames.",
+    "expected_tools": [
+      "list-domains"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/limit",
+        "equals": 10
+      }
+    ],
+    "rationale": "Tests list-domains intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "resend-20",
+    "server_name": "resend",
+    "prompt": "Send bob@example.com a plain-text reminder Tomorrow from events@example.com, subject Reminder, at 09:00 UTC on January 4, 2027.",
+    "expected_tools": [
+      "send-email"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/from",
+        "equals": "events@example.com"
+      },
+      {
+        "path": "/to/0",
+        "equals": "bob@example.com"
+      },
+      {
+        "path": "/text",
+        "equals": "Tomorrow"
+      },
+      {
+        "path": "/subject",
+        "equals": "Reminder"
+      },
+      {
+        "path": "/scheduledAt",
+        "equals": "2027-01-04T09:00:00Z"
+      }
+    ],
+    "rationale": "Tests send-email intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "unit_ambiguity"
+    ]
+  }
+]

@@ -1,0 +1,394 @@
+[
+  {
+    "id": "notion-01",
+    "server_name": "notion",
+    "prompt": "Show the workspace profile for person 11111111-1111-4111-8111-111111111111.",
+    "expected_tools": [
+      "API-get-user"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/user_id",
+        "equals": "11111111-1111-4111-8111-111111111111"
+      }
+    ],
+    "rationale": "Tests API-get-user intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "notion-02",
+    "server_name": "notion",
+    "prompt": "Show the first 25 people in this workspace.",
+    "expected_tools": [
+      "API-get-users"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/page_size",
+        "equals": 25
+      }
+    ],
+    "rationale": "Tests API-get-users intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "notion-03",
+    "server_name": "notion",
+    "prompt": "Which integration identity am I currently authenticated as?",
+    "expected_tools": [
+      "API-get-self"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "",
+        "exists": true
+      }
+    ],
+    "rationale": "Tests API-get-self intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "notion-04",
+    "server_name": "notion",
+    "prompt": "Find workspace documents with Roadmap in the title.",
+    "expected_tools": [
+      "API-post-search"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/query",
+        "equals": "Roadmap"
+      }
+    ],
+    "rationale": "Tests API-post-search intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "notion-05",
+    "server_name": "notion",
+    "prompt": "Show the immediate content beneath block 22222222-2222-4222-8222-222222222222.",
+    "expected_tools": [
+      "API-get-block-children"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/block_id",
+        "equals": "22222222-2222-4222-8222-222222222222"
+      }
+    ],
+    "rationale": "Tests API-get-block-children intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "notion-06",
+    "server_name": "notion",
+    "prompt": "Inspect the metadata for content block 22222222-2222-4222-8222-222222222222 itself.",
+    "expected_tools": [
+      "API-retrieve-a-block"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/block_id",
+        "equals": "22222222-2222-4222-8222-222222222222"
+      }
+    ],
+    "rationale": "Tests API-retrieve-a-block intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "notion-07",
+    "server_name": "notion",
+    "prompt": "Remove content block 22222222-2222-4222-8222-222222222222.",
+    "expected_tools": [
+      "API-delete-a-block"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/block_id",
+        "equals": "22222222-2222-4222-8222-222222222222"
+      }
+    ],
+    "rationale": "Tests API-delete-a-block intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "notion-08",
+    "server_name": "notion",
+    "prompt": "Show document metadata for 33333333-3333-4333-8333-333333333333.",
+    "expected_tools": [
+      "API-retrieve-a-page"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/page_id",
+        "equals": "33333333-3333-4333-8333-333333333333"
+      }
+    ],
+    "rationale": "Tests API-retrieve-a-page intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "notion-09",
+    "server_name": "notion",
+    "prompt": "Put document 33333333-3333-4333-8333-333333333333 in the trash.",
+    "expected_tools": [
+      "API-patch-page"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/page_id",
+        "equals": "33333333-3333-4333-8333-333333333333"
+      },
+      {
+        "path": "/in_trash",
+        "equals": true
+      }
+    ],
+    "rationale": "Tests API-patch-page intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "notion-10",
+    "server_name": "notion",
+    "prompt": "Show discussion attached to block 22222222-2222-4222-8222-222222222222.",
+    "expected_tools": [
+      "API-retrieve-a-comment"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/block_id",
+        "equals": "22222222-2222-4222-8222-222222222222"
+      }
+    ],
+    "rationale": "Tests API-retrieve-a-comment intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "notion-11",
+    "server_name": "notion",
+    "prompt": "Show the first 10 rows from collection 44444444-4444-4444-8444-444444444444.",
+    "expected_tools": [
+      "API-query-data-source"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/data_source_id",
+        "equals": "44444444-4444-4444-8444-444444444444"
+      },
+      {
+        "path": "/page_size",
+        "equals": 10
+      }
+    ],
+    "rationale": "Tests API-query-data-source intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "notion-12",
+    "server_name": "notion",
+    "prompt": "Inspect the column definitions for collection 44444444-4444-4444-8444-444444444444.",
+    "expected_tools": [
+      "API-retrieve-a-data-source"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/data_source_id",
+        "equals": "44444444-4444-4444-8444-444444444444"
+      }
+    ],
+    "rationale": "Tests API-retrieve-a-data-source intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "notion-13",
+    "server_name": "notion",
+    "prompt": "Which reusable layouts are available in collection 44444444-4444-4444-8444-444444444444?",
+    "expected_tools": [
+      "API-list-data-source-templates"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/data_source_id",
+        "equals": "44444444-4444-4444-8444-444444444444"
+      }
+    ],
+    "rationale": "Tests API-list-data-source-templates intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "notion-14",
+    "server_name": "notion",
+    "prompt": "Inspect the workspace database container 55555555-5555-4555-8555-555555555555.",
+    "expected_tools": [
+      "API-retrieve-a-database"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/database_id",
+        "equals": "55555555-5555-4555-8555-555555555555"
+      }
+    ],
+    "rationale": "Tests API-retrieve-a-database intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "notion-15",
+    "server_name": "notion",
+    "prompt": "Give me document 33333333-3333-4333-8333-333333333333 as Markdown.",
+    "expected_tools": [
+      "API-retrieve-page-markdown"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/page_id",
+        "equals": "33333333-3333-4333-8333-333333333333"
+      }
+    ],
+    "rationale": "Tests API-retrieve-page-markdown intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "notion-16",
+    "server_name": "notion",
+    "prompt": "Archive content block 22222222-2222-4222-8222-222222222222.",
+    "expected_tools": [
+      "API-update-a-block"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/block_id",
+        "equals": "22222222-2222-4222-8222-222222222222"
+      },
+      {
+        "path": "/archived",
+        "equals": true
+      }
+    ],
+    "rationale": "Tests API-update-a-block intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "notion-17",
+    "server_name": "notion",
+    "prompt": "Restore document 33333333-3333-4333-8333-333333333333 from the trash.",
+    "expected_tools": [
+      "API-patch-page"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/page_id",
+        "equals": "33333333-3333-4333-8333-333333333333"
+      },
+      {
+        "path": "/in_trash",
+        "equals": false
+      }
+    ],
+    "rationale": "Tests API-patch-page intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "edge"
+    ]
+  },
+  {
+    "id": "notion-18",
+    "server_name": "notion",
+    "prompt": "Continue the workspace people directory after cursor next-42 with a batch of 10.",
+    "expected_tools": [
+      "API-get-users"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/start_cursor",
+        "equals": "next-42"
+      },
+      {
+        "path": "/page_size",
+        "equals": 10
+      }
+    ],
+    "rationale": "Tests API-get-users intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "edge"
+    ]
+  },
+  {
+    "id": "notion-19",
+    "server_name": "notion",
+    "prompt": "Find documents titled Incident and return no more than five matches.",
+    "expected_tools": [
+      "API-post-search"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/query",
+        "equals": "Incident"
+      },
+      {
+        "path": "/page_size",
+        "equals": 5
+      }
+    ],
+    "rationale": "Tests API-post-search intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "notion-20",
+    "server_name": "notion",
+    "prompt": "Continue the contents of block 22222222-2222-4222-8222-222222222222 after cursor block-next, ten entries at a time.",
+    "expected_tools": [
+      "API-get-block-children"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/block_id",
+        "equals": "22222222-2222-4222-8222-222222222222"
+      },
+      {
+        "path": "/start_cursor",
+        "equals": "block-next"
+      },
+      {
+        "path": "/page_size",
+        "equals": 10
+      }
+    ],
+    "rationale": "Tests API-get-block-children intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "edge"
+    ]
+  }
+]

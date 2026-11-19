@@ -1,0 +1,13 @@
+{
+  "server_name": "resend",
+  "repo_url": "https://github.com/resend/resend-mcp",
+  "architecture_type": "static_catalog",
+  "snapshot_meta": {
+    "package": "resend-mcp",
+    "package_version": "2.29.0",
+    "captured_at": "2026-11-19T20:40:58.328Z",
+    "capture_method": "SDK stdio initialize + tools/list; dummy credential; network disabled with unshare -Urn; npm offline",
+    "capture_cmd": "node dist/cli.js snapshot --cmd 'unshare -Urn npx --offline -y resend-mcp@2.29.0' --env RESEND_API_KEY=re_dummy --out suites/resend/manifest.json",
+    "requires_auth_for_tools_list": false
+  }
+}

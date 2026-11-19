@@ -1,0 +1,401 @@
+[
+  {
+    "id": "playwright-01",
+    "server_name": "playwright",
+    "prompt": "Open https://example.com/pricing in the current tab.",
+    "expected_tools": [
+      "browser_navigate"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/url",
+        "equals": "https://example.com/pricing"
+      }
+    ],
+    "rationale": "Tests browser_navigate intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "playwright-02",
+    "server_name": "playwright",
+    "prompt": "Set the viewport to 1280 by 720 pixels.",
+    "expected_tools": [
+      "browser_resize"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/width",
+        "equals": 1280
+      },
+      {
+        "path": "/height",
+        "equals": 720
+      }
+    ],
+    "rationale": "Tests browser_resize intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "playwright-03",
+    "server_name": "playwright",
+    "prompt": "End the current web session and release its windows.",
+    "expected_tools": [
+      "browser_close"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "",
+        "exists": true
+      }
+    ],
+    "rationale": "Tests browser_close intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "playwright-04",
+    "server_name": "playwright",
+    "prompt": "Show only JavaScript errors logged by the page.",
+    "expected_tools": [
+      "browser_console_messages"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/level",
+        "equals": "error"
+      }
+    ],
+    "rationale": "Tests browser_console_messages intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "playwright-05",
+    "server_name": "playwright",
+    "prompt": "Accept the currently open confirmation popup.",
+    "expected_tools": [
+      "browser_handle_dialog"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/accept",
+        "equals": true
+      }
+    ],
+    "rationale": "Tests browser_handle_dialog intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "playwright-06",
+    "server_name": "playwright",
+    "prompt": "Render this page as it would appear in dark mode.",
+    "expected_tools": [
+      "browser_emulate_media"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/colorScheme",
+        "equals": "dark"
+      }
+    ],
+    "rationale": "Tests browser_emulate_media intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "playwright-07",
+    "server_name": "playwright",
+    "prompt": "Choose /workspace/invoice.pdf in the currently open upload picker.",
+    "expected_tools": [
+      "browser_file_upload"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/paths/0",
+        "equals": "/workspace/invoice.pdf"
+      }
+    ],
+    "rationale": "Tests browser_file_upload intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "playwright-08",
+    "server_name": "playwright",
+    "prompt": "Send the Escape keystroke to dismiss the menu.",
+    "expected_tools": [
+      "browser_press_key"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/key",
+        "equals": "Escape"
+      }
+    ],
+    "rationale": "Tests browser_press_key intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "playwright-09",
+    "server_name": "playwright",
+    "prompt": "Enter alice@example.com into the element with reference e12 without submitting it.",
+    "expected_tools": [
+      "browser_type"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/target",
+        "equals": "e12"
+      },
+      {
+        "path": "/text",
+        "equals": "alice@example.com"
+      },
+      {
+        "path": "/submit",
+        "equals": false
+      }
+    ],
+    "rationale": "Tests browser_type intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "playwright-10",
+    "server_name": "playwright",
+    "prompt": "Return to the previous page in this tab’s history.",
+    "expected_tools": [
+      "browser_navigate_back"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "",
+        "exists": true
+      }
+    ],
+    "rationale": "Tests browser_navigate_back intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "playwright-11",
+    "server_name": "playwright",
+    "prompt": "Show HTTP traffic from this page, excluding static assets.",
+    "expected_tools": [
+      "browser_network_requests"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/static",
+        "equals": false
+      }
+    ],
+    "rationale": "Tests browser_network_requests intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "playwright-12",
+    "server_name": "playwright",
+    "prompt": "Inspect the response body for request number 3.",
+    "expected_tools": [
+      "browser_network_request"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/index",
+        "equals": 3
+      },
+      {
+        "path": "/part",
+        "equals": "response-body"
+      }
+    ],
+    "rationale": "Tests browser_network_request intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "playwright-13",
+    "server_name": "playwright",
+    "prompt": "Capture the entire page as a PNG at CSS pixel scale and save it as checkout.png.",
+    "expected_tools": [
+      "browser_take_screenshot"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/fullPage",
+        "equals": true
+      },
+      {
+        "path": "/type",
+        "equals": "png"
+      },
+      {
+        "path": "/scale",
+        "equals": "css"
+      },
+      {
+        "path": "/filename",
+        "equals": "checkout.png"
+      }
+    ],
+    "rationale": "Tests browser_take_screenshot intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "playwright-14",
+    "server_name": "playwright",
+    "prompt": "Give me the current accessibility structure of the page.",
+    "expected_tools": [
+      "browser_snapshot"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "",
+        "exists": true
+      }
+    ],
+    "rationale": "Tests browser_snapshot intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "playwright-15",
+    "server_name": "playwright",
+    "prompt": "Activate the button identified by reference e9.",
+    "expected_tools": [
+      "browser_click"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/target",
+        "equals": "e9"
+      }
+    ],
+    "rationale": "Tests browser_click intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "playwright-16",
+    "server_name": "playwright",
+    "prompt": "Move the pointer over reference e15 without activating it.",
+    "expected_tools": [
+      "browser_hover"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/target",
+        "equals": "e15"
+      }
+    ],
+    "rationale": "Tests browser_hover intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "playwright-17",
+    "server_name": "playwright",
+    "prompt": "Choose the values CA and NY in the dropdown identified by e20.",
+    "expected_tools": [
+      "browser_select_option"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/target",
+        "equals": "e20"
+      },
+      {
+        "path": "/values",
+        "equals": [
+          "CA",
+          "NY"
+        ]
+      }
+    ],
+    "rationale": "Tests browser_select_option intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "playwright-18",
+    "server_name": "playwright",
+    "prompt": "Pause for two seconds before doing anything else.",
+    "expected_tools": [
+      "browser_wait_for"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/time",
+        "equals": 2
+      }
+    ],
+    "rationale": "Tests browser_wait_for intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "unit_ambiguity"
+    ]
+  },
+  {
+    "id": "playwright-19",
+    "server_name": "playwright",
+    "prompt": "Dismiss the confirmation popup instead of accepting it.",
+    "expected_tools": [
+      "browser_handle_dialog"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/accept",
+        "equals": false
+      }
+    ],
+    "rationale": "Tests browser_handle_dialog intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "edge"
+    ]
+  },
+  {
+    "id": "playwright-20",
+    "server_name": "playwright",
+    "prompt": "Switch to the tab at index 2.",
+    "expected_tools": [
+      "browser_tabs"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/action",
+        "equals": "select"
+      },
+      {
+        "path": "/index",
+        "equals": 2
+      }
+    ],
+    "rationale": "Tests browser_tabs intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "edge"
+    ]
+  }
+]

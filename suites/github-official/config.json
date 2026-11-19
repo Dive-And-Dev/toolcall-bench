@@ -1,0 +1,13 @@
+{
+  "server_name": "github-official",
+  "repo_url": "https://github.com/github/github-mcp-server",
+  "architecture_type": "static_catalog",
+  "snapshot_meta": {
+    "package": "ghcr.io/github/github-mcp-server",
+    "package_version": "2.2.0",
+    "captured_at": "2026-11-19T20:40:57.727Z",
+    "capture_method": "SDK stdio initialize + tools/list; Docker network none; no token",
+    "capture_cmd": "node dist/cli.js snapshot --cmd 'docker run --rm -i --network none ghcr.io/github/github-mcp-server@sha256:040c4e99810076035eb1d9beb4b4a96fcf589c43cefed6ff51a46a553eb4e174 stdio' --out suites/github-official/manifest.json",
+    "requires_auth_for_tools_list": false
+  }
+}
