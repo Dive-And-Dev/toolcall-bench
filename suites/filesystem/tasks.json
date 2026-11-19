@@ -1,0 +1,432 @@
+[
+  {
+    "id": "filesystem-01",
+    "server_name": "filesystem",
+    "prompt": "Show me the UTF-8 contents of /workspace/README.md.",
+    "expected_tools": [
+      "read_text_file",
+      "read_file"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/path",
+        "equals": "/workspace/README.md"
+      }
+    ],
+    "rationale": "Tests read_text_file intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "filesystem-02",
+    "server_name": "filesystem",
+    "prompt": "I need the contents of /workspace/package.json and /workspace/tsconfig.json together.",
+    "expected_tools": [
+      "read_multiple_files"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/paths",
+        "equals": [
+          "/workspace/package.json",
+          "/workspace/tsconfig.json"
+        ]
+      }
+    ],
+    "rationale": "Tests read_multiple_files intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "filesystem-03",
+    "server_name": "filesystem",
+    "prompt": "Save exactly hello followed by a newline to /workspace/greeting.txt, replacing anything there.",
+    "expected_tools": [
+      "write_file"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/path",
+        "equals": "/workspace/greeting.txt"
+      },
+      {
+        "path": "/content",
+        "equals": "hello\n"
+      }
+    ],
+    "rationale": "Tests write_file intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "filesystem-04",
+    "server_name": "filesystem",
+    "prompt": "Add exactly done followed by a newline at the end of /workspace/build.log without disturbing earlier entries.",
+    "expected_tools": [
+      "append_file"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/path",
+        "equals": "/workspace/build.log"
+      },
+      {
+        "path": "/content",
+        "equals": "done\n"
+      }
+    ],
+    "rationale": "Tests append_file intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "filesystem-05",
+    "server_name": "filesystem",
+    "prompt": "Make the folder /workspace/reports/2026, including missing parents.",
+    "expected_tools": [
+      "create_directory"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/path",
+        "equals": "/workspace/reports/2026"
+      }
+    ],
+    "rationale": "Tests create_directory intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "filesystem-06",
+    "server_name": "filesystem",
+    "prompt": "What immediate entries are under /workspace/src?",
+    "expected_tools": [
+      "list_directory"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/path",
+        "equals": "/workspace/src"
+      }
+    ],
+    "rationale": "Tests list_directory intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "filesystem-07",
+    "server_name": "filesystem",
+    "prompt": "Show the entries under /workspace/assets with their disk usage, ordered largest first.",
+    "expected_tools": [
+      "list_directory_with_sizes"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/path",
+        "equals": "/workspace/assets"
+      },
+      {
+        "path": "/sortBy",
+        "equals": "size"
+      }
+    ],
+    "rationale": "Tests list_directory_with_sizes intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "filesystem-08",
+    "server_name": "filesystem",
+    "prompt": "Give me a nested overview of /workspace/src down to two levels.",
+    "expected_tools": [
+      "directory_tree"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/path",
+        "equals": "/workspace/src"
+      },
+      {
+        "path": "/depth",
+        "equals": 2
+      }
+    ],
+    "rationale": "Tests directory_tree intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "filesystem-09",
+    "server_name": "filesystem",
+    "prompt": "Relocate /workspace/old.txt to /workspace/archive/old.txt.",
+    "expected_tools": [
+      "move_file"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/source",
+        "equals": "/workspace/old.txt"
+      },
+      {
+        "path": "/destination",
+        "equals": "/workspace/archive/old.txt"
+      }
+    ],
+    "rationale": "Tests move_file intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "filesystem-10",
+    "server_name": "filesystem",
+    "prompt": "Duplicate /workspace/config.json at /workspace/config.backup.json; keep the original.",
+    "expected_tools": [
+      "copy_file"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/source",
+        "equals": "/workspace/config.json"
+      },
+      {
+        "path": "/destination",
+        "equals": "/workspace/config.backup.json"
+      }
+    ],
+    "rationale": "Tests copy_file intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "filesystem-11",
+    "server_name": "filesystem",
+    "prompt": "Locate all TypeScript sources matching **/*.ts beneath /workspace/src.",
+    "expected_tools": [
+      "search_files"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/path",
+        "equals": "/workspace/src"
+      },
+      {
+        "path": "/pattern",
+        "equals": "**/*.ts"
+      }
+    ],
+    "rationale": "Tests search_files intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "filesystem-12",
+    "server_name": "filesystem",
+    "prompt": "Tell me the metadata and byte count for /workspace/video.mp4, not its contents.",
+    "expected_tools": [
+      "get_file_info"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/path",
+        "equals": "/workspace/video.mp4"
+      }
+    ],
+    "rationale": "Tests get_file_info intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "filesystem-13",
+    "server_name": "filesystem",
+    "prompt": "Which filesystem roots am I permitted to access?",
+    "expected_tools": [
+      "list_allowed_directories"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "",
+        "exists": true
+      }
+    ],
+    "rationale": "Tests list_allowed_directories intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "filesystem-14",
+    "server_name": "filesystem",
+    "prompt": "Open /workspace/logo.png as an image rather than decoding it as plain text.",
+    "expected_tools": [
+      "read_media_file"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/path",
+        "equals": "/workspace/logo.png"
+      }
+    ],
+    "rationale": "Tests read_media_file intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "filesystem-15",
+    "server_name": "filesystem",
+    "prompt": "In /workspace/app.ts replace the exact text const port = 80 with const port = 8080.",
+    "expected_tools": [
+      "edit_file"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/path",
+        "equals": "/workspace/app.ts"
+      },
+      {
+        "path": "/edits/0/oldText",
+        "equals": "const port = 80"
+      },
+      {
+        "path": "/edits/0/newText",
+        "equals": "const port = 8080"
+      }
+    ],
+    "rationale": "Tests edit_file intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "filesystem-16",
+    "server_name": "filesystem",
+    "prompt": "Only show the first 12 lines of /workspace/large.log.",
+    "expected_tools": [
+      "read_text_file",
+      "read_file"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/path",
+        "equals": "/workspace/large.log"
+      },
+      {
+        "path": "/head",
+        "equals": 12
+      }
+    ],
+    "rationale": "Tests read_text_file intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "edge"
+    ]
+  },
+  {
+    "id": "filesystem-17",
+    "server_name": "filesystem",
+    "prompt": "Only show the last 30 lines of /workspace/server.log.",
+    "expected_tools": [
+      "read_text_file",
+      "read_file"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/path",
+        "equals": "/workspace/server.log"
+      },
+      {
+        "path": "/tail",
+        "equals": 30
+      }
+    ],
+    "rationale": "Tests read_text_file intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "edge"
+    ]
+  },
+  {
+    "id": "filesystem-18",
+    "server_name": "filesystem",
+    "prompt": "Empty /workspace/scratch.txt completely while keeping that path present.",
+    "expected_tools": [
+      "write_file"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/path",
+        "equals": "/workspace/scratch.txt"
+      },
+      {
+        "path": "/content",
+        "equals": ""
+      }
+    ],
+    "rationale": "Tests write_file intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "edge"
+    ]
+  },
+  {
+    "id": "filesystem-19",
+    "server_name": "filesystem",
+    "prompt": "Preview, but do not apply, replacing foo with bar in /workspace/demo.txt.",
+    "expected_tools": [
+      "edit_file"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/path",
+        "equals": "/workspace/demo.txt"
+      },
+      {
+        "path": "/dryRun",
+        "equals": true
+      },
+      {
+        "path": "/edits/0/oldText",
+        "equals": "foo"
+      },
+      {
+        "path": "/edits/0/newText",
+        "equals": "bar"
+      }
+    ],
+    "rationale": "Tests edit_file intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "edge"
+    ]
+  },
+  {
+    "id": "filesystem-20",
+    "server_name": "filesystem",
+    "prompt": "Summarize /workspace recursively but omit anything matching **/node_modules/**.",
+    "expected_tools": [
+      "directory_tree"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/path",
+        "equals": "/workspace"
+      },
+      {
+        "path": "/excludePatterns/0",
+        "equals": "**/node_modules/**"
+      }
+    ],
+    "rationale": "Tests directory_tree intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "edge"
+    ]
+  }
+]

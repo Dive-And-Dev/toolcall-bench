@@ -3,9 +3,13 @@ import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { Command } from 'commander';
 import { introspect } from './mcp/introspect.js';
-import { ToolManifest } from './types.js';
+import { EvalReport, ToolManifest } from './types.js';
 import { analyzeTokens } from './analyzer/tokens.js';
 import { lintTools, RULES } from './analyzer/lint.js';
+import { loadSuite, suitePaths } from './runner/suites.js';
+import { MockModelRunner, NativeModelRunner, type Driver } from './runner/models.js';
+import { evaluateSuite, writeEvaluation } from './runner/evaluator.js';
+import { diffReports, markdownDiff } from './runner/diff.js';
 
 export function parsePairs(values: string[], separator: string): Record<string, string> {
   return Object.fromEntries(values.map(value => {
@@ -16,6 +20,63 @@ export function parsePairs(values: string[], separator: string): Record<string, 
 }
 
 const program = new Command().name('toolcall-bench').description('Evaluate MCP tool-calling developer experience');
+program.command('lint-tasks [suite]')
+  .option('--all', 'Validate every captured suite')
+  .action(async (suite: string | undefined, options) => {
+    if (suite && options.all) throw new Error('Provide a suite or --all, not both');
+    let leaks = 0, count = 0;
+    for (const path of suite ? [suite] : await suitePaths()) {
+      const loaded = await loadSuite(path);
+      count += loaded.tasks.length; leaks += loaded.leaks.length;
+      console.log(`${loaded.config.server_name}: ${loaded.tasks.length} tasks, ${loaded.leaks.length} leaks`);
+      for (const finding of loaded.leaks) console.log(`${finding.task_id}: ${finding.tool}: ${finding.match}`);
+    }
+    console.log(`${count} tasks validated; ${leaks} leaks`);
+    if (leaks) process.exitCode = 1;
+  });
+program.command('run')
+  .option('--suite <path>', 'Suite directory')
+  .option('--all', 'Run all captured suites')
+  .requiredOption('--driver <driver>', 'anthropic, openai, gemini, or mock')
+  .option('--model <model>', 'Provider model identifier (mock defaults to mock-v1)')
+  .option('--trials <n>', 'Trials per task', '3')
+  .option('--concurrency <n>', 'Maximum simultaneous model requests', '4')
+  .option('--seed <n>', 'Mock and bootstrap seed', '42')
+  .option('--selection-probability <p>', 'Mock correct selection probability', '0.8')
+  .option('--invalid-arguments-probability <p>', 'Mock invalid arguments probability', '0.2')
+  .option('--ci', 'Explicitly allow synthetic mock execution')
+  .option('--out <directory>', 'Report and trace output directory', 'results')
+  .action(async options => {
+    if (Boolean(options.suite) === Boolean(options.all)) throw new Error('Provide --suite or --all, not both');
+    if (!['anthropic', 'openai', 'gemini', 'mock'].includes(options.driver)) throw new Error('Unknown driver');
+    const driver = options.driver as Driver;
+    if (driver === 'mock' && !options.ci && process.env.CI !== 'true') throw new Error('Mock driver requires --ci or CI=true');
+    if (driver !== 'mock' && !options.model) throw new Error('--model is required for live drivers');
+    const keyName = { anthropic: 'ANTHROPIC_API_KEY', openai: 'OPENAI_API_KEY', gemini: 'GEMINI_API_KEY', mock: '' }[driver];
+    if (keyName && !process.env[keyName]) throw new Error(`Missing ${keyName}`);
+    const seed = Number(options.seed);
+    const runner = driver === 'mock'
+      ? new MockModelRunner(options.model ?? 'mock-v1', seed, Number(options.selectionProbability), Number(options.invalidArgumentsProbability))
+      : new NativeModelRunner(driver, options.model);
+    console.log('suite\tdriver\tmodel\tselection\tconditional_params\tfirst_try\tschema_errors');
+    for (const path of options.all ? await suitePaths() : [options.suite]) {
+      const output = await evaluateSuite(await loadSuite(path), runner, { trials: Number(options.trials), concurrency: Number(options.concurrency), seed });
+      const file = await writeEvaluation(output, options.out);
+      const metric = (name: string) => output.report.metrics[name]?.mean.toFixed(4) ?? 'N/A';
+      console.log([output.report.server_name, driver, runner.model, metric('tool_selection_accuracy'), metric('param_compliance_conditional'),
+        metric('end_to_end_first_try_pass'), Object.keys(output.report.schema_compilation_errors).length].join('\t'));
+      console.log(`Report: ${file}; selection metric: ${output.report.selection_metric}`);
+    }
+  });
+program.command('diff <baseline> <candidate>')
+  .option('--markdown', 'Print a Markdown comparison')
+  .option('--fail-on-regression', 'Exit 1 for a significant metric regression')
+  .action(async (baseline: string, candidate: string, options) => {
+    const [left, right] = await Promise.all([baseline, candidate].map(async path => EvalReport.parse(JSON.parse(await readFile(path, 'utf8')))));
+    const diff = diffReports(left!, right!);
+    console.log(options.markdown ? markdownDiff(diff) : JSON.stringify(diff, null, 2));
+    if (options.failOnRegression && diff.regression) process.exitCode = 1;
+  });
 program.command('lint [manifest]')
   .description('Analyze a manifest, or all suites relative to the current directory')
   .option('--all', 'Analyze suites/*/manifest.json')

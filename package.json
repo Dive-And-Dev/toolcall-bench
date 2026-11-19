@@ -12,7 +12,7 @@
   "scripts": {
     "build": "tsc",
     "test": "vitest run",
-    "lint-tasks": "echo 'Task linting is planned for a later phase'"
+    "lint-tasks": "tsx src/cli.ts lint-tasks"
   },
   "keywords": [],
   "author": "",

@@ -1,5 +1,6 @@
 {
   "server_name": "fetch",
+  "selection_metric": "trivial_single_tool",
   "repo_url": "https://github.com/modelcontextprotocol/servers",
   "architecture_type": "static_catalog",
   "snapshot_meta": {

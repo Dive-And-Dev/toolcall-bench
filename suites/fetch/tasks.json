@@ -1,0 +1,222 @@
+[
+  {
+    "id": "fetch-01",
+    "server_name": "fetch",
+    "prompt": "Retrieve the readable article at https://example.com/blog/intro.",
+    "expected_tools": [
+      "fetch"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/url",
+        "equals": "https://example.com/blog/intro"
+      }
+    ],
+    "rationale": "Tests fetch intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "fetch-02",
+    "server_name": "fetch",
+    "prompt": "Show the raw HTML response from https://example.com/status rather than converting it.",
+    "expected_tools": [
+      "fetch"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/url",
+        "equals": "https://example.com/status"
+      },
+      {
+        "path": "/raw",
+        "equals": true
+      }
+    ],
+    "rationale": "Tests fetch intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "fetch-03",
+    "server_name": "fetch",
+    "prompt": "Read https://example.com/manual and return at most 2000 characters.",
+    "expected_tools": [
+      "fetch"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/url",
+        "equals": "https://example.com/manual"
+      },
+      {
+        "path": "/max_length",
+        "equals": 2000
+      }
+    ],
+    "rationale": "Tests fetch intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "fetch-04",
+    "server_name": "fetch",
+    "prompt": "Continue reading https://example.com/manual starting at character offset 4000.",
+    "expected_tools": [
+      "fetch"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/url",
+        "equals": "https://example.com/manual"
+      },
+      {
+        "path": "/start_index",
+        "equals": 4000
+      }
+    ],
+    "rationale": "Tests fetch intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "edge"
+    ]
+  },
+  {
+    "id": "fetch-05",
+    "server_name": "fetch",
+    "prompt": "Read https://example.com/slow but stop waiting after five seconds.",
+    "expected_tools": [
+      "fetch"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/url",
+        "equals": "https://example.com/slow"
+      },
+      {
+        "path": "/timeout_ms",
+        "equals": 5000
+      }
+    ],
+    "rationale": "Tests fetch intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "unit_ambiguity"
+    ]
+  },
+  {
+    "id": "fetch-06",
+    "server_name": "fetch",
+    "prompt": "Retrieve https://example.com/health with a timeout of 250 milliseconds.",
+    "expected_tools": [
+      "fetch"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/url",
+        "equals": "https://example.com/health"
+      },
+      {
+        "path": "/timeout_ms",
+        "equals": 250
+      }
+    ],
+    "rationale": "Tests fetch intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "unit_ambiguity"
+    ]
+  },
+  {
+    "id": "fetch-07",
+    "server_name": "fetch",
+    "prompt": "Read https://example.com/notes starting at offset 100 and return no more than 500 characters.",
+    "expected_tools": [
+      "fetch"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/url",
+        "equals": "https://example.com/notes"
+      },
+      {
+        "path": "/start_index",
+        "equals": 100
+      },
+      {
+        "path": "/max_length",
+        "equals": 500
+      }
+    ],
+    "rationale": "Tests fetch intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "edge"
+    ]
+  },
+  {
+    "id": "fetch-08",
+    "server_name": "fetch",
+    "prompt": "Show me the readable contents of https://example.com/faq?lang=en.",
+    "expected_tools": [
+      "fetch"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/url",
+        "equals": "https://example.com/faq?lang=en"
+      }
+    ],
+    "rationale": "Tests fetch intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "fetch-09",
+    "server_name": "fetch",
+    "prompt": "Download https://example.com/data.json without HTML-to-text conversion.",
+    "expected_tools": [
+      "fetch"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/url",
+        "equals": "https://example.com/data.json"
+      },
+      {
+        "path": "/raw",
+        "equals": true
+      }
+    ],
+    "rationale": "Tests fetch intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "everyday"
+    ]
+  },
+  {
+    "id": "fetch-10",
+    "server_name": "fetch",
+    "prompt": "Read https://example.com/long with a waiting budget of 30 seconds and a 1000-character response limit.",
+    "expected_tools": [
+      "fetch"
+    ],
+    "semantic_assertions": [
+      {
+        "path": "/url",
+        "equals": "https://example.com/long"
+      },
+      {
+        "path": "/timeout_ms",
+        "equals": 30000
+      },
+      {
+        "path": "/max_length",
+        "equals": 1000
+      }
+    ],
+    "rationale": "Tests fetch intent recognition and preservation of explicitly requested arguments.",
+    "tags": [
+      "unit_ambiguity"
+    ]
+  }
+]
