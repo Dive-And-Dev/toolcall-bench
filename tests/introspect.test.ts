@@ -1,6 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { createServer } from 'node:http';
 import { once } from 'node:events';
+import { mkdtemp, rm, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js';
 import { ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
@@ -8,6 +11,30 @@ import { captureTransport, introspect } from '../src/mcp/introspect.js';
 import { parsePairs } from '../src/cli.js';
 
 describe('snapshots', () => {
+  it.each(['compound', 'assignment'])('supports %s shell commands while preserving environment overrides', async mode => {
+    const directory = await mkdtemp(join(tmpdir(), 'bench-shell-'));
+    try {
+      const script = join(directory, 'server.mjs');
+      await writeFile(script, `import { createInterface } from 'node:readline';
+createInterface({ input: process.stdin }).on('line', line => {
+  const request = JSON.parse(line);
+  if (request.id === undefined) return;
+  const result = request.method === 'initialize'
+    ? { protocolVersion: '2025-03-26', capabilities: { tools: {} }, serverInfo: { name: process.env.LOCAL_VALUE, version: process.env.EXTRA_VALUE } }
+    : { tools: [] };
+  console.log(JSON.stringify({ jsonrpc: '2.0', id: request.id, result }));
+});`);
+      const cmd = mode === 'compound'
+        ? `cd "${directory}" && LOCAL_VALUE=from-shell "${process.execPath}" server.mjs`
+        : `LOCAL_VALUE=from-shell "${process.execPath}" "${script}"`;
+      const manifest = await introspect({ cmd, env: { EXTRA_VALUE: 'from-env' }, timeoutMs: 5000 });
+      expect(manifest.serverInfo).toEqual({ name: 'from-shell', version: 'from-env' });
+      expect(manifest.tools).toEqual([]);
+    } finally { await rm(directory, { recursive: true, force: true }); }
+  });
+  it('propagates shell command failures', async () => {
+    await expect(introspect({ cmd: 'exit 7', timeoutMs: 1000 })).rejects.toThrow();
+  });
   it('captures over Streamable HTTP with custom headers', async () => {
     const headers: Array<string | undefined> = [];
     const http = createServer(async (request, response) => {

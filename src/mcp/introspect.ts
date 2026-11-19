@@ -17,7 +17,7 @@ export async function introspect(options: SnapshotOptions): Promise<ToolManifest
   if (Boolean(options.cmd) === Boolean(options.url)) throw new Error('Provide exactly one of --cmd or --url');
   const transport: Transport = options.cmd
     ? new StdioClientTransport({
-      command: '/bin/sh', args: ['-c', `exec ${options.cmd}`],
+      command: '/bin/sh', args: ['-c', options.cmd],
       env: { ...getDefaultEnvironment(), ...options.env }, stderr: 'inherit',
     })
     : new StreamableHTTPClientTransport(new URL(options.url!), { requestInit: { headers: options.headers } });
