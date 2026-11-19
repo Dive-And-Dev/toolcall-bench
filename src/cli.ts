@@ -1,8 +1,11 @@
 #!/usr/bin/env node
-import { mkdir, writeFile } from 'node:fs/promises';
-import { dirname } from 'node:path';
+import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
+import { dirname, join } from 'node:path';
 import { Command } from 'commander';
 import { introspect } from './mcp/introspect.js';
+import { ToolManifest } from './types.js';
+import { analyzeTokens } from './analyzer/tokens.js';
+import { lintTools, RULES } from './analyzer/lint.js';
 
 export function parsePairs(values: string[], separator: string): Record<string, string> {
   return Object.fromEntries(values.map(value => {
@@ -13,6 +16,40 @@ export function parsePairs(values: string[], separator: string): Record<string, 
 }
 
 const program = new Command().name('toolcall-bench').description('Evaluate MCP tool-calling developer experience');
+program.command('lint [manifest]')
+  .description('Analyze a manifest, or all suites relative to the current directory')
+  .option('--all', 'Analyze suites/*/manifest.json')
+  .option('--json', 'Print machine-readable JSON')
+  .action(async (manifest: string | undefined, options) => {
+    if (Boolean(manifest) === Boolean(options.all)) throw new Error('Provide a manifest or --all, not both');
+    const paths = options.all
+      ? (await readdir('suites', { withFileTypes: true })).filter(entry => entry.isDirectory()).map(entry => join('suites', entry.name, 'manifest.json')).sort()
+      : [manifest!];
+    const reports = [];
+    for (const path of paths) {
+      let contents: string;
+      try { contents = await readFile(path, 'utf8'); }
+      catch (error) {
+        if (options.all && (error as NodeJS.ErrnoException).code === 'ENOENT') continue;
+        throw error;
+      }
+      const parsed = ToolManifest.parse(JSON.parse(contents));
+      reports.push({ server: options.all ? dirname(path).split('/').pop()! : parsed.serverInfo.name, path,
+        tokens: analyzeTokens(parsed.tools), lint: lintTools(parsed.tools) });
+    }
+    if (options.json) console.log(JSON.stringify(options.all ? reports : reports[0], null, 2));
+    else {
+      console.log(['server', 'tools', 'tokens', ...RULES, 'findings/tool'].join('\t'));
+      for (const report of reports) {
+        console.log([report.server, report.tokens.tool_count, report.tokens.catalog_tokens,
+          ...RULES.map(rule => report.lint.counts[rule]), report.lint.findings_per_tool.toFixed(3)].join('\t'));
+        if (!options.all) {
+          console.log(`Median tokens/tool: ${report.tokens.median_tokens_per_tool}`);
+          for (const finding of report.lint.findings) console.log(`${finding.rule} ${finding.tool}${finding.path}: ${finding.message}`);
+        }
+      }
+    }
+  });
 program.command('snapshot')
   .option('--cmd <cmd>', 'Trusted local shell command (executed through /bin/sh)')
   .option('--url <url>', 'Streamable HTTP MCP endpoint')
