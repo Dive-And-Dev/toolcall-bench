@@ -286,7 +286,7 @@
   {
     "id": "filesystem-15",
     "server_name": "filesystem",
-    "prompt": "In /workspace/app.ts replace the exact text const port = 80 with const port = 8080.",
+    "prompt": "In /workspace/app.ts replace the exact text \"const port = 80\" with the exact text \"const port = 8080\".",
     "expected_tools": [
       "edit_file"
     ],

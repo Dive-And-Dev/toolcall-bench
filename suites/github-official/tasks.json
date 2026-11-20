@@ -2,7 +2,7 @@
   {
     "id": "github-official-01",
     "server_name": "github-official",
-    "prompt": "Find public projects about SQLite written in Rust.",
+    "prompt": "Find public projects using the exact query \"SQLite language:Rust\".",
     "expected_tools": [
       "search_repositories"
     ],
@@ -72,7 +72,7 @@
   {
     "id": "github-official-04",
     "server_name": "github-official",
-    "prompt": "File a bug titled Login hangs in acme/rocket with details Spinner never stops.",
+    "prompt": "File a bug in acme/rocket with the exact title \"Login hangs\" and exact description \"Spinner never stops\".",
     "expected_tools": [
       "issue_write"
     ],
@@ -106,7 +106,7 @@
   {
     "id": "github-official-05",
     "server_name": "github-official",
-    "prompt": "Propose merging fix-login into main in acme/rocket, titled Fix login, as a draft.",
+    "prompt": "Propose merging fix-login into main in acme/rocket, with the exact title \"Fix login\", as a draft.",
     "expected_tools": [
       "create_pull_request"
     ],
@@ -288,7 +288,7 @@
   {
     "id": "github-official-11",
     "server_name": "github-official",
-    "prompt": "Post Reproduced locally on ticket 42 in acme/rocket.",
+    "prompt": "Post the exact message \"Reproduced locally\" on ticket 42 in acme/rocket.",
     "expected_tools": [
       "add_issue_comment"
     ],
@@ -318,7 +318,7 @@
   {
     "id": "github-official-12",
     "server_name": "github-official",
-    "prompt": "Find occurrences of panic in Rust sources within acme/rocket.",
+    "prompt": "Look through source code using the exact query \"panic repo:acme/rocket language:Rust\".",
     "expected_tools": [
       "search_code"
     ],
@@ -336,7 +336,7 @@
   {
     "id": "github-official-13",
     "server_name": "github-official",
-    "prompt": "Find GitHub accounts named Alice in Berlin.",
+    "prompt": "Find GitHub accounts using the exact query \"Alice location:Berlin\".",
     "expected_tools": [
       "search_users"
     ],
