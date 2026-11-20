@@ -1,9 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { createServer } from 'node:http';
 import { once } from 'node:events';
-import { mkdtemp, rm, writeFile } from 'node:fs/promises';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
+import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js';
 import { ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
@@ -11,6 +13,71 @@ import { captureTransport, introspect } from '../src/mcp/introspect.js';
 import { parsePairs } from '../src/cli.js';
 
 describe('snapshots', () => {
+  it.each(['timeout', 'error', 'success', 'cli-timeout'])('kills the shell, stubborn server and grandchild on %s', async mode => {
+    const directory = await mkdtemp(join(tmpdir(), 'bench-stubborn-'));
+    const pidFile = join(directory, 'pids.json');
+    let pids: number[] = [];
+    try {
+      const script = join(directory, 'server.mjs');
+      await writeFile(script, `import { createInterface } from 'node:readline';
+import { spawn } from 'node:child_process';
+import { writeFileSync } from 'node:fs';
+const pidFile = process.env.PID_FILE;
+process.on('SIGTERM', () => writeFileSync(pidFile + '.' + process.pid + '.term', 'received'));
+setInterval(() => {}, 1000);
+const worker = spawn(process.execPath, ['-e', \`const { writeFileSync } = require('node:fs');
+process.on('SIGTERM', () => writeFileSync(process.env.PID_FILE + '.' + process.pid + '.term', 'received'));
+setInterval(() => {}, 1000);
+process.send('ready');\`], { stdio: ['ignore', 'ignore', 'ignore', 'ipc'] });
+const ready = new Promise(resolve => worker.once('message', () => {
+  writeFileSync(pidFile, JSON.stringify([process.ppid, process.pid, worker.pid]));
+  resolve();
+}));
+createInterface({ input: process.stdin }).on('line', async line => {
+  const request = JSON.parse(line);
+  if (request.id === undefined) return;
+  await ready;
+  if (request.method === 'tools/list' && process.env.MODE.endsWith('timeout')) return;
+  const response = request.method === 'tools/list' && process.env.MODE === 'error'
+    ? { error: { code: -32603, message: 'catalog unavailable' } }
+    : { result: request.method === 'initialize'
+      ? { protocolVersion: '2025-03-26', capabilities: { tools: {} }, serverInfo: { name: 'stubborn', version: '1' } }
+      : { tools: [] } };
+  console.log(JSON.stringify({ jsonrpc: '2.0', id: request.id, ...response }));
+});`);
+      const cmd = `"${process.execPath}" "${script}"; :`;
+      const started = Date.now();
+      if (mode === 'cli-timeout') {
+        await expect(promisify(execFile)(process.execPath, ['--import', resolve('node_modules/tsx/dist/loader.mjs'), resolve('src/cli.ts'),
+          'snapshot', '--cmd', cmd, '--env', `PID_FILE=${pidFile}`, '--env', `MODE=${mode}`, '--timeout', '500', '--out', join(directory, 'manifest.json')],
+        { timeout: 2500 })).rejects.toMatchObject({ code: 1, stderr: expect.stringContaining('Snapshot timed out') });
+      } else {
+        const capture = introspect({ cmd, env: { PID_FILE: pidFile, MODE: mode }, timeoutMs: 500 });
+        if (mode === 'success') expect((await capture).tools).toEqual([]);
+        else await expect(capture).rejects.toThrow(mode === 'error' ? 'catalog unavailable' : 'Snapshot timed out');
+      }
+      expect(Date.now() - started).toBeLessThan(2500);
+      pids = JSON.parse(await readFile(pidFile, 'utf8'));
+      expect(pids).toHaveLength(3);
+      for (const pid of pids.slice(1)) expect(await readFile(`${pidFile}.${pid}.term`, 'utf8')).toBe('received');
+      await expect.poll(() => pids.every(pid => {
+        try { process.kill(pid, 0); return false; }
+        catch (error) {
+          if ((error as NodeJS.ErrnoException).code !== 'ESRCH') throw error;
+          return true;
+        }
+      }), { timeout: 1000, interval: 10 }).toBe(true);
+    } finally {
+      if (!pids.length) {
+        try { pids = JSON.parse(await readFile(pidFile, 'utf8')); } catch {}
+      }
+      for (const pid of pids) {
+        try { process.kill(pid, 'SIGKILL'); }
+        catch (error) { if ((error as NodeJS.ErrnoException).code !== 'ESRCH') throw error; }
+      }
+      await rm(directory, { recursive: true, force: true });
+    }
+  }, 10_000);
   it.each(['compound', 'assignment'])('supports %s shell commands while preserving environment overrides', async mode => {
     const directory = await mkdtemp(join(tmpdir(), 'bench-shell-'));
     try {

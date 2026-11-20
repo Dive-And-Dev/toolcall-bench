@@ -1,9 +1,9 @@
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
-import { StdioClientTransport, getDefaultEnvironment } from '@modelcontextprotocol/sdk/client/stdio.js';
 import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/streamableHttp.js';
 import type { Transport } from '@modelcontextprotocol/sdk/shared/transport.js';
 import { z } from 'zod';
 import { ToolManifest } from '../types.js';
+import { ProcessGroupStdioTransport } from './stdio.js';
 
 export type SnapshotOptions = {
   cmd?: string;
@@ -16,10 +16,7 @@ export type SnapshotOptions = {
 export async function introspect(options: SnapshotOptions): Promise<ToolManifest> {
   if (Boolean(options.cmd) === Boolean(options.url)) throw new Error('Provide exactly one of --cmd or --url');
   const transport: Transport = options.cmd
-    ? new StdioClientTransport({
-      command: '/bin/sh', args: ['-c', options.cmd],
-      env: { ...getDefaultEnvironment(), ...options.env }, stderr: 'inherit',
-    })
+    ? new ProcessGroupStdioTransport(options.cmd, options.env)
     : new StreamableHTTPClientTransport(new URL(options.url!), { requestInit: { headers: options.headers } });
   return captureTransport(transport, options.timeoutMs);
 }
@@ -58,7 +55,7 @@ export async function captureTransport(transport: Transport, timeoutMs = 60_000)
     ]);
   } finally {
     clearTimeout(timer);
-    await client.close();
-    await transport.close();
+    try { await client.close(); }
+    finally { await transport.close(); }
   }
 }
