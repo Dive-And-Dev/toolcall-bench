@@ -1,23 +1,44 @@
 import { setTimeout as delay } from 'node:timers/promises';
 import type { EvalTask, ToolManifest } from '../types.js';
 
-export type Driver = 'anthropic' | 'openai' | 'gemini' | 'mock';
+export type Driver = 'anthropic' | 'openai' | 'gemini' | 'zenmux' | 'mock';
 export type ToolCall = { name: string; arguments: unknown };
-export type ModelResponse = { raw: unknown; call?: ToolCall; schema_transformations: string[] };
+export type ModelResponse = { raw: unknown; call?: ToolCall; schema_transformations: string[]; input_tokens?: number; output_tokens?: number; api_requests?: number };
 export type ModelRequest = { task: EvalTask; tools: ToolManifest['tools']; trial: number };
 export interface ModelRunner { driver: Driver; model: string; metadata?: Record<string, string | number>; run(request: ModelRequest): Promise<ModelResponse> }
 const system = 'Help the user by choosing the appropriate available tool and supplying its arguments. Respond to the request in a single turn.';
 
 export class ModelRequestError extends Error {
-  constructor(message: string, public raw: unknown) { super(message); }
+  constructor(message: string, public raw: unknown, public api_requests?: number) { super(message); }
+}
+
+function redact(value: unknown, key: string): unknown {
+  if (typeof value === 'string') return value.replaceAll(key, '[REDACTED]');
+  if (Array.isArray(value)) return value.map(item => redact(item, key));
+  if (value && typeof value === 'object') return Object.fromEntries(Object.entries(value).map(([name, item]) => [name.replaceAll(key, '[REDACTED]'), redact(item, key)]));
+  return value;
 }
 
 export class NativeModelRunner implements ModelRunner {
+  readonly baseUrl?: string;
   constructor(public driver: Exclude<Driver, 'mock'>, public model: string,
-    private options: { apiKey?: string; fetch?: typeof fetch; retries?: number; backoffMs?: number } = {}) {}
+    private options: { apiKey?: string; baseUrl?: string; fetch?: typeof fetch; retries?: number; backoffMs?: number } = {}) {
+    if (options.baseUrl && driver !== 'openai' && driver !== 'zenmux') throw new Error('Base URL is supported only for openai and zenmux');
+    if (driver === 'openai' || driver === 'zenmux') {
+      let url: URL;
+      try { url = new URL(options.baseUrl ?? (driver === 'zenmux' ? 'https://zenmux.ai/api/v1' : 'https://api.openai.com/v1')); }
+      catch { throw new Error('Invalid base URL'); }
+      if (!['http:', 'https:'].includes(url.protocol) || url.username || url.password || url.search || url.hash) throw new Error('Base URL must be HTTP(S), without credentials, query or fragment');
+      this.baseUrl = url.href.replace(/\/+$/, '');
+    }
+  }
+
+  get metadata(): Record<string, string | number> {
+    return this.baseUrl ? { gateway: this.baseUrl, model_id: this.model } : {};
+  }
 
   async run({ task, tools }: ModelRequest): Promise<ModelResponse> {
-    const keyName = { anthropic: 'ANTHROPIC_API_KEY', openai: 'OPENAI_API_KEY', gemini: 'GEMINI_API_KEY' }[this.driver];
+    const keyName = { anthropic: 'ANTHROPIC_API_KEY', openai: 'OPENAI_API_KEY', gemini: 'GEMINI_API_KEY', zenmux: 'ZENMUX_API_KEY' }[this.driver];
     const key = this.options.apiKey ?? process.env[keyName];
     if (!key) throw new Error(`Missing ${keyName}`);
     let url: string, body: unknown, headers: Record<string, string>;
@@ -26,8 +47,8 @@ export class NativeModelRunner implements ModelRunner {
       headers = { 'x-api-key': key, 'anthropic-version': '2023-06-01' };
       body = { model: this.model, max_tokens: 4096, system, messages: [{ role: 'user', content: task.prompt }],
         tools: tools.map(tool => ({ name: tool.name, description: tool.description, input_schema: tool.inputSchema })) };
-    } else if (this.driver === 'openai') {
-      url = 'https://api.openai.com/v1/chat/completions';
+    } else if (this.driver === 'openai' || this.driver === 'zenmux') {
+      url = `${this.baseUrl}/chat/completions`;
       headers = { Authorization: `Bearer ${key}` };
       body = { model: this.model, messages: [{ role: 'system', content: system }, { role: 'user', content: task.prompt }],
         tools: tools.map(tool => ({ type: 'function', function: { name: tool.name, description: tool.description, parameters: tool.inputSchema } })) };
@@ -38,28 +59,35 @@ export class NativeModelRunner implements ModelRunner {
         tools: [{ functionDeclarations: tools.map(tool => ({ name: tool.name, description: tool.description, parametersJsonSchema: tool.inputSchema })) }] };
     }
     let raw: any;
+    let api_requests = 0;
     const retries = this.options.retries ?? 3;
     for (let attempt = 0; ; attempt++) {
-      const response = await (this.options.fetch ?? fetch)(url, { method: 'POST', headers: { ...headers, 'Content-Type': 'application/json' }, body: JSON.stringify(body), signal: AbortSignal.timeout(60_000) });
-      if (!response.ok) {
-        if ((response.status === 429 || response.status >= 500) && attempt < retries) {
-          await response.body?.cancel();
-          await delay((this.options.backoffMs ?? 500) * 2 ** attempt);
-          continue;
+      api_requests++;
+      try {
+        const response = await (this.options.fetch ?? fetch)(url, { method: 'POST', headers: { ...headers, 'Content-Type': 'application/json' }, body: JSON.stringify(body), signal: AbortSignal.timeout(60_000) });
+        if (!response.ok) {
+          if ((response.status === 429 || response.status >= 500) && attempt < retries) {
+            await response.body?.cancel();
+            await delay((this.options.backoffMs ?? 500) * 2 ** attempt);
+            continue;
+          }
+          const text = await response.text();
+          let body: unknown;
+          try { body = JSON.parse(text); } catch { body = text; }
+          throw new ModelRequestError(`${this.driver} HTTP ${response.status}`, redact({ status: response.status, body }, key), api_requests);
         }
-        const text = await response.text();
-        let body: unknown;
-        try { body = JSON.parse(text); } catch { body = text; }
-        throw new ModelRequestError(`${this.driver} HTTP ${response.status}`, { status: response.status, body });
+        raw = redact(await response.json(), key);
+        break;
+      } catch (error) {
+        if (error instanceof ModelRequestError) throw error;
+        throw new ModelRequestError(String(redact(error instanceof Error ? error.message : String(error), key)), null, api_requests);
       }
-      raw = await response.json();
-      break;
     }
     let call: ToolCall | undefined;
     if (this.driver === 'anthropic') {
       const first = raw.content?.find((part: any) => part.type === 'tool_use');
       if (first) call = { name: first.name, arguments: first.input };
-    } else if (this.driver === 'openai') {
+    } else if (this.driver === 'openai' || this.driver === 'zenmux') {
       const first = raw.choices?.[0]?.message?.tool_calls?.[0]?.function;
       if (first) {
         let args: unknown;
@@ -70,7 +98,11 @@ export class NativeModelRunner implements ModelRunner {
       const first = raw.candidates?.[0]?.content?.parts?.find((part: any) => part.functionCall)?.functionCall;
       if (first) call = { name: first.name, arguments: first.args };
     }
-    return { raw, call, schema_transformations: [] };
+    const input = this.driver === 'gemini' ? raw.usageMetadata?.promptTokenCount : this.driver === 'anthropic' ? raw.usage?.input_tokens : raw.usage?.prompt_tokens;
+    const output = this.driver === 'gemini' ? raw.usageMetadata?.candidatesTokenCount : this.driver === 'anthropic' ? raw.usage?.output_tokens : raw.usage?.completion_tokens;
+    const tokenCount = (value: unknown) => typeof value === 'number' && Number.isInteger(value) && value >= 0;
+    return { raw, call, schema_transformations: [], api_requests,
+      ...(tokenCount(input) ? { input_tokens: input } : {}), ...(tokenCount(output) ? { output_tokens: output } : {}) };
   }
 }
 

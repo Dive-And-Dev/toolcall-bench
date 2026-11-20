@@ -1,0 +1,1906 @@
+{
+  "started_at": "2026-11-20T06:36:10.934Z",
+  "completed_at": "2026-11-20T06:37:51.015Z",
+  "server_name": "cloudflare",
+  "driver": "zenmux",
+  "model": "openai/gpt-5.5",
+  "trials": 3,
+  "driver_options": {
+    "gateway": "https://zenmux.ai/api/v1",
+    "model_id": "openai/gpt-5.5"
+  },
+  "seed": 42,
+  "snapshot": {
+    "server_name": "cloudflare",
+    "repo_url": "https://github.com/cloudflare/mcp-server-cloudflare",
+    "architecture_type": "static_catalog",
+    "selection_metric": "standard",
+    "snapshot_meta": {
+      "package": "@cloudflare/mcp-server-cloudflare",
+      "package_version": "0.2.0",
+      "captured_at": "2026-11-19T20:40:57.914Z",
+      "capture_method": "SDK stdio initialize + tools/list; dummy credential; network disabled with unshare -Urn; npm offline",
+      "capture_cmd": "node dist/cli.js snapshot --cmd 'unshare -Urn npx --offline -y @cloudflare/mcp-server-cloudflare@0.2.0 run dummy' --env CLOUDFLARE_API_TOKEN=dummy --out suites/cloudflare/manifest.json",
+      "requires_auth_for_tools_list": false
+    }
+  },
+  "manifest_sha256": "2f2ce85bc11c72cdf9fee19edc49348122f72b7a708561bac14c66f5ac44b077",
+  "tasks_sha256": "01219ca7a051de8e1dab0700857e37ddcc876e33fa33d2eb01ee8ce5e5f427c9",
+  "metrics": {
+    "tool_selection_accuracy": {
+      "mean": 0.85,
+      "ci_low": 0.7,
+      "ci_high": 1,
+      "half_width": 0.15000000000000002,
+      "n_tasks": 20,
+      "n_trials": 60,
+      "B": 5000,
+      "seed": 42
+    },
+    "param_compliance_conditional": {
+      "mean": 1,
+      "ci_low": 1,
+      "ci_high": 1,
+      "half_width": 0,
+      "n_tasks": 17,
+      "n_trials": 51,
+      "B": 5000,
+      "seed": 42
+    },
+    "end_to_end_first_try_pass": {
+      "mean": 0.85,
+      "ci_low": 0.7,
+      "ci_high": 1,
+      "half_width": 0.15000000000000002,
+      "n_tasks": 20,
+      "n_trials": 60,
+      "B": 5000,
+      "seed": 42
+    }
+  },
+  "selection_metric": "standard",
+  "tokens": {
+    "catalog_tokens": 6714,
+    "tool_count": 89,
+    "encoding": "o200k_base",
+    "median_tokens_per_tool": 64,
+    "per_tool": [
+      {
+        "tool": "get_kvs",
+        "tokens": 28
+      },
+      {
+        "tool": "kv_get",
+        "tokens": 63
+      },
+      {
+        "tool": "kv_put",
+        "tokens": 96
+      },
+      {
+        "tool": "kv_delete",
+        "tokens": 63
+      },
+      {
+        "tool": "kv_list",
+        "tokens": 77
+      },
+      {
+        "tool": "worker_list",
+        "tokens": 27
+      },
+      {
+        "tool": "worker_get",
+        "tokens": 44
+      },
+      {
+        "tool": "worker_put",
+        "tokens": 739
+      },
+      {
+        "tool": "worker_delete",
+        "tokens": 42
+      },
+      {
+        "tool": "worker_deploy",
+        "tokens": 499
+      },
+      {
+        "tool": "analytics_get",
+        "tokens": 84
+      },
+      {
+        "tool": "workers_analytics_search",
+        "tokens": 159
+      },
+      {
+        "tool": "r2_list_buckets",
+        "tokens": 32
+      },
+      {
+        "tool": "r2_create_bucket",
+        "tokens": 47
+      },
+      {
+        "tool": "r2_delete_bucket",
+        "tokens": 46
+      },
+      {
+        "tool": "r2_list_objects",
+        "tokens": 92
+      },
+      {
+        "tool": "r2_get_object",
+        "tokens": 65
+      },
+      {
+        "tool": "r2_put_object",
+        "tokens": 100
+      },
+      {
+        "tool": "r2_delete_object",
+        "tokens": 65
+      },
+      {
+        "tool": "d1_list_databases",
+        "tokens": 32
+      },
+      {
+        "tool": "d1_create_database",
+        "tokens": 47
+      },
+      {
+        "tool": "d1_delete_database",
+        "tokens": 48
+      },
+      {
+        "tool": "d1_query",
+        "tokens": 90
+      },
+      {
+        "tool": "do_create_namespace",
+        "tokens": 89
+      },
+      {
+        "tool": "do_delete_namespace",
+        "tokens": 49
+      },
+      {
+        "tool": "do_list_namespaces",
+        "tokens": 28
+      },
+      {
+        "tool": "do_get_object",
+        "tokens": 68
+      },
+      {
+        "tool": "do_list_objects",
+        "tokens": 62
+      },
+      {
+        "tool": "do_delete_object",
+        "tokens": 70
+      },
+      {
+        "tool": "do_alarm_list",
+        "tokens": 68
+      },
+      {
+        "tool": "do_alarm_set",
+        "tokens": 91
+      },
+      {
+        "tool": "do_alarm_delete",
+        "tokens": 69
+      },
+      {
+        "tool": "queue_create",
+        "tokens": 42
+      },
+      {
+        "tool": "queue_delete",
+        "tokens": 44
+      },
+      {
+        "tool": "queue_list",
+        "tokens": 27
+      },
+      {
+        "tool": "queue_get",
+        "tokens": 49
+      },
+      {
+        "tool": "queue_send_message",
+        "tokens": 74
+      },
+      {
+        "tool": "queue_send_batch",
+        "tokens": 74
+      },
+      {
+        "tool": "queue_get_message",
+        "tokens": 76
+      },
+      {
+        "tool": "queue_delete_message",
+        "tokens": 89
+      },
+      {
+        "tool": "queue_update_visibility",
+        "tokens": 109
+      },
+      {
+        "tool": "ai_inference",
+        "tokens": 81
+      },
+      {
+        "tool": "ai_list_models",
+        "tokens": 26
+      },
+      {
+        "tool": "ai_get_model",
+        "tokens": 47
+      },
+      {
+        "tool": "ai_embeddings",
+        "tokens": 63
+      },
+      {
+        "tool": "ai_text_generation",
+        "tokens": 81
+      },
+      {
+        "tool": "ai_image_generation",
+        "tokens": 82
+      },
+      {
+        "tool": "workflow_get",
+        "tokens": 49
+      },
+      {
+        "tool": "workflow_create",
+        "tokens": 59
+      },
+      {
+        "tool": "workflow_delete",
+        "tokens": 45
+      },
+      {
+        "tool": "workflow_list",
+        "tokens": 25
+      },
+      {
+        "tool": "workflow_update",
+        "tokens": 62
+      },
+      {
+        "tool": "workflow_execute",
+        "tokens": 61
+      },
+      {
+        "tool": "template_list",
+        "tokens": 25
+      },
+      {
+        "tool": "template_get",
+        "tokens": 49
+      },
+      {
+        "tool": "template_create_worker",
+        "tokens": 80
+      },
+      {
+        "tool": "wfp_create_dispatch_namespace",
+        "tokens": 50
+      },
+      {
+        "tool": "wfp_delete_dispatch_namespace",
+        "tokens": 49
+      },
+      {
+        "tool": "wfp_list_dispatch_namespaces",
+        "tokens": 29
+      },
+      {
+        "tool": "wfp_add_custom_domain",
+        "tokens": 88
+      },
+      {
+        "tool": "wfp_remove_custom_domain",
+        "tokens": 69
+      },
+      {
+        "tool": "wfp_list_custom_domains",
+        "tokens": 51
+      },
+      {
+        "tool": "service_binding_create",
+        "tokens": 106
+      },
+      {
+        "tool": "service_binding_delete",
+        "tokens": 70
+      },
+      {
+        "tool": "service_binding_list",
+        "tokens": 50
+      },
+      {
+        "tool": "service_binding_update",
+        "tokens": 106
+      },
+      {
+        "tool": "env_var_set",
+        "tokens": 83
+      },
+      {
+        "tool": "env_var_delete",
+        "tokens": 65
+      },
+      {
+        "tool": "env_var_list",
+        "tokens": 48
+      },
+      {
+        "tool": "env_var_bulk_set",
+        "tokens": 69
+      },
+      {
+        "tool": "route_create",
+        "tokens": 101
+      },
+      {
+        "tool": "route_delete",
+        "tokens": 65
+      },
+      {
+        "tool": "route_list",
+        "tokens": 46
+      },
+      {
+        "tool": "route_update",
+        "tokens": 106
+      },
+      {
+        "tool": "cron_create",
+        "tokens": 84
+      },
+      {
+        "tool": "cron_delete",
+        "tokens": 46
+      },
+      {
+        "tool": "cron_list",
+        "tokens": 48
+      },
+      {
+        "tool": "cron_update",
+        "tokens": 64
+      },
+      {
+        "tool": "zones_list",
+        "tokens": 41
+      },
+      {
+        "tool": "zones_get",
+        "tokens": 66
+      },
+      {
+        "tool": "domain_list",
+        "tokens": 27
+      },
+      {
+        "tool": "secret_put",
+        "tokens": 83
+      },
+      {
+        "tool": "secret_delete",
+        "tokens": 67
+      },
+      {
+        "tool": "secret_list",
+        "tokens": 47
+      },
+      {
+        "tool": "version_list",
+        "tokens": 46
+      },
+      {
+        "tool": "version_get",
+        "tokens": 68
+      },
+      {
+        "tool": "version_rollback",
+        "tokens": 68
+      },
+      {
+        "tool": "wrangler_config_get",
+        "tokens": 50
+      },
+      {
+        "tool": "wrangler_config_update",
+        "tokens": 69
+      }
+    ]
+  },
+  "lint": {
+    "total_findings": 24,
+    "counts": {
+      "MISSING_DESCRIPTION": 2,
+      "UNTYPED_OBJECT": 10,
+      "AMBIGUOUS_UNIT_OR_FORMAT": 0,
+      "MISSING_ENUM_CONSTRAINT": 0,
+      "OVERLAPPING_TOOL_DESCRIPTIONS": 12
+    },
+    "findings": [
+      {
+        "rule": "UNTYPED_OBJECT",
+        "tool": "worker_put",
+        "path": "/inputSchema/properties/migrations",
+        "message": "Object has no properties or additionalProperties guidance"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "worker_put",
+        "path": "/inputSchema/properties/migrations/items/properties/renamed_classes/items/properties/from",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "worker_put",
+        "path": "/inputSchema/properties/migrations/items/properties/renamed_classes/items/properties/to",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "UNTYPED_OBJECT",
+        "tool": "ai_inference",
+        "path": "/inputSchema/properties/input",
+        "message": "Object has no properties or additionalProperties guidance"
+      },
+      {
+        "rule": "UNTYPED_OBJECT",
+        "tool": "ai_inference",
+        "path": "/inputSchema/properties/options",
+        "message": "Object has no properties or additionalProperties guidance"
+      },
+      {
+        "rule": "UNTYPED_OBJECT",
+        "tool": "ai_text_generation",
+        "path": "/inputSchema/properties/options",
+        "message": "Object has no properties or additionalProperties guidance"
+      },
+      {
+        "rule": "UNTYPED_OBJECT",
+        "tool": "ai_image_generation",
+        "path": "/inputSchema/properties/options",
+        "message": "Object has no properties or additionalProperties guidance"
+      },
+      {
+        "rule": "UNTYPED_OBJECT",
+        "tool": "workflow_create",
+        "path": "/inputSchema/properties/content",
+        "message": "Object has no properties or additionalProperties guidance"
+      },
+      {
+        "rule": "UNTYPED_OBJECT",
+        "tool": "workflow_update",
+        "path": "/inputSchema/properties/content",
+        "message": "Object has no properties or additionalProperties guidance"
+      },
+      {
+        "rule": "UNTYPED_OBJECT",
+        "tool": "workflow_execute",
+        "path": "/inputSchema/properties/input",
+        "message": "Object has no properties or additionalProperties guidance"
+      },
+      {
+        "rule": "UNTYPED_OBJECT",
+        "tool": "template_create_worker",
+        "path": "/inputSchema/properties/config",
+        "message": "Object has no properties or additionalProperties guidance"
+      },
+      {
+        "rule": "UNTYPED_OBJECT",
+        "tool": "env_var_bulk_set",
+        "path": "/inputSchema/properties/vars",
+        "message": "Object has no properties or additionalProperties guidance"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "worker_list",
+        "path": "/description",
+        "message": "Description overlaps queue_list (Jaccard 0.667)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "worker_list",
+        "path": "/description",
+        "message": "Description overlaps zones_list (Jaccard 0.667)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "r2_delete_bucket",
+        "path": "/description",
+        "message": "Description overlaps r2_delete_object (Jaccard 0.750)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "r2_get_object",
+        "path": "/description",
+        "message": "Description overlaps r2_delete_object (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "do_get_object",
+        "path": "/description",
+        "message": "Description overlaps do_delete_object (Jaccard 0.667)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "do_list_objects",
+        "path": "/description",
+        "message": "Description overlaps do_alarm_list (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "do_alarm_set",
+        "path": "/description",
+        "message": "Description overlaps do_alarm_delete (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "queue_list",
+        "path": "/description",
+        "message": "Description overlaps zones_list (Jaccard 0.667)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "queue_get",
+        "path": "/description",
+        "message": "Description overlaps zones_get (Jaccard 0.667)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "ai_text_generation",
+        "path": "/description",
+        "message": "Description overlaps ai_image_generation (Jaccard 0.667)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "wfp_add_custom_domain",
+        "path": "/description",
+        "message": "Description overlaps wfp_remove_custom_domain (Jaccard 0.667)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "wrangler_config_get",
+        "path": "/description",
+        "message": "Description overlaps wrangler_config_update (Jaccard 0.600)"
+      }
+    ],
+    "findings_per_tool": 0.2696629213483146,
+    "per_tool": [
+      {
+        "tool": "get_kvs",
+        "findings": 0
+      },
+      {
+        "tool": "kv_get",
+        "findings": 0
+      },
+      {
+        "tool": "kv_put",
+        "findings": 0
+      },
+      {
+        "tool": "kv_delete",
+        "findings": 0
+      },
+      {
+        "tool": "kv_list",
+        "findings": 0
+      },
+      {
+        "tool": "worker_list",
+        "findings": 2
+      },
+      {
+        "tool": "worker_get",
+        "findings": 0
+      },
+      {
+        "tool": "worker_put",
+        "findings": 3
+      },
+      {
+        "tool": "worker_delete",
+        "findings": 0
+      },
+      {
+        "tool": "worker_deploy",
+        "findings": 0
+      },
+      {
+        "tool": "analytics_get",
+        "findings": 0
+      },
+      {
+        "tool": "workers_analytics_search",
+        "findings": 0
+      },
+      {
+        "tool": "r2_list_buckets",
+        "findings": 0
+      },
+      {
+        "tool": "r2_create_bucket",
+        "findings": 0
+      },
+      {
+        "tool": "r2_delete_bucket",
+        "findings": 1
+      },
+      {
+        "tool": "r2_list_objects",
+        "findings": 0
+      },
+      {
+        "tool": "r2_get_object",
+        "findings": 1
+      },
+      {
+        "tool": "r2_put_object",
+        "findings": 0
+      },
+      {
+        "tool": "r2_delete_object",
+        "findings": 0
+      },
+      {
+        "tool": "d1_list_databases",
+        "findings": 0
+      },
+      {
+        "tool": "d1_create_database",
+        "findings": 0
+      },
+      {
+        "tool": "d1_delete_database",
+        "findings": 0
+      },
+      {
+        "tool": "d1_query",
+        "findings": 0
+      },
+      {
+        "tool": "do_create_namespace",
+        "findings": 0
+      },
+      {
+        "tool": "do_delete_namespace",
+        "findings": 0
+      },
+      {
+        "tool": "do_list_namespaces",
+        "findings": 0
+      },
+      {
+        "tool": "do_get_object",
+        "findings": 1
+      },
+      {
+        "tool": "do_list_objects",
+        "findings": 1
+      },
+      {
+        "tool": "do_delete_object",
+        "findings": 0
+      },
+      {
+        "tool": "do_alarm_list",
+        "findings": 0
+      },
+      {
+        "tool": "do_alarm_set",
+        "findings": 1
+      },
+      {
+        "tool": "do_alarm_delete",
+        "findings": 0
+      },
+      {
+        "tool": "queue_create",
+        "findings": 0
+      },
+      {
+        "tool": "queue_delete",
+        "findings": 0
+      },
+      {
+        "tool": "queue_list",
+        "findings": 1
+      },
+      {
+        "tool": "queue_get",
+        "findings": 1
+      },
+      {
+        "tool": "queue_send_message",
+        "findings": 0
+      },
+      {
+        "tool": "queue_send_batch",
+        "findings": 0
+      },
+      {
+        "tool": "queue_get_message",
+        "findings": 0
+      },
+      {
+        "tool": "queue_delete_message",
+        "findings": 0
+      },
+      {
+        "tool": "queue_update_visibility",
+        "findings": 0
+      },
+      {
+        "tool": "ai_inference",
+        "findings": 2
+      },
+      {
+        "tool": "ai_list_models",
+        "findings": 0
+      },
+      {
+        "tool": "ai_get_model",
+        "findings": 0
+      },
+      {
+        "tool": "ai_embeddings",
+        "findings": 0
+      },
+      {
+        "tool": "ai_text_generation",
+        "findings": 2
+      },
+      {
+        "tool": "ai_image_generation",
+        "findings": 1
+      },
+      {
+        "tool": "workflow_get",
+        "findings": 0
+      },
+      {
+        "tool": "workflow_create",
+        "findings": 1
+      },
+      {
+        "tool": "workflow_delete",
+        "findings": 0
+      },
+      {
+        "tool": "workflow_list",
+        "findings": 0
+      },
+      {
+        "tool": "workflow_update",
+        "findings": 1
+      },
+      {
+        "tool": "workflow_execute",
+        "findings": 1
+      },
+      {
+        "tool": "template_list",
+        "findings": 0
+      },
+      {
+        "tool": "template_get",
+        "findings": 0
+      },
+      {
+        "tool": "template_create_worker",
+        "findings": 1
+      },
+      {
+        "tool": "wfp_create_dispatch_namespace",
+        "findings": 0
+      },
+      {
+        "tool": "wfp_delete_dispatch_namespace",
+        "findings": 0
+      },
+      {
+        "tool": "wfp_list_dispatch_namespaces",
+        "findings": 0
+      },
+      {
+        "tool": "wfp_add_custom_domain",
+        "findings": 1
+      },
+      {
+        "tool": "wfp_remove_custom_domain",
+        "findings": 0
+      },
+      {
+        "tool": "wfp_list_custom_domains",
+        "findings": 0
+      },
+      {
+        "tool": "service_binding_create",
+        "findings": 0
+      },
+      {
+        "tool": "service_binding_delete",
+        "findings": 0
+      },
+      {
+        "tool": "service_binding_list",
+        "findings": 0
+      },
+      {
+        "tool": "service_binding_update",
+        "findings": 0
+      },
+      {
+        "tool": "env_var_set",
+        "findings": 0
+      },
+      {
+        "tool": "env_var_delete",
+        "findings": 0
+      },
+      {
+        "tool": "env_var_list",
+        "findings": 0
+      },
+      {
+        "tool": "env_var_bulk_set",
+        "findings": 1
+      },
+      {
+        "tool": "route_create",
+        "findings": 0
+      },
+      {
+        "tool": "route_delete",
+        "findings": 0
+      },
+      {
+        "tool": "route_list",
+        "findings": 0
+      },
+      {
+        "tool": "route_update",
+        "findings": 0
+      },
+      {
+        "tool": "cron_create",
+        "findings": 0
+      },
+      {
+        "tool": "cron_delete",
+        "findings": 0
+      },
+      {
+        "tool": "cron_list",
+        "findings": 0
+      },
+      {
+        "tool": "cron_update",
+        "findings": 0
+      },
+      {
+        "tool": "zones_list",
+        "findings": 0
+      },
+      {
+        "tool": "zones_get",
+        "findings": 0
+      },
+      {
+        "tool": "domain_list",
+        "findings": 0
+      },
+      {
+        "tool": "secret_put",
+        "findings": 0
+      },
+      {
+        "tool": "secret_delete",
+        "findings": 0
+      },
+      {
+        "tool": "secret_list",
+        "findings": 0
+      },
+      {
+        "tool": "version_list",
+        "findings": 0
+      },
+      {
+        "tool": "version_get",
+        "findings": 0
+      },
+      {
+        "tool": "version_rollback",
+        "findings": 0
+      },
+      {
+        "tool": "wrangler_config_get",
+        "findings": 1
+      },
+      {
+        "tool": "wrangler_config_update",
+        "findings": 0
+      }
+    ]
+  },
+  "schema_compilation_errors": {
+    "worker_put": "strict mode: missing type \"array\" for keyword \"items\" at \"#/properties/migrations\" (strictTypes)"
+  },
+  "results": [
+    {
+      "task_id": "cloudflare-01",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "get_kvs",
+      "selection_correct": false,
+      "param_compliance_eligible": false,
+      "schema_valid": true,
+      "assertions_pass": false,
+      "first_try_pass": false,
+      "duration_ms": 4464,
+      "input_tokens": 4406,
+      "output_tokens": 65,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-01",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "get_kvs",
+      "selection_correct": false,
+      "param_compliance_eligible": false,
+      "schema_valid": true,
+      "assertions_pass": false,
+      "first_try_pass": false,
+      "duration_ms": 8899,
+      "input_tokens": 4406,
+      "output_tokens": 44,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-01",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "get_kvs",
+      "selection_correct": false,
+      "param_compliance_eligible": false,
+      "schema_valid": true,
+      "assertions_pass": false,
+      "first_try_pass": false,
+      "duration_ms": 4351,
+      "input_tokens": 4406,
+      "output_tokens": 67,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-02",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "get_kvs",
+      "selection_correct": false,
+      "param_compliance_eligible": false,
+      "schema_valid": true,
+      "assertions_pass": false,
+      "first_try_pass": false,
+      "duration_ms": 3284,
+      "input_tokens": 4408,
+      "output_tokens": 46,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-02",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "get_kvs",
+      "selection_correct": false,
+      "param_compliance_eligible": false,
+      "schema_valid": true,
+      "assertions_pass": false,
+      "first_try_pass": false,
+      "duration_ms": 4254,
+      "input_tokens": 4408,
+      "output_tokens": 46,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-02",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "get_kvs",
+      "selection_correct": false,
+      "param_compliance_eligible": false,
+      "schema_valid": true,
+      "assertions_pass": false,
+      "first_try_pass": false,
+      "duration_ms": 3569,
+      "input_tokens": 4408,
+      "output_tokens": 101,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-03",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "kv_delete",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1999,
+      "input_tokens": 4403,
+      "output_tokens": 27,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-03",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "kv_delete",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1788,
+      "input_tokens": 4403,
+      "output_tokens": 27,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-03",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "kv_delete",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3352,
+      "input_tokens": 4403,
+      "output_tokens": 27,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-04",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "kv_list",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3519,
+      "input_tokens": 4407,
+      "output_tokens": 82,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-04",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "kv_list",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2924,
+      "input_tokens": 4407,
+      "output_tokens": 65,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-04",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "kv_list",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2547,
+      "input_tokens": 4407,
+      "output_tokens": 58,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-05",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "get_kvs",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2068,
+      "input_tokens": 4401,
+      "output_tokens": 15,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-05",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "get_kvs",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2287,
+      "input_tokens": 4401,
+      "output_tokens": 15,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-05",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "get_kvs",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1451,
+      "input_tokens": 4401,
+      "output_tokens": 15,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-06",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "worker_get",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3342,
+      "input_tokens": 4404,
+      "output_tokens": 31,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-06",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "worker_get",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3508,
+      "input_tokens": 4404,
+      "output_tokens": 30,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-06",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "worker_get",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2785,
+      "input_tokens": 4404,
+      "output_tokens": 31,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-07",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "worker_list",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2975,
+      "input_tokens": 4401,
+      "output_tokens": 38,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-07",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "worker_list",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3631,
+      "input_tokens": 4401,
+      "output_tokens": 34,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-07",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "worker_list",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2255,
+      "input_tokens": 4401,
+      "output_tokens": 31,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-08",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "worker_delete",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2022,
+      "input_tokens": 4401,
+      "output_tokens": 33,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-08",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "worker_delete",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1931,
+      "input_tokens": 4401,
+      "output_tokens": 35,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-08",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "worker_delete",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3051,
+      "input_tokens": 4401,
+      "output_tokens": 39,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-09",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "r2_create_bucket",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3903,
+      "input_tokens": 4402,
+      "output_tokens": 51,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-09",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "r2_create_bucket",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2490,
+      "input_tokens": 4402,
+      "output_tokens": 50,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-09",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "r2_create_bucket",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3213,
+      "input_tokens": 4402,
+      "output_tokens": 55,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-10",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "r2_list_objects",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3023,
+      "input_tokens": 4406,
+      "output_tokens": 61,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-10",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "r2_list_objects",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3047,
+      "input_tokens": 4406,
+      "output_tokens": 70,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-10",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "r2_list_objects",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3238,
+      "input_tokens": 4406,
+      "output_tokens": 70,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-11",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "r2_get_object",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4525,
+      "input_tokens": 4405,
+      "output_tokens": 68,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-11",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "r2_get_object",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3064,
+      "input_tokens": 4405,
+      "output_tokens": 63,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-11",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "r2_get_object",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2614,
+      "input_tokens": 4405,
+      "output_tokens": 59,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-12",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "r2_put_object",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3198,
+      "input_tokens": 4409,
+      "output_tokens": 82,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-12",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "r2_put_object",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3553,
+      "input_tokens": 4409,
+      "output_tokens": 87,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-12",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "r2_put_object",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4148,
+      "input_tokens": 4409,
+      "output_tokens": 80,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-13",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "r2_delete_object",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3274,
+      "input_tokens": 4403,
+      "output_tokens": 62,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-13",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "r2_delete_object",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2749,
+      "input_tokens": 4403,
+      "output_tokens": 57,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-13",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "r2_delete_object",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3747,
+      "input_tokens": 4403,
+      "output_tokens": 57,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-14",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "d1_create_database",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 5554,
+      "input_tokens": 4401,
+      "output_tokens": 50,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-14",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "d1_create_database",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3032,
+      "input_tokens": 4401,
+      "output_tokens": 42,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-14",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "d1_create_database",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3117,
+      "input_tokens": 4401,
+      "output_tokens": 47,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-15",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "d1_list_databases",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3657,
+      "input_tokens": 4401,
+      "output_tokens": 48,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-15",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "d1_list_databases",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3851,
+      "input_tokens": 4401,
+      "output_tokens": 45,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-15",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "d1_list_databases",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2661,
+      "input_tokens": 4401,
+      "output_tokens": 38,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-16",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "analytics_get",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2393,
+      "input_tokens": 4416,
+      "output_tokens": 72,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-16",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "analytics_get",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3273,
+      "input_tokens": 4416,
+      "output_tokens": 106,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-16",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "analytics_get",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2931,
+      "input_tokens": 4416,
+      "output_tokens": 76,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-17",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "r2_delete_bucket",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3016,
+      "input_tokens": 4401,
+      "output_tokens": 67,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-17",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "r2_delete_bucket",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4418,
+      "input_tokens": 4401,
+      "output_tokens": 64,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-17",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "r2_delete_bucket",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3599,
+      "input_tokens": 4401,
+      "output_tokens": 61,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-18",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "get_kvs",
+      "selection_correct": false,
+      "param_compliance_eligible": false,
+      "schema_valid": true,
+      "assertions_pass": false,
+      "first_try_pass": false,
+      "duration_ms": 4024,
+      "input_tokens": 4406,
+      "output_tokens": 57,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-18",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "get_kvs",
+      "selection_correct": false,
+      "param_compliance_eligible": false,
+      "schema_valid": true,
+      "assertions_pass": false,
+      "first_try_pass": false,
+      "duration_ms": 2129,
+      "input_tokens": 4406,
+      "output_tokens": 37,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-18",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "get_kvs",
+      "selection_correct": false,
+      "param_compliance_eligible": false,
+      "schema_valid": true,
+      "assertions_pass": false,
+      "first_try_pass": false,
+      "duration_ms": 3717,
+      "input_tokens": 4406,
+      "output_tokens": 37,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-19",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "r2_list_buckets",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2494,
+      "input_tokens": 4399,
+      "output_tokens": 44,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-19",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "r2_list_buckets",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2641,
+      "input_tokens": 4399,
+      "output_tokens": 44,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-19",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "r2_list_buckets",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3431,
+      "input_tokens": 4399,
+      "output_tokens": 44,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-20",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "worker_deploy",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3448,
+      "input_tokens": 4408,
+      "output_tokens": 87,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-20",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "worker_deploy",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3207,
+      "input_tokens": 4408,
+      "output_tokens": 75,
+      "api_requests": 1
+    },
+    {
+      "task_id": "cloudflare-20",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "worker_deploy",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3568,
+      "input_tokens": 4408,
+      "output_tokens": 72,
+      "api_requests": 1
+    }
+  ]
+}

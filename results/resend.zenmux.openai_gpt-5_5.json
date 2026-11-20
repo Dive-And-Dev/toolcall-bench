@@ -1,0 +1,2507 @@
+{
+  "started_at": "2026-11-20T06:47:17.175Z",
+  "completed_at": "2026-11-20T06:49:51.825Z",
+  "server_name": "resend",
+  "driver": "zenmux",
+  "model": "openai/gpt-5.5",
+  "trials": 3,
+  "driver_options": {
+    "gateway": "https://zenmux.ai/api/v1",
+    "model_id": "openai/gpt-5.5"
+  },
+  "seed": 42,
+  "snapshot": {
+    "server_name": "resend",
+    "repo_url": "https://github.com/resend/resend-mcp",
+    "architecture_type": "static_catalog",
+    "selection_metric": "standard",
+    "snapshot_meta": {
+      "package": "resend-mcp",
+      "package_version": "2.29.0",
+      "captured_at": "2026-11-19T20:40:58.328Z",
+      "capture_method": "SDK stdio initialize + tools/list; dummy credential; network disabled with unshare -Urn; npm offline",
+      "capture_cmd": "node dist/cli.js snapshot --cmd 'unshare -Urn npx --offline -y resend-mcp@2.29.0' --env RESEND_API_KEY=re_dummy --out suites/resend/manifest.json",
+      "requires_auth_for_tools_list": false
+    }
+  },
+  "manifest_sha256": "82fa5dc101c600ba476d44c01db79fac2d21c0d73f083765369ef14fa5c09dfb",
+  "tasks_sha256": "4b1c4435000c38b7b0550564b8fedbf484ea36379366be62a291233edd990a2d",
+  "metrics": {
+    "tool_selection_accuracy": {
+      "mean": 0.8333333333333334,
+      "ci_low": 0.6666666666666667,
+      "ci_high": 0.9666666666666668,
+      "half_width": 0.15000000000000002,
+      "n_tasks": 20,
+      "n_trials": 60,
+      "B": 5000,
+      "seed": 42
+    },
+    "param_compliance_conditional": {
+      "mean": 0.8888888888888888,
+      "ci_low": 0.7222222222222222,
+      "ci_high": 1,
+      "half_width": 0.1388888888888889,
+      "n_tasks": 18,
+      "n_trials": 50,
+      "B": 5000,
+      "seed": 42
+    },
+    "end_to_end_first_try_pass": {
+      "mean": 0.6833333333333333,
+      "ci_low": 0.4833333333333333,
+      "ci_high": 0.8666666666666666,
+      "half_width": 0.19166666666666665,
+      "n_tasks": 20,
+      "n_trials": 60,
+      "B": 5000,
+      "seed": 42
+    }
+  },
+  "selection_metric": "standard",
+  "tokens": {
+    "catalog_tokens": 49076,
+    "tool_count": 138,
+    "encoding": "o200k_base",
+    "median_tokens_per_tool": 218.5,
+    "per_tool": [
+      {
+        "tool": "get-tiptap-json-content",
+        "tokens": 388
+      },
+      {
+        "tool": "connect-to-editor",
+        "tokens": 226
+      },
+      {
+        "tool": "disconnect-from-editor",
+        "tokens": 54
+      },
+      {
+        "tool": "create-api-key",
+        "tokens": 157
+      },
+      {
+        "tool": "list-api-keys",
+        "tokens": 164
+      },
+      {
+        "tool": "update-api-key",
+        "tokens": 88
+      },
+      {
+        "tool": "remove-api-key",
+        "tokens": 144
+      },
+      {
+        "tool": "create-automation",
+        "tokens": 2063
+      },
+      {
+        "tool": "update-automation",
+        "tokens": 2063
+      },
+      {
+        "tool": "get-automation",
+        "tokens": 276
+      },
+      {
+        "tool": "duplicate-automation",
+        "tokens": 151
+      },
+      {
+        "tool": "remove-automation",
+        "tokens": 144
+      },
+      {
+        "tool": "get-automation-runs",
+        "tokens": 361
+      },
+      {
+        "tool": "cancel-automation-run",
+        "tokens": 259
+      },
+      {
+        "tool": "create-broadcast",
+        "tokens": 1095
+      },
+      {
+        "tool": "send-broadcast",
+        "tokens": 337
+      },
+      {
+        "tool": "list-broadcasts",
+        "tokens": 161
+      },
+      {
+        "tool": "get-broadcast",
+        "tokens": 116
+      },
+      {
+        "tool": "cancel-broadcast",
+        "tokens": 195
+      },
+      {
+        "tool": "duplicate-broadcast",
+        "tokens": 217
+      },
+      {
+        "tool": "remove-broadcast",
+        "tokens": 154
+      },
+      {
+        "tool": "compose-broadcast",
+        "tokens": 450
+      },
+      {
+        "tool": "update-broadcast",
+        "tokens": 804
+      },
+      {
+        "tool": "list-broadcast-clicked-links",
+        "tokens": 299
+      },
+      {
+        "tool": "list-broadcast-recipients",
+        "tokens": 497
+      },
+      {
+        "tool": "create-contact-import",
+        "tokens": 623
+      },
+      {
+        "tool": "get-contact-import",
+        "tokens": 84
+      },
+      {
+        "tool": "list-contact-imports",
+        "tokens": 183
+      },
+      {
+        "tool": "create-contact-property",
+        "tokens": 168
+      },
+      {
+        "tool": "list-contact-properties",
+        "tokens": 203
+      },
+      {
+        "tool": "get-contact-property",
+        "tokens": 72
+      },
+      {
+        "tool": "update-contact-property",
+        "tokens": 128
+      },
+      {
+        "tool": "remove-contact-property",
+        "tokens": 147
+      },
+      {
+        "tool": "create-contact",
+        "tokens": 335
+      },
+      {
+        "tool": "list-contacts",
+        "tokens": 288
+      },
+      {
+        "tool": "get-contact",
+        "tokens": 142
+      },
+      {
+        "tool": "update-contact",
+        "tokens": 273
+      },
+      {
+        "tool": "remove-contact",
+        "tokens": 213
+      },
+      {
+        "tool": "add-contact-to-segment",
+        "tokens": 181
+      },
+      {
+        "tool": "remove-contact-from-segment",
+        "tokens": 203
+      },
+      {
+        "tool": "list-contact-segments",
+        "tokens": 265
+      },
+      {
+        "tool": "list-contact-topics",
+        "tokens": 258
+      },
+      {
+        "tool": "update-contact-topics",
+        "tokens": 228
+      },
+      {
+        "tool": "create-domain",
+        "tokens": 372
+      },
+      {
+        "tool": "list-domains",
+        "tokens": 161
+      },
+      {
+        "tool": "get-domain",
+        "tokens": 76
+      },
+      {
+        "tool": "update-domain",
+        "tokens": 266
+      },
+      {
+        "tool": "remove-domain",
+        "tokens": 141
+      },
+      {
+        "tool": "verify-domain",
+        "tokens": 202
+      },
+      {
+        "tool": "enable-forge",
+        "tokens": 435
+      },
+      {
+        "tool": "create-domain-claim",
+        "tokens": 290
+      },
+      {
+        "tool": "get-domain-claim",
+        "tokens": 106
+      },
+      {
+        "tool": "verify-domain-claim",
+        "tokens": 129
+      },
+      {
+        "tool": "send-email",
+        "tokens": 1339
+      },
+      {
+        "tool": "list-emails",
+        "tokens": 285
+      },
+      {
+        "tool": "get-email",
+        "tokens": 76
+      },
+      {
+        "tool": "list-received-emails",
+        "tokens": 232
+      },
+      {
+        "tool": "get-received-email",
+        "tokens": 83
+      },
+      {
+        "tool": "list-received-email-attachments",
+        "tokens": 197
+      },
+      {
+        "tool": "get-received-email-attachment",
+        "tokens": 93
+      },
+      {
+        "tool": "cancel-email",
+        "tokens": 81
+      },
+      {
+        "tool": "update-email",
+        "tokens": 129
+      },
+      {
+        "tool": "share-email",
+        "tokens": 154
+      },
+      {
+        "tool": "get-email-metrics",
+        "tokens": 803
+      },
+      {
+        "tool": "list-sent-email-attachments",
+        "tokens": 190
+      },
+      {
+        "tool": "get-sent-email-attachment",
+        "tokens": 93
+      },
+      {
+        "tool": "send-batch-emails",
+        "tokens": 840
+      },
+      {
+        "tool": "send-event",
+        "tokens": 296
+      },
+      {
+        "tool": "manage-events",
+        "tokens": 407
+      },
+      {
+        "tool": "create-inbox",
+        "tokens": 449
+      },
+      {
+        "tool": "list-inboxes",
+        "tokens": 299
+      },
+      {
+        "tool": "get-inbox",
+        "tokens": 162
+      },
+      {
+        "tool": "update-inbox",
+        "tokens": 234
+      },
+      {
+        "tool": "remove-inbox",
+        "tokens": 204
+      },
+      {
+        "tool": "list-inbox-threads",
+        "tokens": 824
+      },
+      {
+        "tool": "search-inbox-threads",
+        "tokens": 1572
+      },
+      {
+        "tool": "get-inbox-thread",
+        "tokens": 485
+      },
+      {
+        "tool": "list-inbox-thread-emails",
+        "tokens": 470
+      },
+      {
+        "tool": "update-inbox-thread",
+        "tokens": 408
+      },
+      {
+        "tool": "add-inbox-thread-labels",
+        "tokens": 326
+      },
+      {
+        "tool": "set-inbox-thread-labels",
+        "tokens": 342
+      },
+      {
+        "tool": "remove-inbox-thread-label",
+        "tokens": 257
+      },
+      {
+        "tool": "remove-inbox-thread",
+        "tokens": 265
+      },
+      {
+        "tool": "get-inbox-thread-email",
+        "tokens": 359
+      },
+      {
+        "tool": "reply-to-inbox-thread-email",
+        "tokens": 1793
+      },
+      {
+        "tool": "forward-inbox-thread-email",
+        "tokens": 1857
+      },
+      {
+        "tool": "list-inbox-labels",
+        "tokens": 242
+      },
+      {
+        "tool": "create-inbox-label",
+        "tokens": 253
+      },
+      {
+        "tool": "update-inbox-label",
+        "tokens": 282
+      },
+      {
+        "tool": "remove-inbox-label",
+        "tokens": 236
+      },
+      {
+        "tool": "list-inbox-drafts",
+        "tokens": 493
+      },
+      {
+        "tool": "create-inbox-draft",
+        "tokens": 1795
+      },
+      {
+        "tool": "get-inbox-draft",
+        "tokens": 220
+      },
+      {
+        "tool": "update-inbox-draft",
+        "tokens": 1706
+      },
+      {
+        "tool": "remove-inbox-draft",
+        "tokens": 236
+      },
+      {
+        "tool": "send-inbox-draft",
+        "tokens": 526
+      },
+      {
+        "tool": "send-new-inbox-email",
+        "tokens": 1516
+      },
+      {
+        "tool": "get-inbox-agent",
+        "tokens": 167
+      },
+      {
+        "tool": "update-inbox-agent",
+        "tokens": 375
+      },
+      {
+        "tool": "list-logs",
+        "tokens": 243
+      },
+      {
+        "tool": "get-log",
+        "tokens": 156
+      },
+      {
+        "tool": "list-oauth-grants",
+        "tokens": 197
+      },
+      {
+        "tool": "revoke-oauth-grant",
+        "tokens": 163
+      },
+      {
+        "tool": "create-segment",
+        "tokens": 84
+      },
+      {
+        "tool": "list-segments",
+        "tokens": 253
+      },
+      {
+        "tool": "get-segment",
+        "tokens": 66
+      },
+      {
+        "tool": "update-segment",
+        "tokens": 87
+      },
+      {
+        "tool": "remove-segment",
+        "tokens": 130
+      },
+      {
+        "tool": "add-suppression",
+        "tokens": 206
+      },
+      {
+        "tool": "list-suppressions",
+        "tokens": 339
+      },
+      {
+        "tool": "get-suppression",
+        "tokens": 103
+      },
+      {
+        "tool": "remove-suppression",
+        "tokens": 173
+      },
+      {
+        "tool": "batch-add-suppressions",
+        "tokens": 212
+      },
+      {
+        "tool": "batch-remove-suppressions",
+        "tokens": 308
+      },
+      {
+        "tool": "create-template",
+        "tokens": 956
+      },
+      {
+        "tool": "list-templates",
+        "tokens": 160
+      },
+      {
+        "tool": "get-template",
+        "tokens": 123
+      },
+      {
+        "tool": "compose-template",
+        "tokens": 398
+      },
+      {
+        "tool": "update-template",
+        "tokens": 865
+      },
+      {
+        "tool": "remove-template",
+        "tokens": 160
+      },
+      {
+        "tool": "publish-template",
+        "tokens": 126
+      },
+      {
+        "tool": "duplicate-template",
+        "tokens": 119
+      },
+      {
+        "tool": "create-topic",
+        "tokens": 147
+      },
+      {
+        "tool": "list-topics",
+        "tokens": 62
+      },
+      {
+        "tool": "get-topic",
+        "tokens": 65
+      },
+      {
+        "tool": "update-topic",
+        "tokens": 126
+      },
+      {
+        "tool": "remove-topic",
+        "tokens": 129
+      },
+      {
+        "tool": "get-usage",
+        "tokens": 172
+      },
+      {
+        "tool": "create-webhook",
+        "tokens": 301
+      },
+      {
+        "tool": "list-webhooks",
+        "tokens": 70
+      },
+      {
+        "tool": "get-webhook",
+        "tokens": 101
+      },
+      {
+        "tool": "update-webhook",
+        "tokens": 321
+      },
+      {
+        "tool": "list-webhook-events",
+        "tokens": 292
+      },
+      {
+        "tool": "get-webhook-event",
+        "tokens": 191
+      },
+      {
+        "tool": "replay-webhook-event",
+        "tokens": 206
+      },
+      {
+        "tool": "rotate-webhook-signing-secret",
+        "tokens": 192
+      },
+      {
+        "tool": "list-webhook-event-attempts",
+        "tokens": 260
+      },
+      {
+        "tool": "remove-webhook",
+        "tokens": 135
+      }
+    ]
+  },
+  "lint": {
+    "total_findings": 58,
+    "counts": {
+      "MISSING_DESCRIPTION": 0,
+      "UNTYPED_OBJECT": 0,
+      "AMBIGUOUS_UNIT_OR_FORMAT": 0,
+      "MISSING_ENUM_CONSTRAINT": 0,
+      "OVERLAPPING_TOOL_DESCRIPTIONS": 58
+    },
+    "findings": [
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "list-api-keys",
+        "path": "/description",
+        "message": "Description overlaps list-contact-segments (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "list-api-keys",
+        "path": "/description",
+        "message": "Description overlaps list-domains (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "list-api-keys",
+        "path": "/description",
+        "message": "Description overlaps list-templates (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-api-key",
+        "path": "/description",
+        "message": "Description overlaps remove-broadcast (Jaccard 0.703)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-api-key",
+        "path": "/description",
+        "message": "Description overlaps remove-contact-property (Jaccard 0.711)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-api-key",
+        "path": "/description",
+        "message": "Description overlaps remove-contact (Jaccard 0.667)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-api-key",
+        "path": "/description",
+        "message": "Description overlaps remove-domain (Jaccard 0.675)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-api-key",
+        "path": "/description",
+        "message": "Description overlaps remove-segment (Jaccard 0.743)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-api-key",
+        "path": "/description",
+        "message": "Description overlaps remove-template (Jaccard 0.667)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-api-key",
+        "path": "/description",
+        "message": "Description overlaps remove-topic (Jaccard 0.743)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-api-key",
+        "path": "/description",
+        "message": "Description overlaps remove-webhook (Jaccard 0.694)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "create-automation",
+        "path": "/description",
+        "message": "Description overlaps update-automation (Jaccard 0.804)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-automation",
+        "path": "/description",
+        "message": "Description overlaps remove-broadcast (Jaccard 0.676)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-automation",
+        "path": "/description",
+        "message": "Description overlaps remove-contact-property (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-automation",
+        "path": "/description",
+        "message": "Description overlaps remove-domain (Jaccard 0.650)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-automation",
+        "path": "/description",
+        "message": "Description overlaps remove-segment (Jaccard 0.622)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-automation",
+        "path": "/description",
+        "message": "Description overlaps remove-template (Jaccard 0.641)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-automation",
+        "path": "/description",
+        "message": "Description overlaps remove-topic (Jaccard 0.622)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-broadcast",
+        "path": "/description",
+        "message": "Description overlaps remove-contact-property (Jaccard 0.714)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-broadcast",
+        "path": "/description",
+        "message": "Description overlaps remove-contact (Jaccard 0.765)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-broadcast",
+        "path": "/description",
+        "message": "Description overlaps remove-domain (Jaccard 0.722)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-broadcast",
+        "path": "/description",
+        "message": "Description overlaps remove-segment (Jaccard 0.867)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-broadcast",
+        "path": "/description",
+        "message": "Description overlaps remove-template (Jaccard 0.875)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-broadcast",
+        "path": "/description",
+        "message": "Description overlaps remove-topic (Jaccard 0.867)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-broadcast",
+        "path": "/description",
+        "message": "Description overlaps remove-webhook (Jaccard 0.806)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "compose-broadcast",
+        "path": "/description",
+        "message": "Description overlaps compose-template (Jaccard 0.893)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "get-contact-property",
+        "path": "/description",
+        "message": "Description overlaps get-contact (Jaccard 0.667)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-contact-property",
+        "path": "/description",
+        "message": "Description overlaps remove-contact (Jaccard 0.722)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-contact-property",
+        "path": "/description",
+        "message": "Description overlaps remove-domain (Jaccard 0.730)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-contact-property",
+        "path": "/description",
+        "message": "Description overlaps remove-segment (Jaccard 0.758)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-contact-property",
+        "path": "/description",
+        "message": "Description overlaps remove-template (Jaccard 0.676)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-contact-property",
+        "path": "/description",
+        "message": "Description overlaps remove-topic (Jaccard 0.758)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-contact-property",
+        "path": "/description",
+        "message": "Description overlaps remove-webhook (Jaccard 0.758)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "get-contact",
+        "path": "/description",
+        "message": "Description overlaps update-contact (Jaccard 0.667)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "update-contact",
+        "path": "/description",
+        "message": "Description overlaps update-contact-topics (Jaccard 0.714)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-contact",
+        "path": "/description",
+        "message": "Description overlaps remove-domain (Jaccard 0.730)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-contact",
+        "path": "/description",
+        "message": "Description overlaps remove-segment (Jaccard 0.813)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-contact",
+        "path": "/description",
+        "message": "Description overlaps remove-template (Jaccard 0.771)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-contact",
+        "path": "/description",
+        "message": "Description overlaps remove-topic (Jaccard 0.813)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-contact",
+        "path": "/description",
+        "message": "Description overlaps remove-webhook (Jaccard 0.758)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "list-contact-segments",
+        "path": "/description",
+        "message": "Description overlaps list-contact-topics (Jaccard 0.727)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "list-domains",
+        "path": "/description",
+        "message": "Description overlaps list-templates (Jaccard 0.667)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-domain",
+        "path": "/description",
+        "message": "Description overlaps remove-segment (Jaccard 0.765)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-domain",
+        "path": "/description",
+        "message": "Description overlaps remove-template (Jaccard 0.730)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-domain",
+        "path": "/description",
+        "message": "Description overlaps remove-topic (Jaccard 0.765)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-domain",
+        "path": "/description",
+        "message": "Description overlaps remove-webhook (Jaccard 0.714)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "list-received-email-attachments",
+        "path": "/description",
+        "message": "Description overlaps list-sent-email-attachments (Jaccard 0.750)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "get-received-email-attachment",
+        "path": "/description",
+        "message": "Description overlaps get-sent-email-attachment (Jaccard 0.833)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "get-inbox-thread",
+        "path": "/description",
+        "message": "Description overlaps list-inbox-thread-emails (Jaccard 0.675)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "get-segment",
+        "path": "/description",
+        "message": "Description overlaps get-topic (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-segment",
+        "path": "/description",
+        "message": "Description overlaps remove-template (Jaccard 0.813)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-segment",
+        "path": "/description",
+        "message": "Description overlaps remove-topic (Jaccard 0.929)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-segment",
+        "path": "/description",
+        "message": "Description overlaps remove-webhook (Jaccard 0.862)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "add-suppression",
+        "path": "/description",
+        "message": "Description overlaps batch-add-suppressions (Jaccard 0.682)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-suppression",
+        "path": "/description",
+        "message": "Description overlaps batch-remove-suppressions (Jaccard 0.632)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-template",
+        "path": "/description",
+        "message": "Description overlaps remove-topic (Jaccard 0.813)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-template",
+        "path": "/description",
+        "message": "Description overlaps remove-webhook (Jaccard 0.758)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "remove-topic",
+        "path": "/description",
+        "message": "Description overlaps remove-webhook (Jaccard 0.862)"
+      }
+    ],
+    "findings_per_tool": 0.42028985507246375,
+    "per_tool": [
+      {
+        "tool": "get-tiptap-json-content",
+        "findings": 0
+      },
+      {
+        "tool": "connect-to-editor",
+        "findings": 0
+      },
+      {
+        "tool": "disconnect-from-editor",
+        "findings": 0
+      },
+      {
+        "tool": "create-api-key",
+        "findings": 0
+      },
+      {
+        "tool": "list-api-keys",
+        "findings": 3
+      },
+      {
+        "tool": "update-api-key",
+        "findings": 0
+      },
+      {
+        "tool": "remove-api-key",
+        "findings": 8
+      },
+      {
+        "tool": "create-automation",
+        "findings": 1
+      },
+      {
+        "tool": "update-automation",
+        "findings": 0
+      },
+      {
+        "tool": "get-automation",
+        "findings": 0
+      },
+      {
+        "tool": "duplicate-automation",
+        "findings": 0
+      },
+      {
+        "tool": "remove-automation",
+        "findings": 6
+      },
+      {
+        "tool": "get-automation-runs",
+        "findings": 0
+      },
+      {
+        "tool": "cancel-automation-run",
+        "findings": 0
+      },
+      {
+        "tool": "create-broadcast",
+        "findings": 0
+      },
+      {
+        "tool": "send-broadcast",
+        "findings": 0
+      },
+      {
+        "tool": "list-broadcasts",
+        "findings": 0
+      },
+      {
+        "tool": "get-broadcast",
+        "findings": 0
+      },
+      {
+        "tool": "cancel-broadcast",
+        "findings": 0
+      },
+      {
+        "tool": "duplicate-broadcast",
+        "findings": 0
+      },
+      {
+        "tool": "remove-broadcast",
+        "findings": 7
+      },
+      {
+        "tool": "compose-broadcast",
+        "findings": 1
+      },
+      {
+        "tool": "update-broadcast",
+        "findings": 0
+      },
+      {
+        "tool": "list-broadcast-clicked-links",
+        "findings": 0
+      },
+      {
+        "tool": "list-broadcast-recipients",
+        "findings": 0
+      },
+      {
+        "tool": "create-contact-import",
+        "findings": 0
+      },
+      {
+        "tool": "get-contact-import",
+        "findings": 0
+      },
+      {
+        "tool": "list-contact-imports",
+        "findings": 0
+      },
+      {
+        "tool": "create-contact-property",
+        "findings": 0
+      },
+      {
+        "tool": "list-contact-properties",
+        "findings": 0
+      },
+      {
+        "tool": "get-contact-property",
+        "findings": 1
+      },
+      {
+        "tool": "update-contact-property",
+        "findings": 0
+      },
+      {
+        "tool": "remove-contact-property",
+        "findings": 6
+      },
+      {
+        "tool": "create-contact",
+        "findings": 0
+      },
+      {
+        "tool": "list-contacts",
+        "findings": 0
+      },
+      {
+        "tool": "get-contact",
+        "findings": 1
+      },
+      {
+        "tool": "update-contact",
+        "findings": 1
+      },
+      {
+        "tool": "remove-contact",
+        "findings": 5
+      },
+      {
+        "tool": "add-contact-to-segment",
+        "findings": 0
+      },
+      {
+        "tool": "remove-contact-from-segment",
+        "findings": 0
+      },
+      {
+        "tool": "list-contact-segments",
+        "findings": 1
+      },
+      {
+        "tool": "list-contact-topics",
+        "findings": 0
+      },
+      {
+        "tool": "update-contact-topics",
+        "findings": 0
+      },
+      {
+        "tool": "create-domain",
+        "findings": 0
+      },
+      {
+        "tool": "list-domains",
+        "findings": 1
+      },
+      {
+        "tool": "get-domain",
+        "findings": 0
+      },
+      {
+        "tool": "update-domain",
+        "findings": 0
+      },
+      {
+        "tool": "remove-domain",
+        "findings": 4
+      },
+      {
+        "tool": "verify-domain",
+        "findings": 0
+      },
+      {
+        "tool": "enable-forge",
+        "findings": 0
+      },
+      {
+        "tool": "create-domain-claim",
+        "findings": 0
+      },
+      {
+        "tool": "get-domain-claim",
+        "findings": 0
+      },
+      {
+        "tool": "verify-domain-claim",
+        "findings": 0
+      },
+      {
+        "tool": "send-email",
+        "findings": 0
+      },
+      {
+        "tool": "list-emails",
+        "findings": 0
+      },
+      {
+        "tool": "get-email",
+        "findings": 0
+      },
+      {
+        "tool": "list-received-emails",
+        "findings": 0
+      },
+      {
+        "tool": "get-received-email",
+        "findings": 0
+      },
+      {
+        "tool": "list-received-email-attachments",
+        "findings": 1
+      },
+      {
+        "tool": "get-received-email-attachment",
+        "findings": 1
+      },
+      {
+        "tool": "cancel-email",
+        "findings": 0
+      },
+      {
+        "tool": "update-email",
+        "findings": 0
+      },
+      {
+        "tool": "share-email",
+        "findings": 0
+      },
+      {
+        "tool": "get-email-metrics",
+        "findings": 0
+      },
+      {
+        "tool": "list-sent-email-attachments",
+        "findings": 0
+      },
+      {
+        "tool": "get-sent-email-attachment",
+        "findings": 0
+      },
+      {
+        "tool": "send-batch-emails",
+        "findings": 0
+      },
+      {
+        "tool": "send-event",
+        "findings": 0
+      },
+      {
+        "tool": "manage-events",
+        "findings": 0
+      },
+      {
+        "tool": "create-inbox",
+        "findings": 0
+      },
+      {
+        "tool": "list-inboxes",
+        "findings": 0
+      },
+      {
+        "tool": "get-inbox",
+        "findings": 0
+      },
+      {
+        "tool": "update-inbox",
+        "findings": 0
+      },
+      {
+        "tool": "remove-inbox",
+        "findings": 0
+      },
+      {
+        "tool": "list-inbox-threads",
+        "findings": 0
+      },
+      {
+        "tool": "search-inbox-threads",
+        "findings": 0
+      },
+      {
+        "tool": "get-inbox-thread",
+        "findings": 1
+      },
+      {
+        "tool": "list-inbox-thread-emails",
+        "findings": 0
+      },
+      {
+        "tool": "update-inbox-thread",
+        "findings": 0
+      },
+      {
+        "tool": "add-inbox-thread-labels",
+        "findings": 0
+      },
+      {
+        "tool": "set-inbox-thread-labels",
+        "findings": 0
+      },
+      {
+        "tool": "remove-inbox-thread-label",
+        "findings": 0
+      },
+      {
+        "tool": "remove-inbox-thread",
+        "findings": 0
+      },
+      {
+        "tool": "get-inbox-thread-email",
+        "findings": 0
+      },
+      {
+        "tool": "reply-to-inbox-thread-email",
+        "findings": 0
+      },
+      {
+        "tool": "forward-inbox-thread-email",
+        "findings": 0
+      },
+      {
+        "tool": "list-inbox-labels",
+        "findings": 0
+      },
+      {
+        "tool": "create-inbox-label",
+        "findings": 0
+      },
+      {
+        "tool": "update-inbox-label",
+        "findings": 0
+      },
+      {
+        "tool": "remove-inbox-label",
+        "findings": 0
+      },
+      {
+        "tool": "list-inbox-drafts",
+        "findings": 0
+      },
+      {
+        "tool": "create-inbox-draft",
+        "findings": 0
+      },
+      {
+        "tool": "get-inbox-draft",
+        "findings": 0
+      },
+      {
+        "tool": "update-inbox-draft",
+        "findings": 0
+      },
+      {
+        "tool": "remove-inbox-draft",
+        "findings": 0
+      },
+      {
+        "tool": "send-inbox-draft",
+        "findings": 0
+      },
+      {
+        "tool": "send-new-inbox-email",
+        "findings": 0
+      },
+      {
+        "tool": "get-inbox-agent",
+        "findings": 0
+      },
+      {
+        "tool": "update-inbox-agent",
+        "findings": 0
+      },
+      {
+        "tool": "list-logs",
+        "findings": 0
+      },
+      {
+        "tool": "get-log",
+        "findings": 0
+      },
+      {
+        "tool": "list-oauth-grants",
+        "findings": 0
+      },
+      {
+        "tool": "revoke-oauth-grant",
+        "findings": 0
+      },
+      {
+        "tool": "create-segment",
+        "findings": 0
+      },
+      {
+        "tool": "list-segments",
+        "findings": 0
+      },
+      {
+        "tool": "get-segment",
+        "findings": 1
+      },
+      {
+        "tool": "update-segment",
+        "findings": 0
+      },
+      {
+        "tool": "remove-segment",
+        "findings": 3
+      },
+      {
+        "tool": "add-suppression",
+        "findings": 1
+      },
+      {
+        "tool": "list-suppressions",
+        "findings": 0
+      },
+      {
+        "tool": "get-suppression",
+        "findings": 0
+      },
+      {
+        "tool": "remove-suppression",
+        "findings": 1
+      },
+      {
+        "tool": "batch-add-suppressions",
+        "findings": 0
+      },
+      {
+        "tool": "batch-remove-suppressions",
+        "findings": 0
+      },
+      {
+        "tool": "create-template",
+        "findings": 0
+      },
+      {
+        "tool": "list-templates",
+        "findings": 0
+      },
+      {
+        "tool": "get-template",
+        "findings": 0
+      },
+      {
+        "tool": "compose-template",
+        "findings": 0
+      },
+      {
+        "tool": "update-template",
+        "findings": 0
+      },
+      {
+        "tool": "remove-template",
+        "findings": 2
+      },
+      {
+        "tool": "publish-template",
+        "findings": 0
+      },
+      {
+        "tool": "duplicate-template",
+        "findings": 0
+      },
+      {
+        "tool": "create-topic",
+        "findings": 0
+      },
+      {
+        "tool": "list-topics",
+        "findings": 0
+      },
+      {
+        "tool": "get-topic",
+        "findings": 0
+      },
+      {
+        "tool": "update-topic",
+        "findings": 0
+      },
+      {
+        "tool": "remove-topic",
+        "findings": 1
+      },
+      {
+        "tool": "get-usage",
+        "findings": 0
+      },
+      {
+        "tool": "create-webhook",
+        "findings": 0
+      },
+      {
+        "tool": "list-webhooks",
+        "findings": 0
+      },
+      {
+        "tool": "get-webhook",
+        "findings": 0
+      },
+      {
+        "tool": "update-webhook",
+        "findings": 0
+      },
+      {
+        "tool": "list-webhook-events",
+        "findings": 0
+      },
+      {
+        "tool": "get-webhook-event",
+        "findings": 0
+      },
+      {
+        "tool": "replay-webhook-event",
+        "findings": 0
+      },
+      {
+        "tool": "rotate-webhook-signing-secret",
+        "findings": 0
+      },
+      {
+        "tool": "list-webhook-event-attempts",
+        "findings": 0
+      },
+      {
+        "tool": "remove-webhook",
+        "findings": 0
+      }
+    ]
+  },
+  "schema_compilation_errors": {
+    "create-contact-property": "strict mode: use allowUnionTypes to allow union type keyword at \"#/properties/fallbackValue\" (strictTypes)",
+    "update-contact-property": "strict mode: use allowUnionTypes to allow union type keyword at \"#/properties/fallbackValue\" (strictTypes)",
+    "create-contact": "strict mode: use allowUnionTypes to allow union type keyword at \"#/properties/properties/additionalProperties\" (strictTypes)",
+    "update-contact": "strict mode: use allowUnionTypes to allow union type keyword at \"#/properties/properties/additionalProperties\" (strictTypes)",
+    "create-template": "strict mode: use allowUnionTypes to allow union type keyword at \"#/properties/variables/items/properties/fallbackValue\" (strictTypes)",
+    "update-template": "strict mode: use allowUnionTypes to allow union type keyword at \"#/properties/variables/items/properties/fallbackValue\" (strictTypes)"
+  },
+  "results": [
+    {
+      "task_id": "resend-01",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "send-email",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3837,
+      "input_tokens": 42300,
+      "output_tokens": 64,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-01",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "send-email",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 6081,
+      "input_tokens": 42300,
+      "output_tokens": 67,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-01",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "send-email",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3810,
+      "input_tokens": 42300,
+      "output_tokens": 85,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-02",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "get-email",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 7073,
+      "input_tokens": 42289,
+      "output_tokens": 56,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-02",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "get-email",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3750,
+      "input_tokens": 42289,
+      "output_tokens": 74,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-02",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "get-email",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3755,
+      "input_tokens": 42289,
+      "output_tokens": 56,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-03",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "cancel-email",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4462,
+      "input_tokens": 42291,
+      "output_tokens": 63,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-03",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "cancel-email",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4784,
+      "input_tokens": 42291,
+      "output_tokens": 56,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-03",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "cancel-email",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4616,
+      "input_tokens": 42291,
+      "output_tokens": 53,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-04",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "update-email",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": false,
+      "first_try_pass": false,
+      "duration_ms": 3858,
+      "input_tokens": 42297,
+      "output_tokens": 104,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-04",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "update-email",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": false,
+      "first_try_pass": false,
+      "duration_ms": 4458,
+      "input_tokens": 42297,
+      "output_tokens": 93,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-04",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "update-email",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": false,
+      "first_try_pass": false,
+      "duration_ms": 6186,
+      "input_tokens": 42297,
+      "output_tokens": 109,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-05",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "list-emails",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 6072,
+      "input_tokens": 42287,
+      "output_tokens": 68,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-05",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "list-emails",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4100,
+      "input_tokens": 42287,
+      "output_tokens": 57,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-05",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "list-emails",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3865,
+      "input_tokens": 42287,
+      "output_tokens": 58,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-06",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "create-contact",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": false,
+      "assertions_pass": true,
+      "first_try_pass": false,
+      "duration_ms": 5811,
+      "input_tokens": 42294,
+      "output_tokens": 65,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-06",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "create-contact",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": false,
+      "assertions_pass": true,
+      "first_try_pass": false,
+      "duration_ms": 4083,
+      "input_tokens": 42294,
+      "output_tokens": 76,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-06",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "create-contact",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": false,
+      "assertions_pass": true,
+      "first_try_pass": false,
+      "duration_ms": 4661,
+      "input_tokens": 42294,
+      "output_tokens": 57,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-07",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "get-contact",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2977,
+      "input_tokens": 42288,
+      "output_tokens": 42,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-07",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "get-contact",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2902,
+      "input_tokens": 42288,
+      "output_tokens": 40,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-07",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "get-contact",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4601,
+      "input_tokens": 42288,
+      "output_tokens": 221,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-08",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "update-contact",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": false,
+      "assertions_pass": true,
+      "first_try_pass": false,
+      "duration_ms": 6732,
+      "input_tokens": 42287,
+      "output_tokens": 61,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-08",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "update-contact",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": false,
+      "assertions_pass": true,
+      "first_try_pass": false,
+      "duration_ms": 4546,
+      "input_tokens": 42287,
+      "output_tokens": 54,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-08",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "update-contact",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": false,
+      "assertions_pass": true,
+      "first_try_pass": false,
+      "duration_ms": 3912,
+      "input_tokens": 42287,
+      "output_tokens": 53,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-09",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "get-contact",
+      "selection_correct": false,
+      "param_compliance_eligible": false,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": false,
+      "duration_ms": 7368,
+      "input_tokens": 42289,
+      "output_tokens": 165,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-09",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "get-contact",
+      "selection_correct": false,
+      "param_compliance_eligible": false,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": false,
+      "duration_ms": 5669,
+      "input_tokens": 42289,
+      "output_tokens": 120,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-09",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "get-contact",
+      "selection_correct": false,
+      "param_compliance_eligible": false,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": false,
+      "duration_ms": 5666,
+      "input_tokens": 42289,
+      "output_tokens": 143,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-10",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "list-contacts",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3365,
+      "input_tokens": 42291,
+      "output_tokens": 48,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-10",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "list-contacts",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4706,
+      "input_tokens": 42291,
+      "output_tokens": 49,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-10",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "list-contacts",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3223,
+      "input_tokens": 42291,
+      "output_tokens": 47,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-11",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "create-segment",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3457,
+      "input_tokens": 42291,
+      "output_tokens": 42,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-11",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "create-segment",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3672,
+      "input_tokens": 42291,
+      "output_tokens": 40,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-11",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "create-segment",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 6591,
+      "input_tokens": 42291,
+      "output_tokens": 39,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-12",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "get-segment",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3752,
+      "input_tokens": 42287,
+      "output_tokens": 56,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-12",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "get-segment",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4620,
+      "input_tokens": 42287,
+      "output_tokens": 134,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-12",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "get-segment",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3386,
+      "input_tokens": 42287,
+      "output_tokens": 51,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-13",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "list-segments",
+      "selection_correct": false,
+      "param_compliance_eligible": false,
+      "schema_valid": true,
+      "assertions_pass": false,
+      "first_try_pass": false,
+      "duration_ms": 3940,
+      "input_tokens": 42293,
+      "output_tokens": 58,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-13",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "list-segments",
+      "selection_correct": false,
+      "param_compliance_eligible": false,
+      "schema_valid": true,
+      "assertions_pass": false,
+      "first_try_pass": false,
+      "duration_ms": 5139,
+      "input_tokens": 42293,
+      "output_tokens": 69,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-13",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "update-segment",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4481,
+      "input_tokens": 42293,
+      "output_tokens": 80,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-14",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "get-segment",
+      "selection_correct": false,
+      "param_compliance_eligible": false,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": false,
+      "duration_ms": 6052,
+      "input_tokens": 42285,
+      "output_tokens": 182,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-14",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "list-segments",
+      "selection_correct": false,
+      "param_compliance_eligible": false,
+      "schema_valid": true,
+      "assertions_pass": false,
+      "first_try_pass": false,
+      "duration_ms": 5330,
+      "input_tokens": 42285,
+      "output_tokens": 181,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-14",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "list-segments",
+      "selection_correct": false,
+      "param_compliance_eligible": false,
+      "schema_valid": true,
+      "assertions_pass": false,
+      "first_try_pass": false,
+      "duration_ms": 6436,
+      "input_tokens": 42285,
+      "output_tokens": 193,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-15",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "list-segments",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3952,
+      "input_tokens": 42291,
+      "output_tokens": 45,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-15",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "list-segments",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3658,
+      "input_tokens": 42291,
+      "output_tokens": 41,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-15",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "list-segments",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 7977,
+      "input_tokens": 42291,
+      "output_tokens": 60,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-16",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "create-domain",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 6450,
+      "input_tokens": 42288,
+      "output_tokens": 99,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-16",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "create-domain",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4770,
+      "input_tokens": 42288,
+      "output_tokens": 81,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-16",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "create-domain",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3809,
+      "input_tokens": 42288,
+      "output_tokens": 82,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-17",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "get-domain",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3980,
+      "input_tokens": 42287,
+      "output_tokens": 101,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-17",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "list-domains",
+      "selection_correct": false,
+      "param_compliance_eligible": false,
+      "schema_valid": true,
+      "assertions_pass": false,
+      "first_try_pass": false,
+      "duration_ms": 4490,
+      "input_tokens": 42287,
+      "output_tokens": 90,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-17",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "list-domains",
+      "selection_correct": false,
+      "param_compliance_eligible": false,
+      "schema_valid": true,
+      "assertions_pass": false,
+      "first_try_pass": false,
+      "duration_ms": 5103,
+      "input_tokens": 42287,
+      "output_tokens": 121,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-18",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "verify-domain",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 6239,
+      "input_tokens": 42290,
+      "output_tokens": 252,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-18",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "verify-domain",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 5767,
+      "input_tokens": 42290,
+      "output_tokens": 253,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-18",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "verify-domain",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 10412,
+      "input_tokens": 42290,
+      "output_tokens": 542,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-19",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "list-domains",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4559,
+      "input_tokens": 42288,
+      "output_tokens": 55,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-19",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "list-domains",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 5650,
+      "input_tokens": 42288,
+      "output_tokens": 63,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-19",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "list-domains",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3778,
+      "input_tokens": 42288,
+      "output_tokens": 58,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-20",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "send-email",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 10392,
+      "input_tokens": 42311,
+      "output_tokens": 172,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-20",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "send-email",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 9285,
+      "input_tokens": 42311,
+      "output_tokens": 155,
+      "api_requests": 1
+    },
+    {
+      "task_id": "resend-20",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "send-email",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4910,
+      "input_tokens": 42311,
+      "output_tokens": 150,
+      "api_requests": 1
+    }
+  ]
+}

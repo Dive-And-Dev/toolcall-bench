@@ -1,0 +1,1247 @@
+{
+  "started_at": "2026-11-20T06:43:22.471Z",
+  "completed_at": "2026-11-20T06:44:18.296Z",
+  "server_name": "playwright",
+  "driver": "zenmux",
+  "model": "anthropic/claude-sonnet-5.5",
+  "trials": 3,
+  "driver_options": {
+    "gateway": "https://zenmux.ai/api/v1",
+    "model_id": "anthropic/claude-sonnet-5.5"
+  },
+  "seed": 42,
+  "snapshot": {
+    "server_name": "playwright",
+    "repo_url": "https://github.com/microsoft/playwright-mcp",
+    "architecture_type": "static_catalog",
+    "selection_metric": "standard",
+    "snapshot_meta": {
+      "package": "@playwright/mcp",
+      "package_version": "0.0.86",
+      "captured_at": "2026-11-19T20:40:58.337Z",
+      "capture_method": "SDK stdio initialize + tools/list; no credential",
+      "capture_cmd": "node dist/cli.js snapshot --cmd 'npx -y @playwright/mcp@0.0.86' --out suites/playwright/manifest.json",
+      "requires_auth_for_tools_list": false
+    }
+  },
+  "manifest_sha256": "3dedd61dfa8534cb060bca92f8f926846f6745617e7cbebdc0cf48a566e77a9a",
+  "tasks_sha256": "e8feb386b8332789d265938b93945f95b3d3588f1036bb4ef33a685bbdeff345",
+  "metrics": {
+    "tool_selection_accuracy": {
+      "mean": 1,
+      "ci_low": 1,
+      "ci_high": 1,
+      "half_width": 0,
+      "n_tasks": 20,
+      "n_trials": 60,
+      "B": 5000,
+      "seed": 42
+    },
+    "param_compliance_conditional": {
+      "mean": 1,
+      "ci_low": 1,
+      "ci_high": 1,
+      "half_width": 0,
+      "n_tasks": 20,
+      "n_trials": 60,
+      "B": 5000,
+      "seed": 42
+    },
+    "end_to_end_first_try_pass": {
+      "mean": 1,
+      "ci_low": 1,
+      "ci_high": 1,
+      "half_width": 0,
+      "n_tasks": 20,
+      "n_trials": 60,
+      "B": 5000,
+      "seed": 42
+    }
+  },
+  "selection_metric": "standard",
+  "tokens": {
+    "catalog_tokens": 3940,
+    "tool_count": 25,
+    "encoding": "o200k_base",
+    "median_tokens_per_tool": 169,
+    "per_tool": [
+      {
+        "tool": "browser_close",
+        "tokens": 49
+      },
+      {
+        "tool": "browser_resize",
+        "tokens": 81
+      },
+      {
+        "tool": "browser_console_messages",
+        "tokens": 166
+      },
+      {
+        "tool": "browser_handle_dialog",
+        "tokens": 86
+      },
+      {
+        "tool": "browser_emulate_media",
+        "tokens": 254
+      },
+      {
+        "tool": "browser_evaluate",
+        "tokens": 169
+      },
+      {
+        "tool": "browser_file_upload",
+        "tokens": 86
+      },
+      {
+        "tool": "browser_drop",
+        "tokens": 213
+      },
+      {
+        "tool": "browser_find",
+        "tokens": 250
+      },
+      {
+        "tool": "browser_fill_form",
+        "tokens": 230
+      },
+      {
+        "tool": "browser_press_key",
+        "tokens": 84
+      },
+      {
+        "tool": "browser_type",
+        "tokens": 173
+      },
+      {
+        "tool": "browser_navigate",
+        "tokens": 65
+      },
+      {
+        "tool": "browser_navigate_back",
+        "tokens": 53
+      },
+      {
+        "tool": "browser_network_requests",
+        "tokens": 200
+      },
+      {
+        "tool": "browser_network_request",
+        "tokens": 191
+      },
+      {
+        "tool": "browser_run_code_unsafe",
+        "tokens": 182
+      },
+      {
+        "tool": "browser_take_screenshot",
+        "tokens": 327
+      },
+      {
+        "tool": "browser_snapshot",
+        "tokens": 169
+      },
+      {
+        "tool": "browser_click",
+        "tokens": 181
+      },
+      {
+        "tool": "browser_drag",
+        "tokens": 158
+      },
+      {
+        "tool": "browser_hover",
+        "tokens": 97
+      },
+      {
+        "tool": "browser_select_option",
+        "tokens": 137
+      },
+      {
+        "tool": "browser_tabs",
+        "tokens": 191
+      },
+      {
+        "tool": "browser_wait_for",
+        "tokens": 146
+      }
+    ]
+  },
+  "lint": {
+    "total_findings": 0,
+    "counts": {
+      "MISSING_DESCRIPTION": 0,
+      "UNTYPED_OBJECT": 0,
+      "AMBIGUOUS_UNIT_OR_FORMAT": 0,
+      "MISSING_ENUM_CONSTRAINT": 0,
+      "OVERLAPPING_TOOL_DESCRIPTIONS": 0
+    },
+    "findings": [],
+    "findings_per_tool": 0,
+    "per_tool": [
+      {
+        "tool": "browser_close",
+        "findings": 0
+      },
+      {
+        "tool": "browser_resize",
+        "findings": 0
+      },
+      {
+        "tool": "browser_console_messages",
+        "findings": 0
+      },
+      {
+        "tool": "browser_handle_dialog",
+        "findings": 0
+      },
+      {
+        "tool": "browser_emulate_media",
+        "findings": 0
+      },
+      {
+        "tool": "browser_evaluate",
+        "findings": 0
+      },
+      {
+        "tool": "browser_file_upload",
+        "findings": 0
+      },
+      {
+        "tool": "browser_drop",
+        "findings": 0
+      },
+      {
+        "tool": "browser_find",
+        "findings": 0
+      },
+      {
+        "tool": "browser_fill_form",
+        "findings": 0
+      },
+      {
+        "tool": "browser_press_key",
+        "findings": 0
+      },
+      {
+        "tool": "browser_type",
+        "findings": 0
+      },
+      {
+        "tool": "browser_navigate",
+        "findings": 0
+      },
+      {
+        "tool": "browser_navigate_back",
+        "findings": 0
+      },
+      {
+        "tool": "browser_network_requests",
+        "findings": 0
+      },
+      {
+        "tool": "browser_network_request",
+        "findings": 0
+      },
+      {
+        "tool": "browser_run_code_unsafe",
+        "findings": 0
+      },
+      {
+        "tool": "browser_take_screenshot",
+        "findings": 0
+      },
+      {
+        "tool": "browser_snapshot",
+        "findings": 0
+      },
+      {
+        "tool": "browser_click",
+        "findings": 0
+      },
+      {
+        "tool": "browser_drag",
+        "findings": 0
+      },
+      {
+        "tool": "browser_hover",
+        "findings": 0
+      },
+      {
+        "tool": "browser_select_option",
+        "findings": 0
+      },
+      {
+        "tool": "browser_tabs",
+        "findings": 0
+      },
+      {
+        "tool": "browser_wait_for",
+        "findings": 0
+      }
+    ]
+  },
+  "schema_compilation_errors": {},
+  "results": [
+    {
+      "task_id": "playwright-01",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_navigate",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1988,
+      "input_tokens": 7146,
+      "output_tokens": 58,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-01",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_navigate",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1903,
+      "input_tokens": 7146,
+      "output_tokens": 58,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-01",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_navigate",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2192,
+      "input_tokens": 7146,
+      "output_tokens": 58,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-02",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_resize",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2203,
+      "input_tokens": 7148,
+      "output_tokens": 71,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-02",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_resize",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2323,
+      "input_tokens": 7148,
+      "output_tokens": 71,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-02",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_resize",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2496,
+      "input_tokens": 7148,
+      "output_tokens": 71,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-03",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_close",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1625,
+      "input_tokens": 7140,
+      "output_tokens": 27,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-03",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_close",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1612,
+      "input_tokens": 7140,
+      "output_tokens": 27,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-03",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_close",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2009,
+      "input_tokens": 7140,
+      "output_tokens": 27,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-04",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_console_messages",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1773,
+      "input_tokens": 7145,
+      "output_tokens": 51,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-04",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_console_messages",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1824,
+      "input_tokens": 7145,
+      "output_tokens": 51,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-04",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_console_messages",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1651,
+      "input_tokens": 7145,
+      "output_tokens": 51,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-05",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_handle_dialog",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1778,
+      "input_tokens": 7143,
+      "output_tokens": 54,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-05",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_handle_dialog",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2484,
+      "input_tokens": 7143,
+      "output_tokens": 54,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-05",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_handle_dialog",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1954,
+      "input_tokens": 7143,
+      "output_tokens": 54,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-06",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_emulate_media",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1251,
+      "input_tokens": 7144,
+      "output_tokens": 108,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-06",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_emulate_media",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1703,
+      "input_tokens": 7144,
+      "output_tokens": 108,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-06",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_emulate_media",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1423,
+      "input_tokens": 7144,
+      "output_tokens": 108,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-07",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_file_upload",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1784,
+      "input_tokens": 7154,
+      "output_tokens": 66,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-07",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_file_upload",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1581,
+      "input_tokens": 7154,
+      "output_tokens": 66,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-07",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_file_upload",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1601,
+      "input_tokens": 7154,
+      "output_tokens": 66,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-08",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_press_key",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1056,
+      "input_tokens": 7148,
+      "output_tokens": 52,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-08",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_press_key",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1245,
+      "input_tokens": 7148,
+      "output_tokens": 52,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-08",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_press_key",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1131,
+      "input_tokens": 7148,
+      "output_tokens": 52,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-09",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_type",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2290,
+      "input_tokens": 7153,
+      "output_tokens": 97,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-09",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_type",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2259,
+      "input_tokens": 7153,
+      "output_tokens": 97,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-09",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_type",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1805,
+      "input_tokens": 7153,
+      "output_tokens": 97,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-10",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_navigate_back",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1573,
+      "input_tokens": 7144,
+      "output_tokens": 31,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-10",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_navigate_back",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2135,
+      "input_tokens": 7144,
+      "output_tokens": 31,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-10",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_navigate_back",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1371,
+      "input_tokens": 7144,
+      "output_tokens": 31,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-11",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_network_requests",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1967,
+      "input_tokens": 7149,
+      "output_tokens": 51,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-11",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_network_requests",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2318,
+      "input_tokens": 7149,
+      "output_tokens": 51,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-11",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_network_requests",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2774,
+      "input_tokens": 7149,
+      "output_tokens": 51,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-12",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_network_request",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1960,
+      "input_tokens": 7142,
+      "output_tokens": 73,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-12",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_network_request",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1647,
+      "input_tokens": 7142,
+      "output_tokens": 73,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-12",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_network_request",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2587,
+      "input_tokens": 7142,
+      "output_tokens": 73,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-13",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_take_screenshot",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2250,
+      "input_tokens": 7160,
+      "output_tokens": 125,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-13",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_take_screenshot",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2920,
+      "input_tokens": 7160,
+      "output_tokens": 125,
+      "api_requests": 2
+    },
+    {
+      "task_id": "playwright-13",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_take_screenshot",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1957,
+      "input_tokens": 7160,
+      "output_tokens": 125,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-14",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_snapshot",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1490,
+      "input_tokens": 7144,
+      "output_tokens": 30,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-14",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_snapshot",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1729,
+      "input_tokens": 7144,
+      "output_tokens": 30,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-14",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_snapshot",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1633,
+      "input_tokens": 7144,
+      "output_tokens": 30,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-15",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_click",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1127,
+      "input_tokens": 7142,
+      "output_tokens": 49,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-15",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_click",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2096,
+      "input_tokens": 7142,
+      "output_tokens": 49,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-15",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_click",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1350,
+      "input_tokens": 7142,
+      "output_tokens": 49,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-16",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_hover",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2346,
+      "input_tokens": 7146,
+      "output_tokens": 50,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-16",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_hover",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1916,
+      "input_tokens": 7146,
+      "output_tokens": 50,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-16",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_hover",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2076,
+      "input_tokens": 7146,
+      "output_tokens": 50,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-17",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_select_option",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1281,
+      "input_tokens": 7151,
+      "output_tokens": 80,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-17",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_select_option",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1082,
+      "input_tokens": 7151,
+      "output_tokens": 80,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-17",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_select_option",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1135,
+      "input_tokens": 7151,
+      "output_tokens": 80,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-18",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_wait_for",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1566,
+      "input_tokens": 7144,
+      "output_tokens": 51,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-18",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_wait_for",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1779,
+      "input_tokens": 7144,
+      "output_tokens": 51,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-18",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_wait_for",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1652,
+      "input_tokens": 7144,
+      "output_tokens": 51,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-19",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_handle_dialog",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1442,
+      "input_tokens": 7149,
+      "output_tokens": 54,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-19",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_handle_dialog",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2824,
+      "input_tokens": 7149,
+      "output_tokens": 54,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-19",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_handle_dialog",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1715,
+      "input_tokens": 7149,
+      "output_tokens": 54,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-20",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_tabs",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1264,
+      "input_tokens": 7141,
+      "output_tokens": 71,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-20",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_tabs",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2673,
+      "input_tokens": 7141,
+      "output_tokens": 71,
+      "api_requests": 2
+    },
+    {
+      "task_id": "playwright-20",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_tabs",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2252,
+      "input_tokens": 7141,
+      "output_tokens": 71,
+      "api_requests": 1
+    }
+  ]
+}

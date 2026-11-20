@@ -48,7 +48,8 @@ program.command('lint-tasks [suite]')
 program.command('run')
   .option('--suite <path>', 'Suite directory')
   .option('--all', 'Run all captured suites')
-  .requiredOption('--driver <driver>', 'anthropic, openai, gemini, or mock')
+  .requiredOption('--driver <driver>', 'anthropic, openai, gemini, zenmux, or mock')
+  .option('--base-url <url>', 'OpenAI-compatible API base URL (zenmux defaults to https://zenmux.ai/api/v1)')
   .option('--model <model>', 'Provider model identifier (mock defaults to mock-v1)')
   .option('--trials <n>', 'Trials per task', '3')
   .option('--concurrency <n>', 'Maximum simultaneous model requests', '4')
@@ -59,16 +60,17 @@ program.command('run')
   .option('--out <directory>', 'Report and trace output directory', 'results')
   .action(async options => {
     if (Boolean(options.suite) === Boolean(options.all)) throw new Error('Provide --suite or --all, not both');
-    if (!['anthropic', 'openai', 'gemini', 'mock'].includes(options.driver)) throw new Error('Unknown driver');
+    if (!['anthropic', 'openai', 'gemini', 'zenmux', 'mock'].includes(options.driver)) throw new Error('Unknown driver');
     const driver = options.driver as Driver;
     if (driver === 'mock' && !options.ci && process.env.CI !== 'true') throw new Error('Mock driver requires --ci or CI=true');
     if (driver !== 'mock' && !options.model) throw new Error('--model is required for live drivers');
-    const keyName = { anthropic: 'ANTHROPIC_API_KEY', openai: 'OPENAI_API_KEY', gemini: 'GEMINI_API_KEY', mock: '' }[driver];
+    if (options.baseUrl && driver !== 'openai' && driver !== 'zenmux') throw new Error('--base-url is supported only for openai and zenmux');
+    const keyName = { anthropic: 'ANTHROPIC_API_KEY', openai: 'OPENAI_API_KEY', gemini: 'GEMINI_API_KEY', zenmux: 'ZENMUX_API_KEY', mock: '' }[driver];
     if (keyName && !process.env[keyName]) throw new Error(`Missing ${keyName}`);
     const seed = Number(options.seed);
     const runner = driver === 'mock'
       ? new MockModelRunner(options.model ?? 'mock-v1', seed, Number(options.selectionProbability), Number(options.invalidArgumentsProbability))
-      : new NativeModelRunner(driver, options.model);
+      : new NativeModelRunner(driver, options.model, { baseUrl: options.baseUrl });
     console.log('suite\tdriver\tmodel\tselection\tconditional_params\tfirst_try\tschema_errors');
     for (const path of options.all ? await suitePaths() : [options.suite]) {
       const output = await evaluateSuite(await loadSuite(path), runner, { trials: Number(options.trials), concurrency: Number(options.concurrency), seed });

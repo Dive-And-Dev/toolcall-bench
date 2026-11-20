@@ -1,0 +1,2046 @@
+{
+  "started_at": "2026-11-20T06:44:19.180Z",
+  "completed_at": "2026-11-20T06:46:04.739Z",
+  "server_name": "notion",
+  "driver": "zenmux",
+  "model": "openai/gpt-5.5",
+  "trials": 3,
+  "driver_options": {
+    "gateway": "https://zenmux.ai/api/v1",
+    "model_id": "openai/gpt-5.5"
+  },
+  "seed": 42,
+  "snapshot": {
+    "server_name": "notion",
+    "repo_url": "https://github.com/makenotion/notion-mcp-server",
+    "architecture_type": "static_catalog",
+    "selection_metric": "standard",
+    "snapshot_meta": {
+      "package": "@notionhq/notion-mcp-server",
+      "package_version": "2.6.1",
+      "captured_at": "2026-11-19T20:40:58.204Z",
+      "capture_method": "SDK stdio initialize + tools/list; dummy credential; network disabled with unshare -Urn; npm offline",
+      "capture_cmd": "node dist/cli.js snapshot --cmd 'unshare -Urn npx --offline -y @notionhq/notion-mcp-server@2.6.1' --env NOTION_TOKEN=ntn_dummy --out suites/notion/manifest.json",
+      "requires_auth_for_tools_list": false
+    }
+  },
+  "manifest_sha256": "ac5dd1457a9b32d342a05baf0cdcca803a6afcf0b93942eb6e9abdcbd526b59c",
+  "tasks_sha256": "0f963f98ae9417b1a729abd60b54c95cac7ebf9118822b639e65a065a1d7df85",
+  "metrics": {
+    "tool_selection_accuracy": {
+      "mean": 0.95,
+      "ci_low": 0.8666666666666668,
+      "ci_high": 1,
+      "half_width": 0.0666666666666666,
+      "n_tasks": 20,
+      "n_trials": 60,
+      "B": 5000,
+      "seed": 42
+    },
+    "param_compliance_conditional": {
+      "mean": 1,
+      "ci_low": 1,
+      "ci_high": 1,
+      "half_width": 0,
+      "n_tasks": 20,
+      "n_trials": 57,
+      "B": 5000,
+      "seed": 42
+    },
+    "end_to_end_first_try_pass": {
+      "mean": 0.95,
+      "ci_low": 0.8666666666666668,
+      "ci_high": 1,
+      "half_width": 0.0666666666666666,
+      "n_tasks": 20,
+      "n_trials": 60,
+      "B": 5000,
+      "seed": 42
+    }
+  },
+  "selection_metric": "standard",
+  "tokens": {
+    "catalog_tokens": 17163,
+    "tool_count": 24,
+    "encoding": "o200k_base",
+    "median_tokens_per_tool": 676,
+    "per_tool": [
+      {
+        "tool": "API-get-user",
+        "tokens": 591
+      },
+      {
+        "tool": "API-get-users",
+        "tokens": 649
+      },
+      {
+        "tool": "API-get-self",
+        "tokens": 581
+      },
+      {
+        "tool": "API-post-search",
+        "tokens": 1083
+      },
+      {
+        "tool": "API-get-block-children",
+        "tokens": 679
+      },
+      {
+        "tool": "API-patch-block-children",
+        "tokens": 699
+      },
+      {
+        "tool": "API-retrieve-a-block",
+        "tokens": 598
+      },
+      {
+        "tool": "API-update-a-block",
+        "tokens": 713
+      },
+      {
+        "tool": "API-delete-a-block",
+        "tokens": 597
+      },
+      {
+        "tool": "API-retrieve-a-page",
+        "tokens": 666
+      },
+      {
+        "tool": "API-patch-page",
+        "tokens": 876
+      },
+      {
+        "tool": "API-post-page",
+        "tokens": 806
+      },
+      {
+        "tool": "API-retrieve-a-page-property",
+        "tokens": 689
+      },
+      {
+        "tool": "API-retrieve-a-comment",
+        "tokens": 673
+      },
+      {
+        "tool": "API-create-a-comment",
+        "tokens": 711
+      },
+      {
+        "tool": "API-query-data-source",
+        "tokens": 756
+      },
+      {
+        "tool": "API-retrieve-a-data-source",
+        "tokens": 603
+      },
+      {
+        "tool": "API-update-a-data-source",
+        "tokens": 706
+      },
+      {
+        "tool": "API-create-a-data-source",
+        "tokens": 673
+      },
+      {
+        "tool": "API-list-data-source-templates",
+        "tokens": 625
+      },
+      {
+        "tool": "API-retrieve-a-database",
+        "tokens": 599
+      },
+      {
+        "tool": "API-move-page",
+        "tokens": 628
+      },
+      {
+        "tool": "API-retrieve-page-markdown",
+        "tokens": 692
+      },
+      {
+        "tool": "API-update-page-markdown",
+        "tokens": 1268
+      }
+    ]
+  },
+  "lint": {
+    "total_findings": 134,
+    "counts": {
+      "MISSING_DESCRIPTION": 49,
+      "UNTYPED_OBJECT": 0,
+      "AMBIGUOUS_UNIT_OR_FORMAT": 0,
+      "MISSING_ENUM_CONSTRAINT": 0,
+      "OVERLAPPING_TOOL_DESCRIPTIONS": 85
+    },
+    "findings": [
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-get-user",
+        "path": "/inputSchema/properties/user_id",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-patch-block-children",
+        "path": "/inputSchema/$defs/paragraphBlockRequest/properties/paragraph",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-patch-block-children",
+        "path": "/inputSchema/$defs/paragraphBlockRequest/properties/paragraph/properties/rich_text",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-patch-block-children",
+        "path": "/inputSchema/$defs/richTextRequest/properties/text",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-patch-block-children",
+        "path": "/inputSchema/$defs/richTextRequest/properties/text/properties/content",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-patch-block-children",
+        "path": "/inputSchema/$defs/richTextRequest/properties/text/properties/link",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-patch-block-children",
+        "path": "/inputSchema/$defs/richTextRequest/properties/type",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-patch-block-children",
+        "path": "/inputSchema/$defs/paragraphBlockRequest/properties/type",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-patch-block-children",
+        "path": "/inputSchema/$defs/bulletedListItemBlockRequest/properties/bulleted_list_item",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-patch-block-children",
+        "path": "/inputSchema/$defs/bulletedListItemBlockRequest/properties/bulleted_list_item/properties/rich_text",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-patch-block-children",
+        "path": "/inputSchema/$defs/bulletedListItemBlockRequest/properties/type",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-patch-page",
+        "path": "/inputSchema/properties/archived",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-patch-page",
+        "path": "/inputSchema/properties/icon/anyOf/0/properties/emoji",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-patch-page",
+        "path": "/inputSchema/properties/cover/anyOf/0/properties/external",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-patch-page",
+        "path": "/inputSchema/properties/cover/anyOf/0/properties/external/properties/url",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-patch-page",
+        "path": "/inputSchema/properties/cover/anyOf/0/properties/type",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-post-page",
+        "path": "/inputSchema/$defs/pageIdParentRequest/properties/page_id",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-post-page",
+        "path": "/inputSchema/$defs/dataSourceIdParentRequest/properties/type",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-post-page",
+        "path": "/inputSchema/$defs/dataSourceIdParentRequest/properties/database_id",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-post-page",
+        "path": "/inputSchema/$defs/parentRequest/oneOf/2/properties/type",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-create-a-comment",
+        "path": "/inputSchema/properties/rich_text",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-create-a-comment",
+        "path": "/inputSchema/properties/rich_text/items/anyOf/0/properties/text",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-query-data-source",
+        "path": "/inputSchema/properties/sorts",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-query-data-source",
+        "path": "/inputSchema/$defs/sortObject/properties/property",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-query-data-source",
+        "path": "/inputSchema/$defs/sortObject/properties/direction",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-query-data-source",
+        "path": "/inputSchema/properties/start_cursor",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-query-data-source",
+        "path": "/inputSchema/properties/page_size",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-query-data-source",
+        "path": "/inputSchema/properties/archived",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-query-data-source",
+        "path": "/inputSchema/properties/in_trash",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-update-a-data-source",
+        "path": "/inputSchema/properties/title",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-update-a-data-source",
+        "path": "/inputSchema/$defs/richTextRequest/properties/text",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-update-a-data-source",
+        "path": "/inputSchema/$defs/richTextRequest/properties/text/properties/content",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-update-a-data-source",
+        "path": "/inputSchema/$defs/richTextRequest/properties/text/properties/link",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-update-a-data-source",
+        "path": "/inputSchema/$defs/richTextRequest/properties/type",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-update-a-data-source",
+        "path": "/inputSchema/properties/description",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-create-a-data-source",
+        "path": "/inputSchema/$defs/pageIdParentRequest/properties/page_id",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-create-a-data-source",
+        "path": "/inputSchema/properties/title",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-create-a-data-source",
+        "path": "/inputSchema/$defs/richTextRequest/properties/text",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-create-a-data-source",
+        "path": "/inputSchema/$defs/richTextRequest/properties/text/properties/content",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-create-a-data-source",
+        "path": "/inputSchema/$defs/richTextRequest/properties/text/properties/link",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-create-a-data-source",
+        "path": "/inputSchema/$defs/richTextRequest/properties/type",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-list-data-source-templates",
+        "path": "/inputSchema/properties/start_cursor",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-list-data-source-templates",
+        "path": "/inputSchema/properties/page_size",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-move-page",
+        "path": "/inputSchema/$defs/movePageParentRequest/oneOf/0/properties/type",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-move-page",
+        "path": "/inputSchema/$defs/movePageParentRequest/oneOf/0/properties/page_id",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-move-page",
+        "path": "/inputSchema/$defs/movePageParentRequest/oneOf/1/properties/type",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-move-page",
+        "path": "/inputSchema/$defs/movePageParentRequest/oneOf/1/properties/database_id",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-move-page",
+        "path": "/inputSchema/$defs/movePageParentRequest/oneOf/2/properties/type",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "API-update-page-markdown",
+        "path": "/inputSchema/properties/insert_content/anyOf/0/properties/position/properties/type",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-post-search",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-block (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-post-search",
+        "path": "/description",
+        "message": "Description overlaps API-update-a-block (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-post-search",
+        "path": "/description",
+        "message": "Description overlaps API-delete-a-block (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-post-search",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-page (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-post-search",
+        "path": "/description",
+        "message": "Description overlaps API-post-page (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-post-search",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-comment (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-post-search",
+        "path": "/description",
+        "message": "Description overlaps API-create-a-comment (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-post-search",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-database (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-post-search",
+        "path": "/description",
+        "message": "Description overlaps API-move-page (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-get-block-children",
+        "path": "/description",
+        "message": "Description overlaps API-patch-block-children (Jaccard 0.800)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-get-block-children",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-block (Jaccard 0.889)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-get-block-children",
+        "path": "/description",
+        "message": "Description overlaps API-update-a-block (Jaccard 0.700)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-get-block-children",
+        "path": "/description",
+        "message": "Description overlaps API-delete-a-block (Jaccard 0.700)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-get-block-children",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-page (Jaccard 0.700)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-get-block-children",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-comment (Jaccard 0.700)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-get-block-children",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-data-source (Jaccard 0.636)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-get-block-children",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-database (Jaccard 0.700)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-patch-block-children",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-block (Jaccard 0.700)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-patch-block-children",
+        "path": "/description",
+        "message": "Description overlaps API-update-a-block (Jaccard 0.700)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-patch-block-children",
+        "path": "/description",
+        "message": "Description overlaps API-delete-a-block (Jaccard 0.700)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-block",
+        "path": "/description",
+        "message": "Description overlaps API-update-a-block (Jaccard 0.778)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-block",
+        "path": "/description",
+        "message": "Description overlaps API-delete-a-block (Jaccard 0.778)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-block",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-page (Jaccard 0.778)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-block",
+        "path": "/description",
+        "message": "Description overlaps API-post-page (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-block",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-page-property (Jaccard 0.636)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-block",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-comment (Jaccard 0.778)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-block",
+        "path": "/description",
+        "message": "Description overlaps API-create-a-comment (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-block",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-data-source (Jaccard 0.700)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-block",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-database (Jaccard 0.778)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-block",
+        "path": "/description",
+        "message": "Description overlaps API-move-page (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-update-a-block",
+        "path": "/description",
+        "message": "Description overlaps API-delete-a-block (Jaccard 0.778)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-update-a-block",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-page (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-update-a-block",
+        "path": "/description",
+        "message": "Description overlaps API-patch-page (Jaccard 0.700)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-update-a-block",
+        "path": "/description",
+        "message": "Description overlaps API-post-page (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-update-a-block",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-comment (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-update-a-block",
+        "path": "/description",
+        "message": "Description overlaps API-create-a-comment (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-update-a-block",
+        "path": "/description",
+        "message": "Description overlaps API-update-a-data-source (Jaccard 0.700)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-update-a-block",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-database (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-update-a-block",
+        "path": "/description",
+        "message": "Description overlaps API-move-page (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-delete-a-block",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-page (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-delete-a-block",
+        "path": "/description",
+        "message": "Description overlaps API-post-page (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-delete-a-block",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-comment (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-delete-a-block",
+        "path": "/description",
+        "message": "Description overlaps API-create-a-comment (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-delete-a-block",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-database (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-delete-a-block",
+        "path": "/description",
+        "message": "Description overlaps API-move-page (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-page",
+        "path": "/description",
+        "message": "Description overlaps API-patch-page (Jaccard 0.700)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-page",
+        "path": "/description",
+        "message": "Description overlaps API-post-page (Jaccard 0.778)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-page",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-page-property (Jaccard 0.800)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-page",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-comment (Jaccard 0.778)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-page",
+        "path": "/description",
+        "message": "Description overlaps API-create-a-comment (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-page",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-data-source (Jaccard 0.700)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-page",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-database (Jaccard 0.778)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-page",
+        "path": "/description",
+        "message": "Description overlaps API-move-page (Jaccard 0.778)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-patch-page",
+        "path": "/description",
+        "message": "Description overlaps API-post-page (Jaccard 0.700)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-patch-page",
+        "path": "/description",
+        "message": "Description overlaps API-update-a-data-source (Jaccard 0.636)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-patch-page",
+        "path": "/description",
+        "message": "Description overlaps API-move-page (Jaccard 0.700)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-post-page",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-page-property (Jaccard 0.636)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-post-page",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-comment (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-post-page",
+        "path": "/description",
+        "message": "Description overlaps API-create-a-comment (Jaccard 0.778)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-post-page",
+        "path": "/description",
+        "message": "Description overlaps API-create-a-data-source (Jaccard 0.700)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-post-page",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-database (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-post-page",
+        "path": "/description",
+        "message": "Description overlaps API-move-page (Jaccard 0.778)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-page-property",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-comment (Jaccard 0.636)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-page-property",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-database (Jaccard 0.636)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-page-property",
+        "path": "/description",
+        "message": "Description overlaps API-move-page (Jaccard 0.636)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-comment",
+        "path": "/description",
+        "message": "Description overlaps API-create-a-comment (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-comment",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-data-source (Jaccard 0.700)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-comment",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-database (Jaccard 0.778)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-comment",
+        "path": "/description",
+        "message": "Description overlaps API-move-page (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-create-a-comment",
+        "path": "/description",
+        "message": "Description overlaps API-create-a-data-source (Jaccard 0.700)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-create-a-comment",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-database (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-create-a-comment",
+        "path": "/description",
+        "message": "Description overlaps API-move-page (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-query-data-source",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-data-source (Jaccard 0.800)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-query-data-source",
+        "path": "/description",
+        "message": "Description overlaps API-update-a-data-source (Jaccard 0.800)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-query-data-source",
+        "path": "/description",
+        "message": "Description overlaps API-create-a-data-source (Jaccard 0.800)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-query-data-source",
+        "path": "/description",
+        "message": "Description overlaps API-list-data-source-templates (Jaccard 0.727)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-data-source",
+        "path": "/description",
+        "message": "Description overlaps API-update-a-data-source (Jaccard 0.800)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-data-source",
+        "path": "/description",
+        "message": "Description overlaps API-create-a-data-source (Jaccard 0.800)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-data-source",
+        "path": "/description",
+        "message": "Description overlaps API-list-data-source-templates (Jaccard 0.727)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-data-source",
+        "path": "/description",
+        "message": "Description overlaps API-retrieve-a-database (Jaccard 0.700)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-update-a-data-source",
+        "path": "/description",
+        "message": "Description overlaps API-create-a-data-source (Jaccard 0.800)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-update-a-data-source",
+        "path": "/description",
+        "message": "Description overlaps API-list-data-source-templates (Jaccard 0.727)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-create-a-data-source",
+        "path": "/description",
+        "message": "Description overlaps API-list-data-source-templates (Jaccard 0.727)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-a-database",
+        "path": "/description",
+        "message": "Description overlaps API-move-page (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "API-retrieve-page-markdown",
+        "path": "/description",
+        "message": "Description overlaps API-update-page-markdown (Jaccard 0.727)"
+      }
+    ],
+    "findings_per_tool": 5.583333333333333,
+    "per_tool": [
+      {
+        "tool": "API-get-user",
+        "findings": 1
+      },
+      {
+        "tool": "API-get-users",
+        "findings": 0
+      },
+      {
+        "tool": "API-get-self",
+        "findings": 0
+      },
+      {
+        "tool": "API-post-search",
+        "findings": 9
+      },
+      {
+        "tool": "API-get-block-children",
+        "findings": 8
+      },
+      {
+        "tool": "API-patch-block-children",
+        "findings": 13
+      },
+      {
+        "tool": "API-retrieve-a-block",
+        "findings": 10
+      },
+      {
+        "tool": "API-update-a-block",
+        "findings": 9
+      },
+      {
+        "tool": "API-delete-a-block",
+        "findings": 6
+      },
+      {
+        "tool": "API-retrieve-a-page",
+        "findings": 8
+      },
+      {
+        "tool": "API-patch-page",
+        "findings": 8
+      },
+      {
+        "tool": "API-post-page",
+        "findings": 10
+      },
+      {
+        "tool": "API-retrieve-a-page-property",
+        "findings": 3
+      },
+      {
+        "tool": "API-retrieve-a-comment",
+        "findings": 4
+      },
+      {
+        "tool": "API-create-a-comment",
+        "findings": 5
+      },
+      {
+        "tool": "API-query-data-source",
+        "findings": 11
+      },
+      {
+        "tool": "API-retrieve-a-data-source",
+        "findings": 4
+      },
+      {
+        "tool": "API-update-a-data-source",
+        "findings": 8
+      },
+      {
+        "tool": "API-create-a-data-source",
+        "findings": 7
+      },
+      {
+        "tool": "API-list-data-source-templates",
+        "findings": 2
+      },
+      {
+        "tool": "API-retrieve-a-database",
+        "findings": 1
+      },
+      {
+        "tool": "API-move-page",
+        "findings": 5
+      },
+      {
+        "tool": "API-retrieve-page-markdown",
+        "findings": 1
+      },
+      {
+        "tool": "API-update-page-markdown",
+        "findings": 1
+      }
+    ]
+  },
+  "schema_compilation_errors": {
+    "API-post-page": "unknown format \"json\" ignored in schema at path \"#/properties/icon\""
+  },
+  "results": [
+    {
+      "task_id": "notion-01",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "API-get-user",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2225,
+      "input_tokens": 3549,
+      "output_tokens": 36,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-01",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "API-get-user",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2780,
+      "input_tokens": 3549,
+      "output_tokens": 36,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-01",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "API-get-user",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2443,
+      "input_tokens": 3549,
+      "output_tokens": 36,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-02",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "API-get-users",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3707,
+      "input_tokens": 3534,
+      "output_tokens": 40,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-02",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "API-get-users",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2872,
+      "input_tokens": 3534,
+      "output_tokens": 20,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-02",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "API-get-users",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 5497,
+      "input_tokens": 3534,
+      "output_tokens": 47,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-03",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "API-get-self",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2513,
+      "input_tokens": 3533,
+      "output_tokens": 15,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-03",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "API-get-self",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2435,
+      "input_tokens": 3533,
+      "output_tokens": 15,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-03",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "API-get-self",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1832,
+      "input_tokens": 3533,
+      "output_tokens": 15,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-04",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "API-post-search",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4040,
+      "input_tokens": 3534,
+      "output_tokens": 88,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-04",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "API-post-search",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3757,
+      "input_tokens": 3534,
+      "output_tokens": 95,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-04",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "API-post-search",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4668,
+      "input_tokens": 3534,
+      "output_tokens": 92,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-05",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "API-get-block-children",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2412,
+      "input_tokens": 3549,
+      "output_tokens": 43,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-05",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "API-get-block-children",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2660,
+      "input_tokens": 3549,
+      "output_tokens": 43,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-05",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "API-get-block-children",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3266,
+      "input_tokens": 3549,
+      "output_tokens": 43,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-06",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "API-retrieve-a-block",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3111,
+      "input_tokens": 3550,
+      "output_tokens": 69,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-06",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "API-retrieve-a-block",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3163,
+      "input_tokens": 3550,
+      "output_tokens": 71,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-06",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "API-retrieve-a-block",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3564,
+      "input_tokens": 3550,
+      "output_tokens": 76,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-07",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "API-delete-a-block",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2726,
+      "input_tokens": 3546,
+      "output_tokens": 37,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-07",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "API-delete-a-block",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2738,
+      "input_tokens": 3546,
+      "output_tokens": 37,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-07",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "API-delete-a-block",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2708,
+      "input_tokens": 3546,
+      "output_tokens": 37,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-08",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "API-retrieve-a-page",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3389,
+      "input_tokens": 3547,
+      "output_tokens": 68,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-08",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "API-retrieve-a-page",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3653,
+      "input_tokens": 3547,
+      "output_tokens": 69,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-08",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "API-retrieve-a-page",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3848,
+      "input_tokens": 3547,
+      "output_tokens": 72,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-09",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "API-patch-page",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3183,
+      "input_tokens": 3548,
+      "output_tokens": 71,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-09",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "API-patch-page",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2076,
+      "input_tokens": 3548,
+      "output_tokens": 43,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-09",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "API-patch-page",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2395,
+      "input_tokens": 3548,
+      "output_tokens": 43,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-10",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "API-retrieve-a-comment",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2933,
+      "input_tokens": 3548,
+      "output_tokens": 43,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-10",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "API-retrieve-a-comment",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2839,
+      "input_tokens": 3548,
+      "output_tokens": 43,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-10",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "API-retrieve-a-comment",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2160,
+      "input_tokens": 3548,
+      "output_tokens": 43,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-11",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "API-query-data-source",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3395,
+      "input_tokens": 3551,
+      "output_tokens": 76,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-11",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "API-query-data-source",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4710,
+      "input_tokens": 3551,
+      "output_tokens": 82,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-11",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "API-query-data-source",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4741,
+      "input_tokens": 3551,
+      "output_tokens": 87,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-12",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "API-retrieve-a-data-source",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3488,
+      "input_tokens": 3549,
+      "output_tokens": 75,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-12",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "API-retrieve-a-data-source",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3528,
+      "input_tokens": 3549,
+      "output_tokens": 78,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-12",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "API-retrieve-a-data-source",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3637,
+      "input_tokens": 3549,
+      "output_tokens": 78,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-13",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "API-list-data-source-templates",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4676,
+      "input_tokens": 3550,
+      "output_tokens": 81,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-13",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "API-list-data-source-templates",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3706,
+      "input_tokens": 3550,
+      "output_tokens": 76,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-13",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "API-list-data-source-templates",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3354,
+      "input_tokens": 3550,
+      "output_tokens": 80,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-14",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "API-retrieve-a-database",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4862,
+      "input_tokens": 3548,
+      "output_tokens": 204,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-14",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "API-retrieve-a-data-source",
+      "selection_correct": false,
+      "param_compliance_eligible": false,
+      "schema_valid": true,
+      "assertions_pass": false,
+      "first_try_pass": false,
+      "duration_ms": 4143,
+      "input_tokens": 3548,
+      "output_tokens": 112,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-14",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "API-retrieve-a-data-source",
+      "selection_correct": false,
+      "param_compliance_eligible": false,
+      "schema_valid": true,
+      "assertions_pass": false,
+      "first_try_pass": false,
+      "duration_ms": 4072,
+      "input_tokens": 3548,
+      "output_tokens": 223,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-15",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "API-retrieve-page-markdown",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2621,
+      "input_tokens": 3548,
+      "output_tokens": 58,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-15",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "API-retrieve-page-markdown",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4305,
+      "input_tokens": 3548,
+      "output_tokens": 54,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-15",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "API-retrieve-page-markdown",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4265,
+      "input_tokens": 3548,
+      "output_tokens": 51,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-16",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "API-update-a-block",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2759,
+      "input_tokens": 3546,
+      "output_tokens": 42,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-16",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "API-update-a-block",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2166,
+      "input_tokens": 3546,
+      "output_tokens": 42,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-16",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "API-delete-a-block",
+      "selection_correct": false,
+      "param_compliance_eligible": false,
+      "schema_valid": true,
+      "assertions_pass": false,
+      "first_try_pass": false,
+      "duration_ms": 3181,
+      "input_tokens": 3546,
+      "output_tokens": 37,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-17",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "API-patch-page",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4148,
+      "input_tokens": 3548,
+      "output_tokens": 116,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-17",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "API-patch-page",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4461,
+      "input_tokens": 3548,
+      "output_tokens": 156,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-17",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "API-patch-page",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3076,
+      "input_tokens": 3548,
+      "output_tokens": 77,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-18",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "API-get-users",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4371,
+      "input_tokens": 3541,
+      "output_tokens": 56,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-18",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "API-get-users",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3483,
+      "input_tokens": 3541,
+      "output_tokens": 75,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-18",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "API-get-users",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 5520,
+      "input_tokens": 3541,
+      "output_tokens": 60,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-19",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "API-post-search",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3904,
+      "input_tokens": 3536,
+      "output_tokens": 47,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-19",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "API-post-search",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3893,
+      "input_tokens": 3536,
+      "output_tokens": 67,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-19",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "API-post-search",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4092,
+      "input_tokens": 3536,
+      "output_tokens": 63,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-20",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "API-get-block-children",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4020,
+      "input_tokens": 3558,
+      "output_tokens": 119,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-20",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "API-get-block-children",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3539,
+      "input_tokens": 3558,
+      "output_tokens": 93,
+      "api_requests": 1
+    },
+    {
+      "task_id": "notion-20",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "API-get-block-children",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4002,
+      "input_tokens": 3558,
+      "output_tokens": 103,
+      "api_requests": 1
+    }
+  ]
+}

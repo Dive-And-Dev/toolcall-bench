@@ -1,0 +1,1247 @@
+{
+  "started_at": "2026-11-20T06:46:04.793Z",
+  "completed_at": "2026-11-20T06:47:17.144Z",
+  "server_name": "playwright",
+  "driver": "zenmux",
+  "model": "openai/gpt-5.5",
+  "trials": 3,
+  "driver_options": {
+    "gateway": "https://zenmux.ai/api/v1",
+    "model_id": "openai/gpt-5.5"
+  },
+  "seed": 42,
+  "snapshot": {
+    "server_name": "playwright",
+    "repo_url": "https://github.com/microsoft/playwright-mcp",
+    "architecture_type": "static_catalog",
+    "selection_metric": "standard",
+    "snapshot_meta": {
+      "package": "@playwright/mcp",
+      "package_version": "0.0.86",
+      "captured_at": "2026-11-19T20:40:58.337Z",
+      "capture_method": "SDK stdio initialize + tools/list; no credential",
+      "capture_cmd": "node dist/cli.js snapshot --cmd 'npx -y @playwright/mcp@0.0.86' --out suites/playwright/manifest.json",
+      "requires_auth_for_tools_list": false
+    }
+  },
+  "manifest_sha256": "3dedd61dfa8534cb060bca92f8f926846f6745617e7cbebdc0cf48a566e77a9a",
+  "tasks_sha256": "e8feb386b8332789d265938b93945f95b3d3588f1036bb4ef33a685bbdeff345",
+  "metrics": {
+    "tool_selection_accuracy": {
+      "mean": 0.9833333333333332,
+      "ci_low": 0.95,
+      "ci_high": 1,
+      "half_width": 0.025000000000000022,
+      "n_tasks": 20,
+      "n_trials": 60,
+      "B": 5000,
+      "seed": 42
+    },
+    "param_compliance_conditional": {
+      "mean": 1,
+      "ci_low": 1,
+      "ci_high": 1,
+      "half_width": 0,
+      "n_tasks": 20,
+      "n_trials": 59,
+      "B": 5000,
+      "seed": 42
+    },
+    "end_to_end_first_try_pass": {
+      "mean": 0.9833333333333332,
+      "ci_low": 0.95,
+      "ci_high": 1,
+      "half_width": 0.025000000000000022,
+      "n_tasks": 20,
+      "n_trials": 60,
+      "B": 5000,
+      "seed": 42
+    }
+  },
+  "selection_metric": "standard",
+  "tokens": {
+    "catalog_tokens": 3940,
+    "tool_count": 25,
+    "encoding": "o200k_base",
+    "median_tokens_per_tool": 169,
+    "per_tool": [
+      {
+        "tool": "browser_close",
+        "tokens": 49
+      },
+      {
+        "tool": "browser_resize",
+        "tokens": 81
+      },
+      {
+        "tool": "browser_console_messages",
+        "tokens": 166
+      },
+      {
+        "tool": "browser_handle_dialog",
+        "tokens": 86
+      },
+      {
+        "tool": "browser_emulate_media",
+        "tokens": 254
+      },
+      {
+        "tool": "browser_evaluate",
+        "tokens": 169
+      },
+      {
+        "tool": "browser_file_upload",
+        "tokens": 86
+      },
+      {
+        "tool": "browser_drop",
+        "tokens": 213
+      },
+      {
+        "tool": "browser_find",
+        "tokens": 250
+      },
+      {
+        "tool": "browser_fill_form",
+        "tokens": 230
+      },
+      {
+        "tool": "browser_press_key",
+        "tokens": 84
+      },
+      {
+        "tool": "browser_type",
+        "tokens": 173
+      },
+      {
+        "tool": "browser_navigate",
+        "tokens": 65
+      },
+      {
+        "tool": "browser_navigate_back",
+        "tokens": 53
+      },
+      {
+        "tool": "browser_network_requests",
+        "tokens": 200
+      },
+      {
+        "tool": "browser_network_request",
+        "tokens": 191
+      },
+      {
+        "tool": "browser_run_code_unsafe",
+        "tokens": 182
+      },
+      {
+        "tool": "browser_take_screenshot",
+        "tokens": 327
+      },
+      {
+        "tool": "browser_snapshot",
+        "tokens": 169
+      },
+      {
+        "tool": "browser_click",
+        "tokens": 181
+      },
+      {
+        "tool": "browser_drag",
+        "tokens": 158
+      },
+      {
+        "tool": "browser_hover",
+        "tokens": 97
+      },
+      {
+        "tool": "browser_select_option",
+        "tokens": 137
+      },
+      {
+        "tool": "browser_tabs",
+        "tokens": 191
+      },
+      {
+        "tool": "browser_wait_for",
+        "tokens": 146
+      }
+    ]
+  },
+  "lint": {
+    "total_findings": 0,
+    "counts": {
+      "MISSING_DESCRIPTION": 0,
+      "UNTYPED_OBJECT": 0,
+      "AMBIGUOUS_UNIT_OR_FORMAT": 0,
+      "MISSING_ENUM_CONSTRAINT": 0,
+      "OVERLAPPING_TOOL_DESCRIPTIONS": 0
+    },
+    "findings": [],
+    "findings_per_tool": 0,
+    "per_tool": [
+      {
+        "tool": "browser_close",
+        "findings": 0
+      },
+      {
+        "tool": "browser_resize",
+        "findings": 0
+      },
+      {
+        "tool": "browser_console_messages",
+        "findings": 0
+      },
+      {
+        "tool": "browser_handle_dialog",
+        "findings": 0
+      },
+      {
+        "tool": "browser_emulate_media",
+        "findings": 0
+      },
+      {
+        "tool": "browser_evaluate",
+        "findings": 0
+      },
+      {
+        "tool": "browser_file_upload",
+        "findings": 0
+      },
+      {
+        "tool": "browser_drop",
+        "findings": 0
+      },
+      {
+        "tool": "browser_find",
+        "findings": 0
+      },
+      {
+        "tool": "browser_fill_form",
+        "findings": 0
+      },
+      {
+        "tool": "browser_press_key",
+        "findings": 0
+      },
+      {
+        "tool": "browser_type",
+        "findings": 0
+      },
+      {
+        "tool": "browser_navigate",
+        "findings": 0
+      },
+      {
+        "tool": "browser_navigate_back",
+        "findings": 0
+      },
+      {
+        "tool": "browser_network_requests",
+        "findings": 0
+      },
+      {
+        "tool": "browser_network_request",
+        "findings": 0
+      },
+      {
+        "tool": "browser_run_code_unsafe",
+        "findings": 0
+      },
+      {
+        "tool": "browser_take_screenshot",
+        "findings": 0
+      },
+      {
+        "tool": "browser_snapshot",
+        "findings": 0
+      },
+      {
+        "tool": "browser_click",
+        "findings": 0
+      },
+      {
+        "tool": "browser_drag",
+        "findings": 0
+      },
+      {
+        "tool": "browser_hover",
+        "findings": 0
+      },
+      {
+        "tool": "browser_select_option",
+        "findings": 0
+      },
+      {
+        "tool": "browser_tabs",
+        "findings": 0
+      },
+      {
+        "tool": "browser_wait_for",
+        "findings": 0
+      }
+    ]
+  },
+  "schema_compilation_errors": {},
+  "results": [
+    {
+      "task_id": "playwright-01",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_navigate",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1607,
+      "input_tokens": 2740,
+      "output_tokens": 24,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-01",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_navigate",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1275,
+      "input_tokens": 2740,
+      "output_tokens": 24,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-01",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_navigate",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1342,
+      "input_tokens": 2740,
+      "output_tokens": 24,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-02",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_resize",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2416,
+      "input_tokens": 2740,
+      "output_tokens": 23,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-02",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_resize",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1399,
+      "input_tokens": 2740,
+      "output_tokens": 23,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-02",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_resize",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2040,
+      "input_tokens": 2740,
+      "output_tokens": 23,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-03",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_close",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1441,
+      "input_tokens": 2738,
+      "output_tokens": 14,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-03",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_close",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1964,
+      "input_tokens": 2738,
+      "output_tokens": 14,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-03",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_close",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1501,
+      "input_tokens": 2738,
+      "output_tokens": 14,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-04",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_console_messages",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2299,
+      "input_tokens": 2738,
+      "output_tokens": 49,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-04",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_console_messages",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2476,
+      "input_tokens": 2738,
+      "output_tokens": 42,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-04",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_console_messages",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2195,
+      "input_tokens": 2738,
+      "output_tokens": 38,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-05",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_handle_dialog",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2383,
+      "input_tokens": 2735,
+      "output_tokens": 39,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-05",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_handle_dialog",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2479,
+      "input_tokens": 2735,
+      "output_tokens": 34,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-05",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_handle_dialog",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2312,
+      "input_tokens": 2735,
+      "output_tokens": 45,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-06",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_emulate_media",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3850,
+      "input_tokens": 2739,
+      "output_tokens": 61,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-06",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_emulate_media",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2354,
+      "input_tokens": 2739,
+      "output_tokens": 50,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-06",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_emulate_media",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3472,
+      "input_tokens": 2739,
+      "output_tokens": 61,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-07",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_file_upload",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2750,
+      "input_tokens": 2741,
+      "output_tokens": 43,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-07",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_file_upload",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2769,
+      "input_tokens": 2741,
+      "output_tokens": 43,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-07",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_file_upload",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2481,
+      "input_tokens": 2741,
+      "output_tokens": 45,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-08",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_press_key",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1387,
+      "input_tokens": 2739,
+      "output_tokens": 19,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-08",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_press_key",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1725,
+      "input_tokens": 2739,
+      "output_tokens": 19,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-08",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_press_key",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1275,
+      "input_tokens": 2739,
+      "output_tokens": 19,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-09",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_type",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3424,
+      "input_tokens": 2743,
+      "output_tokens": 56,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-09",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_type",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2455,
+      "input_tokens": 2743,
+      "output_tokens": 69,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-09",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_type",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2301,
+      "input_tokens": 2743,
+      "output_tokens": 65,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-10",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_navigate_back",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2596,
+      "input_tokens": 2739,
+      "output_tokens": 16,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-10",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_navigate_back",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1582,
+      "input_tokens": 2739,
+      "output_tokens": 16,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-10",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_navigate_back",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2080,
+      "input_tokens": 2739,
+      "output_tokens": 16,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-11",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_network_requests",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4081,
+      "input_tokens": 2739,
+      "output_tokens": 56,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-11",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_network_requests",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2047,
+      "input_tokens": 2739,
+      "output_tokens": 43,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-11",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_network_requests",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2723,
+      "input_tokens": 2739,
+      "output_tokens": 60,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-12",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_network_request",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2444,
+      "input_tokens": 2738,
+      "output_tokens": 46,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-12",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_network_request",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2918,
+      "input_tokens": 2738,
+      "output_tokens": 41,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-12",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_network_request",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2462,
+      "input_tokens": 2738,
+      "output_tokens": 43,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-13",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_take_screenshot",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2443,
+      "input_tokens": 2746,
+      "output_tokens": 59,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-13",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_take_screenshot",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2814,
+      "input_tokens": 2746,
+      "output_tokens": 57,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-13",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_take_screenshot",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2702,
+      "input_tokens": 2746,
+      "output_tokens": 54,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-14",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_snapshot",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3000,
+      "input_tokens": 2738,
+      "output_tokens": 14,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-14",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_snapshot",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1944,
+      "input_tokens": 2738,
+      "output_tokens": 14,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-14",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_snapshot",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3522,
+      "input_tokens": 2738,
+      "output_tokens": 42,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-15",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_click",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2245,
+      "input_tokens": 2737,
+      "output_tokens": 54,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-15",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_click",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2215,
+      "input_tokens": 2737,
+      "output_tokens": 52,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-15",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_click",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2187,
+      "input_tokens": 2737,
+      "output_tokens": 56,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-16",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_hover",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3987,
+      "input_tokens": 2739,
+      "output_tokens": 70,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-16",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_hover",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2812,
+      "input_tokens": 2739,
+      "output_tokens": 62,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-16",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_snapshot",
+      "selection_correct": false,
+      "param_compliance_eligible": false,
+      "schema_valid": true,
+      "assertions_pass": false,
+      "first_try_pass": false,
+      "duration_ms": 2338,
+      "input_tokens": 2739,
+      "output_tokens": 40,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-17",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_select_option",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3263,
+      "input_tokens": 2742,
+      "output_tokens": 63,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-17",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_select_option",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2218,
+      "input_tokens": 2742,
+      "output_tokens": 60,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-17",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_select_option",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2365,
+      "input_tokens": 2742,
+      "output_tokens": 61,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-18",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_wait_for",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2396,
+      "input_tokens": 2737,
+      "output_tokens": 48,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-18",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_wait_for",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1239,
+      "input_tokens": 2737,
+      "output_tokens": 19,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-18",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_wait_for",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3650,
+      "input_tokens": 2737,
+      "output_tokens": 70,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-19",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_handle_dialog",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2877,
+      "input_tokens": 2737,
+      "output_tokens": 55,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-19",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_handle_dialog",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3278,
+      "input_tokens": 2737,
+      "output_tokens": 43,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-19",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_handle_dialog",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2407,
+      "input_tokens": 2737,
+      "output_tokens": 48,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-20",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "browser_tabs",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1821,
+      "input_tokens": 2737,
+      "output_tokens": 22,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-20",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "browser_tabs",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1807,
+      "input_tokens": 2737,
+      "output_tokens": 22,
+      "api_requests": 1
+    },
+    {
+      "task_id": "playwright-20",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "browser_tabs",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1626,
+      "input_tokens": 2737,
+      "output_tokens": 22,
+      "api_requests": 1
+    }
+  ]
+}

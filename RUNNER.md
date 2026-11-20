@@ -48,4 +48,4 @@ Real manifests were not modified or silently relaxed. AJV strict compilation rej
 - Notion `API-post-page`: `unknown format "json" ignored in schema at path "#/properties/icon"` (thrown under strict mode despite the wording).
 - Resend `create-contact-property`, `update-contact-property`, `create-contact`, `update-contact`, `create-template`, and `update-template`: `strict mode: use allowUnionTypes to allow union type keyword` at their respective value/fallbackValue schemas.
 
-The adapters were tested against stubbed HTTP responses, including first-call extraction and retry behavior. Live provider schema support, tool-count limits, and actual model quality remain unverified.
+At the time of these Phase 3 offline runs, adapters had only stubbed HTTP coverage, including first-call extraction and retry behavior. Subsequent paid ZenMux evaluations, provider-reported usage, and observed outcomes are documented in [LIVE_RESULTS.md](LIVE_RESULTS.md); the original offline scores above remain synthetic.

@@ -2,7 +2,7 @@
   {
     "id": "memory-01",
     "server_name": "memory",
-    "prompt": "Remember Ada as a person whose office is in London.",
+    "prompt": "Remember Ada as a person with the exact observation \"Office is in London\".",
     "expected_tools": [
       "create_entities"
     ],
@@ -28,7 +28,7 @@
   {
     "id": "memory-02",
     "server_name": "memory",
-    "prompt": "Record Atlas as a project that uses PostgreSQL.",
+    "prompt": "Record Atlas as a project with the exact observation \"Uses PostgreSQL\".",
     "expected_tools": [
       "create_entities"
     ],
@@ -80,7 +80,7 @@
   {
     "id": "memory-04",
     "server_name": "memory",
-    "prompt": "Attach the fact Prefers email to the existing person Ada.",
+    "prompt": "Attach the exact fact \"Prefers email\" to the existing person Ada.",
     "expected_tools": [
       "add_observations"
     ],
@@ -120,7 +120,7 @@
   {
     "id": "memory-06",
     "server_name": "memory",
-    "prompt": "Remove only the fact Prefers email from Ada, keeping her other information.",
+    "prompt": "Remove only the exact fact \"Prefers email\" from Ada, keeping her other information.",
     "expected_tools": [
       "delete_observations"
     ],
@@ -225,7 +225,7 @@
   {
     "id": "memory-11",
     "server_name": "memory",
-    "prompt": "Remember Nimbus as a service with the fact Region is eu-west-1.",
+    "prompt": "Remember Nimbus as a service with the exact fact \"Region is eu-west-1\".",
     "expected_tools": [
       "create_entities"
     ],
@@ -251,7 +251,7 @@
   {
     "id": "memory-12",
     "server_name": "memory",
-    "prompt": "Add the fact On call on Fridays to the existing record Bruno.",
+    "prompt": "Add the exact fact \"On call on Fridays\" to the existing record Bruno.",
     "expected_tools": [
       "add_observations"
     ],
@@ -295,7 +295,7 @@
   {
     "id": "memory-14",
     "server_name": "memory",
-    "prompt": "Retrieve exactly the remembered record named Queue A.",
+    "prompt": "Retrieve the remembered record with the exact name \"Queue A\".",
     "expected_tools": [
       "open_nodes"
     ],
@@ -422,7 +422,7 @@
   {
     "id": "memory-20",
     "server_name": "memory",
-    "prompt": "Bruno’s saved fact On call on Fridays is obsolete; remove just that fact.",
+    "prompt": "Bruno’s saved fact with the exact text \"On call on Fridays\" is obsolete; remove just that fact.",
     "expected_tools": [
       "delete_observations"
     ],

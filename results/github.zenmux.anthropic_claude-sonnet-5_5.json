@@ -1,0 +1,1592 @@
+{
+  "started_at": "2026-11-20T06:38:52.180Z",
+  "completed_at": "2026-11-20T06:39:59.124Z",
+  "server_name": "github",
+  "driver": "zenmux",
+  "model": "anthropic/claude-sonnet-5.5",
+  "trials": 3,
+  "driver_options": {
+    "gateway": "https://zenmux.ai/api/v1",
+    "model_id": "anthropic/claude-sonnet-5.5"
+  },
+  "seed": 42,
+  "snapshot": {
+    "server_name": "github",
+    "repo_url": "https://github.com/modelcontextprotocol/servers-archived",
+    "architecture_type": "static_catalog",
+    "selection_metric": "standard",
+    "snapshot_meta": {
+      "package": "@modelcontextprotocol/server-github",
+      "package_version": "2025.4.8",
+      "captured_at": "2026-11-19T20:40:58.096Z",
+      "capture_method": "SDK stdio initialize + tools/list; no credential",
+      "capture_cmd": "node dist/cli.js snapshot --cmd 'npx -y @modelcontextprotocol/server-github@2025.4.8' --out suites/github/manifest.json",
+      "requires_auth_for_tools_list": false
+    }
+  },
+  "manifest_sha256": "8b2ecb93485984e342a715f427759e8782747989774b38afd5043155e2d62eba",
+  "tasks_sha256": "c3d77e7aaf19e1faa24b60fdf47e3584f3e2023059b10258cfc198cbf35b71bb",
+  "metrics": {
+    "tool_selection_accuracy": {
+      "mean": 1,
+      "ci_low": 1,
+      "ci_high": 1,
+      "half_width": 0,
+      "n_tasks": 20,
+      "n_trials": 60,
+      "B": 5000,
+      "seed": 42
+    },
+    "param_compliance_conditional": {
+      "mean": 1,
+      "ci_low": 1,
+      "ci_high": 1,
+      "half_width": 0,
+      "n_tasks": 20,
+      "n_trials": 60,
+      "B": 5000,
+      "seed": 42
+    },
+    "end_to_end_first_try_pass": {
+      "mean": 1,
+      "ci_low": 1,
+      "ci_high": 1,
+      "half_width": 0,
+      "n_tasks": 20,
+      "n_trials": 60,
+      "B": 5000,
+      "seed": 42
+    }
+  },
+  "selection_metric": "standard",
+  "tokens": {
+    "catalog_tokens": 3548,
+    "tool_count": 26,
+    "encoding": "o200k_base",
+    "median_tokens_per_tool": 117.5,
+    "per_tool": [
+      {
+        "tool": "create_or_update_file",
+        "tokens": 178
+      },
+      {
+        "tool": "search_repositories",
+        "tokens": 115
+      },
+      {
+        "tool": "create_repository",
+        "tokens": 107
+      },
+      {
+        "tool": "get_file_contents",
+        "tokens": 121
+      },
+      {
+        "tool": "push_files",
+        "tokens": 178
+      },
+      {
+        "tool": "create_issue",
+        "tokens": 120
+      },
+      {
+        "tool": "create_pull_request",
+        "tokens": 200
+      },
+      {
+        "tool": "fork_repository",
+        "tokens": 108
+      },
+      {
+        "tool": "create_branch",
+        "tokens": 127
+      },
+      {
+        "tool": "list_commits",
+        "tokens": 94
+      },
+      {
+        "tool": "list_issues",
+        "tokens": 149
+      },
+      {
+        "tool": "update_issue",
+        "tokens": 143
+      },
+      {
+        "tool": "add_issue_comment",
+        "tokens": 87
+      },
+      {
+        "tool": "search_code",
+        "tokens": 96
+      },
+      {
+        "tool": "search_issues",
+        "tokens": 151
+      },
+      {
+        "tool": "search_users",
+        "tokens": 110
+      },
+      {
+        "tool": "get_issue",
+        "tokens": 81
+      },
+      {
+        "tool": "get_pull_request",
+        "tokens": 99
+      },
+      {
+        "tool": "list_pull_requests",
+        "tokens": 226
+      },
+      {
+        "tool": "create_pull_request_review",
+        "tokens": 360
+      },
+      {
+        "tool": "merge_pull_request",
+        "tokens": 159
+      },
+      {
+        "tool": "get_pull_request_files",
+        "tokens": 103
+      },
+      {
+        "tool": "get_pull_request_status",
+        "tokens": 105
+      },
+      {
+        "tool": "update_pull_request_branch",
+        "tokens": 128
+      },
+      {
+        "tool": "get_pull_request_comments",
+        "tokens": 101
+      },
+      {
+        "tool": "get_pull_request_reviews",
+        "tokens": 100
+      }
+    ]
+  },
+  "lint": {
+    "total_findings": 56,
+    "counts": {
+      "MISSING_DESCRIPTION": 53,
+      "UNTYPED_OBJECT": 0,
+      "AMBIGUOUS_UNIT_OR_FORMAT": 1,
+      "MISSING_ENUM_CONSTRAINT": 0,
+      "OVERLAPPING_TOOL_DESCRIPTIONS": 2
+    },
+    "findings": [
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "push_files",
+        "path": "/inputSchema/properties/files/items/properties/path",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "push_files",
+        "path": "/inputSchema/properties/files/items/properties/content",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "create_issue",
+        "path": "/inputSchema/properties/owner",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "create_issue",
+        "path": "/inputSchema/properties/repo",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "create_issue",
+        "path": "/inputSchema/properties/title",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "create_issue",
+        "path": "/inputSchema/properties/body",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "create_issue",
+        "path": "/inputSchema/properties/assignees",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "create_issue",
+        "path": "/inputSchema/properties/milestone",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "create_issue",
+        "path": "/inputSchema/properties/labels",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_commits",
+        "path": "/inputSchema/properties/owner",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_commits",
+        "path": "/inputSchema/properties/repo",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_commits",
+        "path": "/inputSchema/properties/sha",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_commits",
+        "path": "/inputSchema/properties/page",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_commits",
+        "path": "/inputSchema/properties/perPage",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_issues",
+        "path": "/inputSchema/properties/owner",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_issues",
+        "path": "/inputSchema/properties/repo",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_issues",
+        "path": "/inputSchema/properties/direction",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_issues",
+        "path": "/inputSchema/properties/labels",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_issues",
+        "path": "/inputSchema/properties/page",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_issues",
+        "path": "/inputSchema/properties/per_page",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_issues",
+        "path": "/inputSchema/properties/since",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "AMBIGUOUS_UNIT_OR_FORMAT",
+        "tool": "list_issues",
+        "path": "/inputSchema/properties/since",
+        "message": "Parameter lacks an explicit unit or format"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_issues",
+        "path": "/inputSchema/properties/sort",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_issues",
+        "path": "/inputSchema/properties/state",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "update_issue",
+        "path": "/inputSchema/properties/owner",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "update_issue",
+        "path": "/inputSchema/properties/repo",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "update_issue",
+        "path": "/inputSchema/properties/issue_number",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "update_issue",
+        "path": "/inputSchema/properties/title",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "update_issue",
+        "path": "/inputSchema/properties/body",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "update_issue",
+        "path": "/inputSchema/properties/assignees",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "update_issue",
+        "path": "/inputSchema/properties/milestone",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "update_issue",
+        "path": "/inputSchema/properties/labels",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "update_issue",
+        "path": "/inputSchema/properties/state",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "add_issue_comment",
+        "path": "/inputSchema/properties/owner",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "add_issue_comment",
+        "path": "/inputSchema/properties/repo",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "add_issue_comment",
+        "path": "/inputSchema/properties/issue_number",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "add_issue_comment",
+        "path": "/inputSchema/properties/body",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_code",
+        "path": "/inputSchema/properties/q",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_code",
+        "path": "/inputSchema/properties/order",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_code",
+        "path": "/inputSchema/properties/page",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_code",
+        "path": "/inputSchema/properties/per_page",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_issues",
+        "path": "/inputSchema/properties/q",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_issues",
+        "path": "/inputSchema/properties/order",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_issues",
+        "path": "/inputSchema/properties/page",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_issues",
+        "path": "/inputSchema/properties/per_page",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_issues",
+        "path": "/inputSchema/properties/sort",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_users",
+        "path": "/inputSchema/properties/q",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_users",
+        "path": "/inputSchema/properties/order",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_users",
+        "path": "/inputSchema/properties/page",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_users",
+        "path": "/inputSchema/properties/per_page",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_users",
+        "path": "/inputSchema/properties/sort",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "get_issue",
+        "path": "/inputSchema/properties/owner",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "get_issue",
+        "path": "/inputSchema/properties/repo",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "get_issue",
+        "path": "/inputSchema/properties/issue_number",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "search_repositories",
+        "path": "/description",
+        "message": "Description overlaps search_code (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "create_issue",
+        "path": "/description",
+        "message": "Description overlaps create_branch (Jaccard 0.667)"
+      }
+    ],
+    "findings_per_tool": 2.1538461538461537,
+    "per_tool": [
+      {
+        "tool": "create_or_update_file",
+        "findings": 0
+      },
+      {
+        "tool": "search_repositories",
+        "findings": 1
+      },
+      {
+        "tool": "create_repository",
+        "findings": 0
+      },
+      {
+        "tool": "get_file_contents",
+        "findings": 0
+      },
+      {
+        "tool": "push_files",
+        "findings": 2
+      },
+      {
+        "tool": "create_issue",
+        "findings": 8
+      },
+      {
+        "tool": "create_pull_request",
+        "findings": 0
+      },
+      {
+        "tool": "fork_repository",
+        "findings": 0
+      },
+      {
+        "tool": "create_branch",
+        "findings": 0
+      },
+      {
+        "tool": "list_commits",
+        "findings": 5
+      },
+      {
+        "tool": "list_issues",
+        "findings": 10
+      },
+      {
+        "tool": "update_issue",
+        "findings": 9
+      },
+      {
+        "tool": "add_issue_comment",
+        "findings": 4
+      },
+      {
+        "tool": "search_code",
+        "findings": 4
+      },
+      {
+        "tool": "search_issues",
+        "findings": 5
+      },
+      {
+        "tool": "search_users",
+        "findings": 5
+      },
+      {
+        "tool": "get_issue",
+        "findings": 3
+      },
+      {
+        "tool": "get_pull_request",
+        "findings": 0
+      },
+      {
+        "tool": "list_pull_requests",
+        "findings": 0
+      },
+      {
+        "tool": "create_pull_request_review",
+        "findings": 0
+      },
+      {
+        "tool": "merge_pull_request",
+        "findings": 0
+      },
+      {
+        "tool": "get_pull_request_files",
+        "findings": 0
+      },
+      {
+        "tool": "get_pull_request_status",
+        "findings": 0
+      },
+      {
+        "tool": "update_pull_request_branch",
+        "findings": 0
+      },
+      {
+        "tool": "get_pull_request_comments",
+        "findings": 0
+      },
+      {
+        "tool": "get_pull_request_reviews",
+        "findings": 0
+      }
+    ]
+  },
+  "schema_compilation_errors": {},
+  "results": [
+    {
+      "task_id": "github-01",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "search_repositories",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1070,
+      "input_tokens": 6729,
+      "output_tokens": 57,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-01",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "search_repositories",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1072,
+      "input_tokens": 6729,
+      "output_tokens": 57,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-01",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "search_repositories",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1167,
+      "input_tokens": 6729,
+      "output_tokens": 57,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-02",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "create_repository",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1806,
+      "input_tokens": 6724,
+      "output_tokens": 73,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-02",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "create_repository",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1674,
+      "input_tokens": 6724,
+      "output_tokens": 73,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-02",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "create_repository",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2502,
+      "input_tokens": 6724,
+      "output_tokens": 73,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-03",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "get_file_contents",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2725,
+      "input_tokens": 6726,
+      "output_tokens": 121,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-03",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "get_file_contents",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2630,
+      "input_tokens": 6726,
+      "output_tokens": 121,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-03",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "get_file_contents",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1929,
+      "input_tokens": 6726,
+      "output_tokens": 121,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-04",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "create_issue",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2380,
+      "input_tokens": 6744,
+      "output_tokens": 126,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-04",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "create_issue",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1845,
+      "input_tokens": 6744,
+      "output_tokens": 126,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-04",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "create_issue",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1912,
+      "input_tokens": 6744,
+      "output_tokens": 126,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-05",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "create_pull_request",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2464,
+      "input_tokens": 6743,
+      "output_tokens": 167,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-05",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "create_pull_request",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2444,
+      "input_tokens": 6743,
+      "output_tokens": 167,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-05",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "create_pull_request",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2318,
+      "input_tokens": 6743,
+      "output_tokens": 167,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-06",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "fork_repository",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1801,
+      "input_tokens": 6726,
+      "output_tokens": 75,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-06",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "fork_repository",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1609,
+      "input_tokens": 6726,
+      "output_tokens": 75,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-06",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "fork_repository",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1900,
+      "input_tokens": 6726,
+      "output_tokens": 75,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-07",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "create_branch",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2083,
+      "input_tokens": 6728,
+      "output_tokens": 123,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-07",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "create_branch",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2671,
+      "input_tokens": 6728,
+      "output_tokens": 123,
+      "api_requests": 2
+    },
+    {
+      "task_id": "github-07",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "create_branch",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2329,
+      "input_tokens": 6728,
+      "output_tokens": 123,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-08",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "list_commits",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2115,
+      "input_tokens": 6727,
+      "output_tokens": 118,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-08",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "list_commits",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3083,
+      "input_tokens": 6727,
+      "output_tokens": 118,
+      "api_requests": 2
+    },
+    {
+      "task_id": "github-08",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "list_commits",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2349,
+      "input_tokens": 6727,
+      "output_tokens": 118,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-09",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "list_issues",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 5323,
+      "input_tokens": 6727,
+      "output_tokens": 121,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-09",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "list_issues",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4315,
+      "input_tokens": 6727,
+      "output_tokens": 121,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-09",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "list_issues",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1725,
+      "input_tokens": 6727,
+      "output_tokens": 121,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-10",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "update_issue",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1854,
+      "input_tokens": 6724,
+      "output_tokens": 120,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-10",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "update_issue",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1806,
+      "input_tokens": 6724,
+      "output_tokens": 120,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-10",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "update_issue",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2726,
+      "input_tokens": 6724,
+      "output_tokens": 120,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-11",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "add_issue_comment",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2002,
+      "input_tokens": 6738,
+      "output_tokens": 128,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-11",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "add_issue_comment",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2150,
+      "input_tokens": 6738,
+      "output_tokens": 128,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-11",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "add_issue_comment",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2009,
+      "input_tokens": 6738,
+      "output_tokens": 128,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-12",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "search_code",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2764,
+      "input_tokens": 6736,
+      "output_tokens": 62,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-12",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "search_code",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2172,
+      "input_tokens": 6736,
+      "output_tokens": 62,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-12",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "search_code",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1735,
+      "input_tokens": 6736,
+      "output_tokens": 62,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-13",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "search_users",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1870,
+      "input_tokens": 6733,
+      "output_tokens": 55,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-13",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "search_users",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2717,
+      "input_tokens": 6733,
+      "output_tokens": 55,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-13",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "search_users",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2045,
+      "input_tokens": 6733,
+      "output_tokens": 55,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-14",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "get_issue",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1603,
+      "input_tokens": 6727,
+      "output_tokens": 98,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-14",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "get_issue",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1681,
+      "input_tokens": 6727,
+      "output_tokens": 98,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-14",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "get_issue",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1604,
+      "input_tokens": 6727,
+      "output_tokens": 98,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-15",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "get_pull_request",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2089,
+      "input_tokens": 6729,
+      "output_tokens": 199,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-15",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "get_pull_request",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2116,
+      "input_tokens": 6729,
+      "output_tokens": 199,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-15",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "get_pull_request",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3565,
+      "input_tokens": 6729,
+      "output_tokens": 288,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-16",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "list_pull_requests",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1798,
+      "input_tokens": 6728,
+      "output_tokens": 119,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-16",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "list_pull_requests",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1927,
+      "input_tokens": 6728,
+      "output_tokens": 119,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-16",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "list_pull_requests",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2948,
+      "input_tokens": 6728,
+      "output_tokens": 119,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-17",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "merge_pull_request",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1401,
+      "input_tokens": 6731,
+      "output_tokens": 126,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-17",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "merge_pull_request",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1234,
+      "input_tokens": 6731,
+      "output_tokens": 126,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-17",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "merge_pull_request",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1632,
+      "input_tokens": 6731,
+      "output_tokens": 126,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-18",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "get_pull_request_files",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1863,
+      "input_tokens": 6731,
+      "output_tokens": 102,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-18",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "get_pull_request_files",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1826,
+      "input_tokens": 6731,
+      "output_tokens": 102,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-18",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "get_pull_request_files",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2302,
+      "input_tokens": 6731,
+      "output_tokens": 102,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-19",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "get_pull_request_status",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2570,
+      "input_tokens": 6733,
+      "output_tokens": 102,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-19",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "get_pull_request_status",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2421,
+      "input_tokens": 6733,
+      "output_tokens": 102,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-19",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "get_pull_request_status",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2030,
+      "input_tokens": 6733,
+      "output_tokens": 102,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-20",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "list_issues",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2791,
+      "input_tokens": 6738,
+      "output_tokens": 175,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-20",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "list_issues",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2110,
+      "input_tokens": 6738,
+      "output_tokens": 175,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-20",
+      "model": "anthropic/claude-sonnet-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "list_issues",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2577,
+      "input_tokens": 6738,
+      "output_tokens": 175,
+      "api_requests": 1
+    }
+  ]
+}
