@@ -53,7 +53,7 @@ export const TrialResult = z.object({
   task_id: z.string(),
   model: z.string(),
   trial: z.number().int().nonnegative(),
-  driver: z.enum(['anthropic', 'openai', 'gemini', 'mock']),
+  driver: z.enum(['anthropic', 'openai', 'gemini', 'zenmux', 'mock']),
   selected_tool: z.string().nullable(),
   selection_correct: z.boolean().nullable(),
   param_compliance_eligible: z.boolean(),
@@ -63,6 +63,7 @@ export const TrialResult = z.object({
   duration_ms: z.number().nonnegative(),
   input_tokens: z.number().int().nonnegative().optional(),
   output_tokens: z.number().int().nonnegative().optional(),
+  api_requests: z.number().int().positive().optional(),
   error: z.string().optional(),
 });
 export type TrialResult = z.infer<typeof TrialResult>;
@@ -70,7 +71,7 @@ export const EvalReport = z.object({
   started_at: timestamp,
   completed_at: timestamp,
   server_name: z.string(),
-  driver: z.enum(['anthropic', 'openai', 'gemini', 'mock']),
+  driver: z.enum(['anthropic', 'openai', 'gemini', 'zenmux', 'mock']),
   model: z.string(),
   trials: z.number().int().positive(),
   driver_options: z.record(z.string(), z.union([z.string(), z.number()])),

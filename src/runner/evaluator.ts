@@ -86,7 +86,7 @@ export async function evaluateSuite(suite: Suite, runner: ModelRunner, options: 
       try { response = await runner.run({ task, tools: suite.manifest.tools, trial }); }
       catch (cause) {
         error = cause instanceof Error ? cause.message : String(cause);
-        if (cause instanceof ModelRequestError) response = { raw: cause.raw, schema_transformations: [] };
+        if (cause instanceof ModelRequestError) response = { raw: cause.raw, schema_transformations: [], api_requests: cause.api_requests };
       }
       const call = response?.call;
       const selected = call !== undefined && task.expected_tools.includes(call.name);
@@ -99,7 +99,10 @@ export async function evaluateSuite(suite: Suite, runner: ModelRunner, options: 
         selected_tool: call?.name ?? null, selection_correct: suite.config.architecture_type === 'generic_executor' ? null : selected,
         param_compliance_eligible: selected,
         schema_valid, assertions_pass, first_try_pass: selected && schema_valid && assertions_pass,
-        duration_ms: Date.now() - start, ...(error ? { error } : {}) };
+        duration_ms: Date.now() - start, ...(error ? { error } : {}),
+        ...(response?.input_tokens !== undefined ? { input_tokens: response.input_tokens } : {}),
+        ...(response?.output_tokens !== undefined ? { output_tokens: response.output_tokens } : {}),
+        ...(response?.api_requests !== undefined ? { api_requests: response.api_requests } : {}) };
       results[index] = result;
       traces[index] = { ...result, prompt: task.prompt, raw_response: response?.raw ?? null, call: call ?? null, ajv_errors,
         schema_error: call ? schema_compilation_errors[call.name] ?? (validate ? null : 'Unknown tool') : 'No tool call',
