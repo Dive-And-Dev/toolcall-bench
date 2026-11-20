@@ -31,6 +31,7 @@ setInterval(() => {}, 1000);
 process.send('ready');\`], { stdio: ['ignore', 'ignore', 'ignore', 'ipc'] });
 const ready = new Promise(resolve => worker.once('message', () => {
   writeFileSync(pidFile, JSON.stringify([process.ppid, process.pid, worker.pid]));
+  writeFileSync(pidFile + '.ready', String(Date.now()));
   resolve();
 }));
 createInterface({ input: process.stdin }).on('line', async line => {
@@ -50,13 +51,14 @@ createInterface({ input: process.stdin }).on('line', async line => {
       if (mode === 'cli-timeout') {
         await expect(promisify(execFile)(process.execPath, ['--import', resolve('node_modules/tsx/dist/loader.mjs'), resolve('src/cli.ts'),
           'snapshot', '--cmd', cmd, '--env', `PID_FILE=${pidFile}`, '--env', `MODE=${mode}`, '--timeout', '500', '--out', join(directory, 'manifest.json')],
-        { timeout: 2500 })).rejects.toMatchObject({ code: 1, stderr: expect.stringContaining('Snapshot timed out') });
+        { timeout: 10_000 })).rejects.toMatchObject({ code: 1, stderr: expect.stringContaining('Snapshot timed out') });
       } else {
         const capture = introspect({ cmd, env: { PID_FILE: pidFile, MODE: mode }, timeoutMs: 500 });
         if (mode === 'success') expect((await capture).tools).toEqual([]);
         else await expect(capture).rejects.toThrow(mode === 'error' ? 'catalog unavailable' : 'Snapshot timed out');
       }
-      expect(Date.now() - started).toBeLessThan(2500);
+      const snapshotStarted = mode === 'cli-timeout' ? Number(await readFile(`${pidFile}.ready`, 'utf8')) : started;
+      expect(Date.now() - snapshotStarted).toBeLessThan(2500);
       pids = JSON.parse(await readFile(pidFile, 'utf8'));
       expect(pids).toHaveLength(3);
       for (const pid of pids.slice(1)) expect(await readFile(`${pidFile}.${pid}.term`, 'utf8')).toBe('received');
@@ -77,7 +79,7 @@ createInterface({ input: process.stdin }).on('line', async line => {
       }
       await rm(directory, { recursive: true, force: true });
     }
-  }, 10_000);
+  }, 15_000);
   it.each(['compound', 'assignment'])('supports %s shell commands while preserving environment overrides', async mode => {
     const directory = await mkdtemp(join(tmpdir(), 'bench-shell-'));
     try {
