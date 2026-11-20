@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { createServer } from 'node:http';
 import { once } from 'node:events';
-import { execFile } from 'node:child_process';
+import { execFile, type ChildProcess } from 'node:child_process';
 import { promisify } from 'node:util';
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
@@ -10,13 +10,15 @@ import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js';
 import { ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import { captureTransport, introspect } from '../src/mcp/introspect.js';
+import { ProcessGroupStdioTransport } from '../src/mcp/stdio.js';
 import { parsePairs } from '../src/cli.js';
 
 describe('snapshots', () => {
-  it.each(['timeout', 'error', 'success', 'cli-timeout'])('kills the shell, stubborn server and grandchild on %s', async mode => {
+  it.each(['timeout', 'error', 'success', 'cli-timeout', 'cli-SIGINT', 'cli-SIGTERM', 'cli-SIGHUP'])('kills the shell, stubborn server and grandchild on %s', async mode => {
     const directory = await mkdtemp(join(tmpdir(), 'bench-stubborn-'));
     const pidFile = join(directory, 'pids.json');
     let pids: number[] = [];
+    let cli: ChildProcess | undefined;
     try {
       const script = join(directory, 'server.mjs');
       await writeFile(script, `import { createInterface } from 'node:readline';
@@ -38,7 +40,7 @@ createInterface({ input: process.stdin }).on('line', async line => {
   const request = JSON.parse(line);
   if (request.id === undefined) return;
   await ready;
-  if (request.method === 'tools/list' && process.env.MODE.endsWith('timeout')) return;
+  if (request.method === 'tools/list' && (process.env.MODE.endsWith('timeout') || process.env.MODE.startsWith('cli-'))) return;
   const response = request.method === 'tools/list' && process.env.MODE === 'error'
     ? { error: { code: -32603, message: 'catalog unavailable' } }
     : { result: request.method === 'initialize'
@@ -48,16 +50,29 @@ createInterface({ input: process.stdin }).on('line', async line => {
 });`);
       const cmd = `"${process.execPath}" "${script}"; :`;
       const started = Date.now();
-      if (mode === 'cli-timeout') {
-        await expect(promisify(execFile)(process.execPath, ['--import', resolve('node_modules/tsx/dist/loader.mjs'), resolve('src/cli.ts'),
-          'snapshot', '--cmd', cmd, '--env', `PID_FILE=${pidFile}`, '--env', `MODE=${mode}`, '--timeout', '500', '--out', join(directory, 'manifest.json')],
-        { timeout: 10_000 })).rejects.toMatchObject({ code: 1, stderr: expect.stringContaining('Snapshot timed out') });
+      if (mode.startsWith('cli-')) {
+        const execution = promisify(execFile)(process.execPath, ['--import', resolve('node_modules/tsx/dist/loader.mjs'), resolve('src/cli.ts'),
+          'snapshot', '--cmd', cmd, '--env', `PID_FILE=${pidFile}`, '--env', `MODE=${mode}`, '--timeout', mode === 'cli-timeout' ? '500' : '60000', '--out', join(directory, 'manifest.json')],
+        { timeout: 10_000 });
+        cli = execution.child;
+        const outcome = execution.catch(error => error);
+        if (mode === 'cli-timeout') {
+          expect(await outcome).toMatchObject({ code: 1, stderr: expect.stringContaining('Snapshot timed out') });
+        } else {
+          await expect.poll(async () => {
+            try { await readFile(`${pidFile}.ready`); return true; }
+            catch (error) { if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error; return false; }
+          }, { timeout: 8000, interval: 20 }).toBe(true);
+          const signal = mode.slice(4) as 'SIGINT' | 'SIGTERM' | 'SIGHUP';
+          expect(cli.kill(signal)).toBe(true);
+          expect(await outcome).toMatchObject({ code: { SIGINT: 130, SIGTERM: 143, SIGHUP: 129 }[signal], signal: null });
+        }
       } else {
         const capture = introspect({ cmd, env: { PID_FILE: pidFile, MODE: mode }, timeoutMs: 500 });
         if (mode === 'success') expect((await capture).tools).toEqual([]);
         else await expect(capture).rejects.toThrow(mode === 'error' ? 'catalog unavailable' : 'Snapshot timed out');
       }
-      const snapshotStarted = mode === 'cli-timeout' ? Number(await readFile(`${pidFile}.ready`, 'utf8')) : started;
+      const snapshotStarted = mode.startsWith('cli-') ? Number(await readFile(`${pidFile}.ready`, 'utf8')) : started;
       expect(Date.now() - snapshotStarted).toBeLessThan(2500);
       pids = JSON.parse(await readFile(pidFile, 'utf8'));
       expect(pids).toHaveLength(3);
@@ -70,6 +85,7 @@ createInterface({ input: process.stdin }).on('line', async line => {
         }
       }), { timeout: 1000, interval: 10 }).toBe(true);
     } finally {
+      if (cli && cli.exitCode === null && cli.signalCode === null) cli.kill('SIGKILL');
       if (!pids.length) {
         try { pids = JSON.parse(await readFile(pidFile, 'utf8')); } catch {}
       }
@@ -80,6 +96,23 @@ createInterface({ input: process.stdin }).on('line', async line => {
       await rm(directory, { recursive: true, force: true });
     }
   }, 15_000);
+  it('shares signal handlers across active transports and removes only those handlers after the final close', async () => {
+    const signals = ['SIGINT', 'SIGTERM', 'SIGHUP'] as const;
+    const before = signals.map(signal => process.listeners(signal));
+    const transports = [0, 1].map(() => new ProcessGroupStdioTransport(`"${process.execPath}" -e "setInterval(() => {}, 1000)"`));
+    const expectHandlers = (extra: number) => signals.forEach((signal, index) => {
+      expect(process.listenerCount(signal)).toBe(before[index]!.length + extra);
+      for (const handler of before[index]!) expect(process.listeners(signal)).toContain(handler);
+    });
+    try {
+      await Promise.all(transports.map(transport => transport.start()));
+      expectHandlers(1);
+      await transports[0]!.close();
+      expectHandlers(1);
+      await transports[1]!.close();
+      expectHandlers(0);
+    } finally { await Promise.all(transports.map(transport => transport.close())); }
+  });
   it.each(['compound', 'assignment'])('supports %s shell commands while preserving environment overrides', async mode => {
     const directory = await mkdtemp(join(tmpdir(), 'bench-shell-'));
     try {

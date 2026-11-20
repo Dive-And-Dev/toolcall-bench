@@ -5,6 +5,25 @@ import { ReadBuffer, serializeMessage } from '@modelcontextprotocol/sdk/shared/s
 import type { Transport } from '@modelcontextprotocol/sdk/shared/transport.js';
 import type { JSONRPCMessage } from '@modelcontextprotocol/sdk/types.js';
 
+const active = new Set<ProcessGroupStdioTransport>();
+const exitCodes = { SIGINT: 130, SIGTERM: 143, SIGHUP: 129 } as const;
+let shuttingDown = false;
+const handlers = Object.entries(exitCodes).map(([signal, code]) => ({ signal: signal as NodeJS.Signals, handle: () => {
+  if (shuttingDown) return;
+  shuttingDown = true;
+  void Promise.allSettled([...active].map(transport => transport.close())).then(() => process.exit(code));
+} }));
+
+function register(transport: ProcessGroupStdioTransport) {
+  if (!active.size) for (const { signal, handle } of handlers) process.on(signal, handle);
+  active.add(transport);
+}
+
+function unregister(transport: ProcessGroupStdioTransport) {
+  active.delete(transport);
+  if (!active.size) for (const { signal, handle } of handlers) process.removeListener(signal, handle);
+}
+
 export class ProcessGroupStdioTransport implements Transport {
   onclose?: Transport['onclose'];
   onerror?: Transport['onerror'];
@@ -18,10 +37,12 @@ export class ProcessGroupStdioTransport implements Transport {
 
   async start(): Promise<void> {
     if (this.child || this.closing) throw new Error('Transport already started or closed');
+    if (shuttingDown) throw new Error('Process is shutting down');
     const child = this.child = spawn('/bin/sh', ['-c', this.command], {
       detached: true, stdio: ['pipe', 'pipe', 'inherit'],
       env: { ...getDefaultEnvironment(), ...this.env },
     });
+    register(this);
     this.exited = new Promise(resolve => child.once('close', () => { this.onclose?.(); resolve(); }));
     child.stdin?.on('error', error => this.onerror?.(error));
     child.stdout?.on('error', error => this.onerror?.(error));
@@ -48,7 +69,7 @@ export class ProcessGroupStdioTransport implements Transport {
   }
 
   close(): Promise<void> {
-    return this.closing ??= this.terminate();
+    return this.closing ??= this.terminate().finally(() => unregister(this));
   }
 
   private async terminate(): Promise<void> {
