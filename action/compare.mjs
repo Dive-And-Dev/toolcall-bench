@@ -8,7 +8,7 @@ export async function updateComment(api, repository, number, marker, body) {
   let existing;
   for (let page = 1; ; page++) {
     const comments = await api(`/repos/${repository}/issues/${number}/comments?per_page=100&page=${page}`);
-    existing = comments.find(comment => comment.user?.login === 'github-actions[bot]' && comment.body?.includes(marker));
+    existing = comments.find(comment => comment.body?.includes(marker));
     if (existing || comments.length < 100) break;
   }
   return existing ? api(`/repos/${repository}/issues/comments/${existing.id}`, 'PATCH', { body })
