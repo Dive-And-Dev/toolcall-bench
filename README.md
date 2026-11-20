@@ -76,9 +76,9 @@ Task lint checks against **every** name in the suite, not just golden names. Mul
 ## Single-turn evaluation
 
 ```sh
-node dist/cli.js run --all --driver mock --ci --trials 3
-node dist/cli.js run --suite suites/memory --driver mock --ci --seed 43 --out results/seed43
-node dist/cli.js diff results/memory.mock.mock-v1.json results/seed43/memory.mock.mock-v1.json --markdown
+node dist/cli.js run --all --driver mock --ci --trials 3 --out results-mock
+node dist/cli.js run --suite suites/memory --driver mock --ci --seed 43 --out results-mock/seed43
+node dist/cli.js diff results-mock/memory.mock.mock-v1.json results-mock/seed43/memory.mock.mock-v1.json --markdown
 node dist/cli.js diff baseline.json candidate.json --fail-on-regression
 
 # Live calls incur provider charges; set the corresponding key in your environment.
@@ -96,10 +96,10 @@ node dist/cli.js run --suite suites/memory --driver gemini --model MODEL_ID
 - `end_to_end_first_try_pass`: correct selection **and** schema validity **and** all semantic assertions pass, without repair or further turns.
 - Each metric uses task-level cluster bootstrap CIs, not independent-trial intervals. Generic-executor selection is N/A, but expected-name checks still gate parameter and end-to-end scoring.
 - AJV uses strict mode, ajv-formats, no coercion/default insertion, and draft-appropriate validators. `x-mcp-header` is registered only as an annotation. Unsupported or strict-invalid real schemas are not repaired: compilation errors are included in the report/traces and affected calls fail schema validity. This measures harness compatibility too; inspect those errors before attributing failures to models.
-- `results/<suite>.<driver>.<model>.json` contains trial scores, metric CIs, snapshot provenance, manifest/task hashes, token/lint summaries, and timestamps. The neighboring `.traces.jsonl` contains prompts, raw responses, the scored call, AJV errors, assertion outcomes, and schema transformations. Unsafe filename characters are replaced with underscores. Output files are overwritten for the same suite/driver/model; use separate `--out` directories for distinct seeds or experiments. Results are gitignored.
+- `results/<suite>.<driver>.<model>.json` contains trial scores, metric CIs, snapshot provenance, manifest/task hashes, token/lint summaries, and timestamps. The neighboring `.traces.jsonl` contains prompts, raw responses, the scored call, AJV errors, assertion outcomes, and schema transformations. Unsafe filename characters are replaced with underscores. Output files are overwritten for the same suite/driver/model; use separate `--out` directories for distinct seeds or experiments. Live results can be committed after credential scanning; mock filenames remain gitignored. Keep synthetic runs and their diffs in `results-mock/` (also ignored), separate from publishable live results.
 - Diffs require the same suite and identical task-definition hash, pair by task id, and include per-metric delta CIs/p-values/verdicts plus token/lint deltas. Conditional comparisons use tasks with a denominator in **both** arms, reporting unmatched counts. `--fail-on-regression` exits 1 if any comparable metric has a CI strictly below zero. No multiple-comparison correction is applied; lint/token deltas alone do not trigger that flag.
 
-See [RUNNER.md](RUNNER.md) for the offline smoke-run results and observed strict-schema limitations. Live provider adapters are covered by stubbed HTTP tests, not by paid network calls.
+See [RUNNER.md](RUNNER.md) for historical offline smoke-run results and observed strict-schema limitations. [LIVE_RESULTS.md](LIVE_RESULTS.md) documents the paid ZenMux evaluations of both requested models, per-suite intervals, reported usage, failures, and reproduction commands; reports and traces are committed under `results/`. Native adapters also have stubbed HTTP coverage.
 
 ## Static reports
 

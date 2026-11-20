@@ -1,0 +1,1592 @@
+{
+  "started_at": "2026-11-20T06:39:34.648Z",
+  "completed_at": "2026-11-20T06:41:09.338Z",
+  "server_name": "github",
+  "driver": "zenmux",
+  "model": "openai/gpt-5.5",
+  "trials": 3,
+  "driver_options": {
+    "gateway": "https://zenmux.ai/api/v1",
+    "model_id": "openai/gpt-5.5"
+  },
+  "seed": 42,
+  "snapshot": {
+    "server_name": "github",
+    "repo_url": "https://github.com/modelcontextprotocol/servers-archived",
+    "architecture_type": "static_catalog",
+    "selection_metric": "standard",
+    "snapshot_meta": {
+      "package": "@modelcontextprotocol/server-github",
+      "package_version": "2025.4.8",
+      "captured_at": "2026-11-19T20:40:58.096Z",
+      "capture_method": "SDK stdio initialize + tools/list; no credential",
+      "capture_cmd": "node dist/cli.js snapshot --cmd 'npx -y @modelcontextprotocol/server-github@2025.4.8' --out suites/github/manifest.json",
+      "requires_auth_for_tools_list": false
+    }
+  },
+  "manifest_sha256": "8b2ecb93485984e342a715f427759e8782747989774b38afd5043155e2d62eba",
+  "tasks_sha256": "c3d77e7aaf19e1faa24b60fdf47e3584f3e2023059b10258cfc198cbf35b71bb",
+  "metrics": {
+    "tool_selection_accuracy": {
+      "mean": 1,
+      "ci_low": 1,
+      "ci_high": 1,
+      "half_width": 0,
+      "n_tasks": 20,
+      "n_trials": 60,
+      "B": 5000,
+      "seed": 42
+    },
+    "param_compliance_conditional": {
+      "mean": 1,
+      "ci_low": 1,
+      "ci_high": 1,
+      "half_width": 0,
+      "n_tasks": 20,
+      "n_trials": 60,
+      "B": 5000,
+      "seed": 42
+    },
+    "end_to_end_first_try_pass": {
+      "mean": 1,
+      "ci_low": 1,
+      "ci_high": 1,
+      "half_width": 0,
+      "n_tasks": 20,
+      "n_trials": 60,
+      "B": 5000,
+      "seed": 42
+    }
+  },
+  "selection_metric": "standard",
+  "tokens": {
+    "catalog_tokens": 3548,
+    "tool_count": 26,
+    "encoding": "o200k_base",
+    "median_tokens_per_tool": 117.5,
+    "per_tool": [
+      {
+        "tool": "create_or_update_file",
+        "tokens": 178
+      },
+      {
+        "tool": "search_repositories",
+        "tokens": 115
+      },
+      {
+        "tool": "create_repository",
+        "tokens": 107
+      },
+      {
+        "tool": "get_file_contents",
+        "tokens": 121
+      },
+      {
+        "tool": "push_files",
+        "tokens": 178
+      },
+      {
+        "tool": "create_issue",
+        "tokens": 120
+      },
+      {
+        "tool": "create_pull_request",
+        "tokens": 200
+      },
+      {
+        "tool": "fork_repository",
+        "tokens": 108
+      },
+      {
+        "tool": "create_branch",
+        "tokens": 127
+      },
+      {
+        "tool": "list_commits",
+        "tokens": 94
+      },
+      {
+        "tool": "list_issues",
+        "tokens": 149
+      },
+      {
+        "tool": "update_issue",
+        "tokens": 143
+      },
+      {
+        "tool": "add_issue_comment",
+        "tokens": 87
+      },
+      {
+        "tool": "search_code",
+        "tokens": 96
+      },
+      {
+        "tool": "search_issues",
+        "tokens": 151
+      },
+      {
+        "tool": "search_users",
+        "tokens": 110
+      },
+      {
+        "tool": "get_issue",
+        "tokens": 81
+      },
+      {
+        "tool": "get_pull_request",
+        "tokens": 99
+      },
+      {
+        "tool": "list_pull_requests",
+        "tokens": 226
+      },
+      {
+        "tool": "create_pull_request_review",
+        "tokens": 360
+      },
+      {
+        "tool": "merge_pull_request",
+        "tokens": 159
+      },
+      {
+        "tool": "get_pull_request_files",
+        "tokens": 103
+      },
+      {
+        "tool": "get_pull_request_status",
+        "tokens": 105
+      },
+      {
+        "tool": "update_pull_request_branch",
+        "tokens": 128
+      },
+      {
+        "tool": "get_pull_request_comments",
+        "tokens": 101
+      },
+      {
+        "tool": "get_pull_request_reviews",
+        "tokens": 100
+      }
+    ]
+  },
+  "lint": {
+    "total_findings": 56,
+    "counts": {
+      "MISSING_DESCRIPTION": 53,
+      "UNTYPED_OBJECT": 0,
+      "AMBIGUOUS_UNIT_OR_FORMAT": 1,
+      "MISSING_ENUM_CONSTRAINT": 0,
+      "OVERLAPPING_TOOL_DESCRIPTIONS": 2
+    },
+    "findings": [
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "push_files",
+        "path": "/inputSchema/properties/files/items/properties/path",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "push_files",
+        "path": "/inputSchema/properties/files/items/properties/content",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "create_issue",
+        "path": "/inputSchema/properties/owner",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "create_issue",
+        "path": "/inputSchema/properties/repo",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "create_issue",
+        "path": "/inputSchema/properties/title",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "create_issue",
+        "path": "/inputSchema/properties/body",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "create_issue",
+        "path": "/inputSchema/properties/assignees",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "create_issue",
+        "path": "/inputSchema/properties/milestone",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "create_issue",
+        "path": "/inputSchema/properties/labels",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_commits",
+        "path": "/inputSchema/properties/owner",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_commits",
+        "path": "/inputSchema/properties/repo",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_commits",
+        "path": "/inputSchema/properties/sha",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_commits",
+        "path": "/inputSchema/properties/page",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_commits",
+        "path": "/inputSchema/properties/perPage",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_issues",
+        "path": "/inputSchema/properties/owner",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_issues",
+        "path": "/inputSchema/properties/repo",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_issues",
+        "path": "/inputSchema/properties/direction",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_issues",
+        "path": "/inputSchema/properties/labels",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_issues",
+        "path": "/inputSchema/properties/page",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_issues",
+        "path": "/inputSchema/properties/per_page",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_issues",
+        "path": "/inputSchema/properties/since",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "AMBIGUOUS_UNIT_OR_FORMAT",
+        "tool": "list_issues",
+        "path": "/inputSchema/properties/since",
+        "message": "Parameter lacks an explicit unit or format"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_issues",
+        "path": "/inputSchema/properties/sort",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "list_issues",
+        "path": "/inputSchema/properties/state",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "update_issue",
+        "path": "/inputSchema/properties/owner",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "update_issue",
+        "path": "/inputSchema/properties/repo",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "update_issue",
+        "path": "/inputSchema/properties/issue_number",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "update_issue",
+        "path": "/inputSchema/properties/title",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "update_issue",
+        "path": "/inputSchema/properties/body",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "update_issue",
+        "path": "/inputSchema/properties/assignees",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "update_issue",
+        "path": "/inputSchema/properties/milestone",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "update_issue",
+        "path": "/inputSchema/properties/labels",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "update_issue",
+        "path": "/inputSchema/properties/state",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "add_issue_comment",
+        "path": "/inputSchema/properties/owner",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "add_issue_comment",
+        "path": "/inputSchema/properties/repo",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "add_issue_comment",
+        "path": "/inputSchema/properties/issue_number",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "add_issue_comment",
+        "path": "/inputSchema/properties/body",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_code",
+        "path": "/inputSchema/properties/q",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_code",
+        "path": "/inputSchema/properties/order",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_code",
+        "path": "/inputSchema/properties/page",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_code",
+        "path": "/inputSchema/properties/per_page",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_issues",
+        "path": "/inputSchema/properties/q",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_issues",
+        "path": "/inputSchema/properties/order",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_issues",
+        "path": "/inputSchema/properties/page",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_issues",
+        "path": "/inputSchema/properties/per_page",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_issues",
+        "path": "/inputSchema/properties/sort",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_users",
+        "path": "/inputSchema/properties/q",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_users",
+        "path": "/inputSchema/properties/order",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_users",
+        "path": "/inputSchema/properties/page",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_users",
+        "path": "/inputSchema/properties/per_page",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "search_users",
+        "path": "/inputSchema/properties/sort",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "get_issue",
+        "path": "/inputSchema/properties/owner",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "get_issue",
+        "path": "/inputSchema/properties/repo",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "MISSING_DESCRIPTION",
+        "tool": "get_issue",
+        "path": "/inputSchema/properties/issue_number",
+        "message": "Parameter has no description"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "search_repositories",
+        "path": "/description",
+        "message": "Description overlaps search_code (Jaccard 0.600)"
+      },
+      {
+        "rule": "OVERLAPPING_TOOL_DESCRIPTIONS",
+        "tool": "create_issue",
+        "path": "/description",
+        "message": "Description overlaps create_branch (Jaccard 0.667)"
+      }
+    ],
+    "findings_per_tool": 2.1538461538461537,
+    "per_tool": [
+      {
+        "tool": "create_or_update_file",
+        "findings": 0
+      },
+      {
+        "tool": "search_repositories",
+        "findings": 1
+      },
+      {
+        "tool": "create_repository",
+        "findings": 0
+      },
+      {
+        "tool": "get_file_contents",
+        "findings": 0
+      },
+      {
+        "tool": "push_files",
+        "findings": 2
+      },
+      {
+        "tool": "create_issue",
+        "findings": 8
+      },
+      {
+        "tool": "create_pull_request",
+        "findings": 0
+      },
+      {
+        "tool": "fork_repository",
+        "findings": 0
+      },
+      {
+        "tool": "create_branch",
+        "findings": 0
+      },
+      {
+        "tool": "list_commits",
+        "findings": 5
+      },
+      {
+        "tool": "list_issues",
+        "findings": 10
+      },
+      {
+        "tool": "update_issue",
+        "findings": 9
+      },
+      {
+        "tool": "add_issue_comment",
+        "findings": 4
+      },
+      {
+        "tool": "search_code",
+        "findings": 4
+      },
+      {
+        "tool": "search_issues",
+        "findings": 5
+      },
+      {
+        "tool": "search_users",
+        "findings": 5
+      },
+      {
+        "tool": "get_issue",
+        "findings": 3
+      },
+      {
+        "tool": "get_pull_request",
+        "findings": 0
+      },
+      {
+        "tool": "list_pull_requests",
+        "findings": 0
+      },
+      {
+        "tool": "create_pull_request_review",
+        "findings": 0
+      },
+      {
+        "tool": "merge_pull_request",
+        "findings": 0
+      },
+      {
+        "tool": "get_pull_request_files",
+        "findings": 0
+      },
+      {
+        "tool": "get_pull_request_status",
+        "findings": 0
+      },
+      {
+        "tool": "update_pull_request_branch",
+        "findings": 0
+      },
+      {
+        "tool": "get_pull_request_comments",
+        "findings": 0
+      },
+      {
+        "tool": "get_pull_request_reviews",
+        "findings": 0
+      }
+    ]
+  },
+  "schema_compilation_errors": {},
+  "results": [
+    {
+      "task_id": "github-01",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "search_repositories",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2701,
+      "input_tokens": 2042,
+      "output_tokens": 67,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-01",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "search_repositories",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3549,
+      "input_tokens": 2042,
+      "output_tokens": 90,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-01",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "search_repositories",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 8076,
+      "input_tokens": 2042,
+      "output_tokens": 88,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-02",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "create_repository",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2716,
+      "input_tokens": 2040,
+      "output_tokens": 55,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-02",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "create_repository",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3146,
+      "input_tokens": 2040,
+      "output_tokens": 60,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-02",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "create_repository",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2709,
+      "input_tokens": 2040,
+      "output_tokens": 54,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-03",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "get_file_contents",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2990,
+      "input_tokens": 2042,
+      "output_tokens": 33,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-03",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "get_file_contents",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1452,
+      "input_tokens": 2042,
+      "output_tokens": 33,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-03",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "get_file_contents",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1673,
+      "input_tokens": 2042,
+      "output_tokens": 33,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-04",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "create_issue",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1431,
+      "input_tokens": 2053,
+      "output_tokens": 34,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-04",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "create_issue",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1794,
+      "input_tokens": 2053,
+      "output_tokens": 34,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-04",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "create_issue",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 5441,
+      "input_tokens": 2053,
+      "output_tokens": 34,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-05",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "create_pull_request",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2883,
+      "input_tokens": 2054,
+      "output_tokens": 64,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-05",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "create_pull_request",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3477,
+      "input_tokens": 2054,
+      "output_tokens": 65,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-05",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "create_pull_request",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3616,
+      "input_tokens": 2054,
+      "output_tokens": 67,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-06",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "fork_repository",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2814,
+      "input_tokens": 2041,
+      "output_tokens": 58,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-06",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "fork_repository",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2799,
+      "input_tokens": 2041,
+      "output_tokens": 58,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-06",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "fork_repository",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2882,
+      "input_tokens": 2041,
+      "output_tokens": 53,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-07",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "create_branch",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2516,
+      "input_tokens": 2044,
+      "output_tokens": 48,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-07",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "create_branch",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2683,
+      "input_tokens": 2044,
+      "output_tokens": 47,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-07",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "create_branch",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2838,
+      "input_tokens": 2044,
+      "output_tokens": 56,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-08",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "list_commits",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2895,
+      "input_tokens": 2042,
+      "output_tokens": 67,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-08",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "list_commits",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4382,
+      "input_tokens": 2042,
+      "output_tokens": 63,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-08",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "list_commits",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3318,
+      "input_tokens": 2042,
+      "output_tokens": 68,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-09",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "list_issues",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3988,
+      "input_tokens": 2039,
+      "output_tokens": 81,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-09",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "list_issues",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2541,
+      "input_tokens": 2039,
+      "output_tokens": 83,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-09",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "list_issues",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2862,
+      "input_tokens": 2039,
+      "output_tokens": 81,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-10",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "update_issue",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3064,
+      "input_tokens": 2039,
+      "output_tokens": 66,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-10",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "update_issue",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2716,
+      "input_tokens": 2039,
+      "output_tokens": 49,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-10",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "update_issue",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2931,
+      "input_tokens": 2039,
+      "output_tokens": 61,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-11",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "add_issue_comment",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1925,
+      "input_tokens": 2049,
+      "output_tokens": 36,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-11",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "add_issue_comment",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 1381,
+      "input_tokens": 2049,
+      "output_tokens": 36,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-11",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "add_issue_comment",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2449,
+      "input_tokens": 2049,
+      "output_tokens": 36,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-12",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "search_code",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2402,
+      "input_tokens": 2049,
+      "output_tokens": 27,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-12",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "search_code",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2545,
+      "input_tokens": 2049,
+      "output_tokens": 40,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-12",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "search_code",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3089,
+      "input_tokens": 2049,
+      "output_tokens": 66,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-13",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "search_users",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3189,
+      "input_tokens": 2043,
+      "output_tokens": 49,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-13",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "search_users",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3236,
+      "input_tokens": 2043,
+      "output_tokens": 57,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-13",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "search_users",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2840,
+      "input_tokens": 2043,
+      "output_tokens": 64,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-14",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "get_issue",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3915,
+      "input_tokens": 2042,
+      "output_tokens": 46,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-14",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "get_issue",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2390,
+      "input_tokens": 2042,
+      "output_tokens": 40,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-14",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "get_issue",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2575,
+      "input_tokens": 2042,
+      "output_tokens": 40,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-15",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "get_pull_request",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3342,
+      "input_tokens": 2042,
+      "output_tokens": 94,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-15",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "get_pull_request",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2747,
+      "input_tokens": 2042,
+      "output_tokens": 69,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-15",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "get_pull_request",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3215,
+      "input_tokens": 2042,
+      "output_tokens": 76,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-16",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "list_pull_requests",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4039,
+      "input_tokens": 2041,
+      "output_tokens": 86,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-16",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "list_pull_requests",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2671,
+      "input_tokens": 2041,
+      "output_tokens": 85,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-16",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "list_pull_requests",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3614,
+      "input_tokens": 2041,
+      "output_tokens": 68,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-17",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "merge_pull_request",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4181,
+      "input_tokens": 2043,
+      "output_tokens": 114,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-17",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "merge_pull_request",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3060,
+      "input_tokens": 2043,
+      "output_tokens": 88,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-17",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "merge_pull_request",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3577,
+      "input_tokens": 2043,
+      "output_tokens": 102,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-18",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "get_pull_request_files",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2594,
+      "input_tokens": 2044,
+      "output_tokens": 59,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-18",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "get_pull_request_files",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3484,
+      "input_tokens": 2044,
+      "output_tokens": 68,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-18",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "get_pull_request_files",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3067,
+      "input_tokens": 2044,
+      "output_tokens": 58,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-19",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "get_pull_request_status",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 2699,
+      "input_tokens": 2045,
+      "output_tokens": 50,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-19",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "get_pull_request_status",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 3564,
+      "input_tokens": 2045,
+      "output_tokens": 57,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-19",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "get_pull_request_status",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4322,
+      "input_tokens": 2045,
+      "output_tokens": 70,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-20",
+      "model": "openai/gpt-5.5",
+      "trial": 0,
+      "driver": "zenmux",
+      "selected_tool": "list_issues",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4213,
+      "input_tokens": 2049,
+      "output_tokens": 140,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-20",
+      "model": "openai/gpt-5.5",
+      "trial": 1,
+      "driver": "zenmux",
+      "selected_tool": "list_issues",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4365,
+      "input_tokens": 2049,
+      "output_tokens": 124,
+      "api_requests": 1
+    },
+    {
+      "task_id": "github-20",
+      "model": "openai/gpt-5.5",
+      "trial": 2,
+      "driver": "zenmux",
+      "selected_tool": "list_issues",
+      "selection_correct": true,
+      "param_compliance_eligible": true,
+      "schema_valid": true,
+      "assertions_pass": true,
+      "first_try_pass": true,
+      "duration_ms": 4255,
+      "input_tokens": 2049,
+      "output_tokens": 117,
+      "api_requests": 1
+    }
+  ]
+}
